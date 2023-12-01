@@ -1,7 +1,7 @@
 library(idefix)
 rm(list = ls())
 
-set.seed(12012023)
+set.seed(1201202)
 at.lvls <- c(4, 3, 3, 4)
 c.type <- c("C", "D", "D", "D")
 cs <- Profiles(
