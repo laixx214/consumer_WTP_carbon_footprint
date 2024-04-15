@@ -6,7 +6,7 @@ library(DoE.base)
 library(openxlsx)
 
 rm(list = ls())
-set.seed(1201202)
+set.seed(12012023)
 
 at.lvls <- c(3, 3, 3, 4)
 
@@ -16,9 +16,9 @@ at.lvls <- c(3, 3, 3, 4)
 # 3: certification; None, NGO, UK
 # 4: project: forest, renewable, storage, appliances
 
-#############################################
+################################################################################
 ### Price as continuous variable
-#############################################
+################################################################################
 
 c.type <- c("C", "D", "D", "D")
 cs <- Profiles(
@@ -46,12 +46,12 @@ D <- Modfed(
 )
 D
 
-save.image("design.RData")
+save.image("./design/design_continuous_price.RData")
 # load("design.RData")
 
-#############################################
+################################################################################
 ### Price as categorical variable
-#############################################
+################################################################################
 
 c.type <- c("D", "D", "D", "D")
 cs <- Profiles(
@@ -78,6 +78,8 @@ D <- Modfed(
 )
 D
 
+save.image("./design/design_discrete_price.RData")
+
 design <-
     data.frame(
         I = D$design[, 1],
@@ -95,9 +97,9 @@ design <-
 
 write.csv(design, "./csv/design.csv", row.names = FALSE)
 
-#############################################
+################################################################################
 ### convert to choice experiment scenarios
-#############################################
+################################################################################
 
 design <- read.csv("./csv/design.csv")
 
