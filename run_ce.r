@@ -13,6 +13,20 @@ library(mlogit)
 rm(list = ls())
 set.seed(1201202)
 
+date <- gsub("-", "", as.character(Sys.Date()))
+### sink message
+my_log <-
+    file(
+        paste(
+            "./consumer_WTP_carbon_footprint/run_ce_",
+            date,
+            ".log",
+            sep = ""
+        )
+    )
+sink(my_log, append = TRUE, type = "output")
+sink(my_log, append = TRUE, type = "message")
+
 ################################################################################
 ### Read in data
 ################################################################################
@@ -79,3 +93,9 @@ summary(mlogit_bsc)
 ### save image
 ################################################################################
 save.image("./output/ce_est.RData")
+
+################################################################################
+print("Done!")
+sink()
+sink(type = "message")
+closeAllConnections()
