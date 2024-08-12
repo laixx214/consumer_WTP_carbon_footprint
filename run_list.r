@@ -9,10 +9,16 @@ library(openxlsx)
 rm(list = ls())
 set.seed(1201202)
 
-date <- Sys.Date()
+date <- gsub("-", "", as.character(Sys.Date()))
+### sink message
+my_log <- file(paste("run_list", date, ".log", sep = ""))
+sink(my_log, append = TRUE, type = "output")
+sink(my_log, append = TRUE, type = "message")
+
 ################################################################################
 ### Read in data
 ################################################################################
+message("Reading in data...")
 load("./image/sensitive_statements.RData")
 dt_count <- fread("csv/dt_counts.csv")
 
@@ -25,7 +31,7 @@ statement_reference <-
     ) %>%
     distinct() %>%
     arrange(treatment)
-
+    
 ### number of control lists
 n_cl <- dt_count %>%
     select(list_id) %>%
@@ -45,6 +51,7 @@ n_ss <- dt_count %>%
 ################################################################################
 ### run list experiment, intercept only
 ################################################################################
+message("Running list experiment, intercept only...")
 ict_fit_intercept <-
     ictreg(
         count ~ as.factor(list_id) - 1,
@@ -62,7 +69,7 @@ tbl_intercept <-
             par <- ict_fit_intercept$par.treat[[i]]
             se <- ict_fit_intercept$se.treat[[i]]
             control <- paste0("Control List ", 1:4)
-
+            
             names(par) <- NULL
             names(se) <- NULL
             names(control) <- NULL
@@ -77,7 +84,7 @@ tbl_intercept <-
                 )
         }
     )
-
+    
 tbl_intercept <-
     do.call(rbind, tbl_intercept) %>%
     as.data.frame() %>%
@@ -97,7 +104,7 @@ tbl_intercept <-
 
 ### use delta method to estimate the average treatment effect across control lists
 # construct formulas
-delta_f <-
+delta_f <- 
     lapply(
         1:n_ss,
         function(i) {
@@ -161,7 +168,7 @@ tbl_intercept <-
         tbl_intercept,
         tbl_ate
     )
-
+    
 ### delta method for testing if there is a variation in treatment effect across control lists
 # construct formulas
 design_effect <-
@@ -272,7 +279,88 @@ design_effect <-
         }
     )
 design_effect <- do.call(rbind, design_effect)
-
+    
 ################################################################################
 ### run list experiment, with demographics
 ################################################################################
+message("Running list experiment, with demographics...")
+dt_demo <- fread("csv/dt_demo.csv")
+
+### merge demographics with counts
+dt_count <-
+    dt_count %>%
+    left_join(
+        dt_demo
+    )
+
+### fit model using information treatment
+ict_fit_demo_info <-
+    ictreg(
+        count ~ as.factor(list_id) - 1 +
+        framing_effect +
+        co2_value,
+        data = dt_count,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+
+### fit model using information treatment + attitudes
+ict_fit_demo_info_att <-
+    ictreg(
+        count ~ as.factor(list_id) - 1 +
+        framing_effect +
+        co2_value +
+        climate_important+
+        know_climate +
+        climate_cause,
+        data = dt_count,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+
+### fit model using information treatment + attitudes + demographics
+ict_fit_demo_info_att_demo <-
+    ictreg(
+        count ~ as.factor(list_id) - 1 +
+        framing_effect +
+        co2_value +
+        climate_important+
+        know_climate +
+        climate_cause +
+        location +
+        where_live +
+        age +
+        gender +
+        education +
+        diet +
+        meat_frequeny +
+        income,
+        data = dt_count,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+
+################################################################################
+### save output
+################################################################################
+message("Save output...")
+save.image(
+    file = paste0("./image/est_", date, ".RData")
+)
+
+write.xlsx(
+    list(
+        "intercept" = tbl_intercept,
+        "Design Effect Test" = design_effect
+    ),
+    file = "./tables/tbl_est.xlsx"
+)
+
+################################################################################
+print("Done!")
+sink()
+sink(type = "message")
+closeAllConnections()
