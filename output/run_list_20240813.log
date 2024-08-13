@@ -1,767 +1,474 @@
 Reading in data...
 Running list experiment, intercept only...
 Joining with `by = join_by(treatment)`
-Running list experiment, with demographics...
 Sensitive statements:
-                                                                                        ss1 
-                 "I support restricting the use of electricity at peak times in the summer" 
-                                                                                        ss2 
-                                       "Carbon tax on food on food products and beverages." 
-                                                                                        ss3 
-                             "UK should not commit to reaching net zero emissions by 2050." 
+                                                                                        ss1                                                                                         ss2                                                                                         ss3 
+                 "I support restricting the use of electricity at peak times in the summer"                                        "Carbon tax on food on food products and beverages."                              "UK should not commit to reaching net zero emissions by 2050." 
                                                                                         ss4 
 "Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined." 
+Running list experiment, with demographics...
 Joining with `by = join_by(ResponseId)`
 Fitting model using information treatment...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + framing_effect + 
-    co2_value, data = dt_est, treat = "treatment", J = n_cs, 
-    constrained = TRUE)
-
-Sensitive item (1)
-                              Est.    S.E.
-(Intercept)                0.36240 0.49764
-as.factor(list_id)2        0.35327 0.47101
-as.factor(list_id)3       -0.69999 0.48214
-as.factor(list_id)4        0.37123 0.50562
-framing_effectconsequence -0.32041 0.50945
-framing_effectMetOffice   -0.13977 0.47536
-framing_effectUN          -1.05508 0.59242
-co2_value                 -0.04825 0.14494
-
-Sensitive item (2)
-                              Est.    S.E.
-(Intercept)               -0.46658 0.51818
-as.factor(list_id)2        0.43943 0.47365
-as.factor(list_id)3       -0.07116 0.48815
-as.factor(list_id)4       -0.76082 0.56890
-framing_effectconsequence -0.17013 0.52553
-framing_effectMetOffice    0.19283 0.47316
-framing_effectUN          -0.00293 0.53847
-co2_value                 -0.09708 0.13916
-
-Sensitive item (3)
-                              Est.    S.E.
-(Intercept)               -0.06076 0.48546
-as.factor(list_id)2       -0.34753 0.48500
-as.factor(list_id)3       -0.84430 0.47995
-as.factor(list_id)4       -0.57034 0.46640
-framing_effectconsequence -0.05629 0.51215
-framing_effectMetOffice    0.07481 0.44999
-framing_effectUN           0.08860 0.53264
-co2_value                 -0.10815 0.12888
-
-Sensitive item (4)
-                              Est.    S.E.
-(Intercept)                0.12940 0.54046
-as.factor(list_id)2       -0.44033 0.47554
-as.factor(list_id)3       -0.22696 0.47675
-as.factor(list_id)4       -0.34546 0.51753
-framing_effectconsequence  0.48653 0.52240
-framing_effectMetOffice    0.45490 0.47523
-framing_effectUN           0.51179 0.51633
-co2_value                 -0.13217 0.14009
-
-Control items
-                              Est.    S.E.
-(Intercept)               -0.10091 0.05164
-as.factor(list_id)2        0.01766 0.04716
-as.factor(list_id)3        0.17989 0.04642
-as.factor(list_id)4        0.32769 0.04836
-framing_effectconsequence  0.05156 0.05261
-framing_effectMetOffice   -0.02054 0.04622
-framing_effectUN           0.01404 0.05248
-co2_value                  0.03623 0.01227
-
-Log-likelihood: -9010.534
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                   statement                  variable  coefficient        SE          p star
+1                   I support restricting the use of electricity at peak times in the summer               (Intercept)  0.362397969 0.4976371 0.46646821     
+2                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)2  0.353266581 0.4710129 0.45324588     
+3                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)3 -0.699987539 0.4821438 0.14655078     
+4                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)4  0.371230136 0.5056176 0.46282002     
+5                   I support restricting the use of electricity at peak times in the summer framing_effectconsequence -0.320405195 0.5094529 0.52940137     
+6                   I support restricting the use of electricity at peak times in the summer   framing_effectMetOffice -0.139768396 0.4753615 0.76873843     
+7                   I support restricting the use of electricity at peak times in the summer          framing_effectUN -1.055084181 0.5924195 0.07491660    *
+8                   I support restricting the use of electricity at peak times in the summer                 co2_value -0.048245632 0.1449396 0.73923461     
+9                                         Carbon tax on food on food products and beverages.               (Intercept) -0.466577522 0.5181815 0.36790035     
+10                                        Carbon tax on food on food products and beverages.       as.factor(list_id)2  0.439432397 0.4736513 0.35353465     
+11                                        Carbon tax on food on food products and beverages.       as.factor(list_id)3 -0.071156215 0.4881522 0.88410575     
+12                                        Carbon tax on food on food products and beverages.       as.factor(list_id)4 -0.760822068 0.5688985 0.18110519     
+13                                        Carbon tax on food on food products and beverages. framing_effectconsequence -0.170130265 0.5255323 0.74614288     
+14                                        Carbon tax on food on food products and beverages.   framing_effectMetOffice  0.192830995 0.4731568 0.68361040     
+15                                        Carbon tax on food on food products and beverages.          framing_effectUN -0.002932414 0.5384731 0.99565491     
+16                                        Carbon tax on food on food products and beverages.                 co2_value -0.097083864 0.1391613 0.48540505     
+17                              UK should not commit to reaching net zero emissions by 2050.               (Intercept) -0.060764575 0.4854597 0.90038964     
+18                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)2 -0.347532675 0.4849970 0.47364156     
+19                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)3 -0.844297191 0.4799470 0.07855258    *
+20                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)4 -0.570339985 0.4664037 0.22138775     
+21                              UK should not commit to reaching net zero emissions by 2050. framing_effectconsequence -0.056293628 0.5121452 0.91247495     
+22                              UK should not commit to reaching net zero emissions by 2050.   framing_effectMetOffice  0.074808369 0.4499949 0.86796594     
+23                              UK should not commit to reaching net zero emissions by 2050.          framing_effectUN  0.088596928 0.5326356 0.86789188     
+24                              UK should not commit to reaching net zero emissions by 2050.                 co2_value -0.108148412 0.1288763 0.40137718     
+25 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               (Intercept)  0.129400977 0.5404626 0.81077503     
+26 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)2 -0.440329188 0.4755440 0.35447279     
+27 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)3 -0.226955560 0.4767472 0.63403867     
+28 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)4 -0.345462692 0.5175304 0.50443902     
+29 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. framing_effectconsequence  0.486533859 0.5223970 0.35167315     
+30 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.   framing_effectMetOffice  0.454901114 0.4752301 0.33845478     
+31 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          framing_effectUN  0.511792675 0.5163290 0.32158095     
+32 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                 co2_value -0.132166221 0.1400928 0.34546675     
 Fitting model using climate attitudes...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + climate_important + 
-    know_climate + climate_cause, data = dt_est, treat = "treatment", 
-    J = n_cs, constrained = TRUE)
-
-Sensitive item (1)
-                         Est.    S.E.
-(Intercept)           0.26417 0.37703
-as.factor(list_id)2   0.19493 0.46768
-as.factor(list_id)3  -0.80902 0.50455
-as.factor(list_id)4   0.35728 0.53720
-climate_importantno  -0.81852 0.43428
-know_climateno        0.07926 0.43099
-climate_causehuman   -0.12605 0.45698
-climate_causenatural  0.04007 0.62233
-climate_causeOthers  -0.00675 0.59457
-
-Sensitive item (2)
-                         Est.    S.E.
-(Intercept)          -0.42245 0.43477
-as.factor(list_id)2   0.49674 0.50096
-as.factor(list_id)3  -0.07479 0.53433
-as.factor(list_id)4  -0.94271 0.58936
-climate_importantno  -0.68602 0.52244
-know_climateno       -0.70515 0.42558
-climate_causehuman    0.38186 0.46863
-climate_causenatural  0.28102 0.68400
-climate_causeOthers   1.69021 0.64599
-
-Sensitive item (3)
-                         Est.    S.E.
-(Intercept)          -0.37350 0.38115
-as.factor(list_id)2  -0.51465 0.50968
-as.factor(list_id)3  -0.83254 0.48821
-as.factor(list_id)4  -0.80826 0.50495
-climate_importantno   0.20456 0.45871
-know_climateno       -0.47134 0.40029
-climate_causehuman    0.78963 0.45250
-climate_causenatural  0.98506 0.62935
-climate_causeOthers   1.11024 0.72894
-
-Sensitive item (4)
-                         Est.    S.E.
-(Intercept)           0.38226 0.40969
-as.factor(list_id)2  -0.27353 0.51064
-as.factor(list_id)3  -0.23451 0.50204
-as.factor(list_id)4  -0.32506 0.55952
-climate_importantno  -0.79690 0.45438
-know_climateno       -0.43101 0.40793
-climate_causehuman    0.74721 0.46548
-climate_causenatural  0.88934 0.65764
-climate_causeOthers   0.07418 0.70513
-
-Control items
-                         Est.    S.E.
-(Intercept)           0.03314 0.03905
-as.factor(list_id)2   0.01846 0.04711
-as.factor(list_id)3   0.18141 0.04654
-as.factor(list_id)4   0.33016 0.04877
-climate_importantno  -0.19050 0.03843
-know_climateno       -0.09207 0.03685
-climate_causehuman    0.13921 0.04360
-climate_causenatural  0.36125 0.06542
-climate_causeOthers   0.18666 0.06690
-
-Log-likelihood: -8907.138
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                   statement             variable  coefficient        SE           p star
+1                   I support restricting the use of electricity at peak times in the summer          (Intercept)  0.264170467 0.3770275 0.483511269     
+2                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)2  0.194931658 0.4676790 0.676819938     
+3                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)3 -0.809015059 0.5045460 0.108834988     
+4                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)4  0.357282361 0.5372000 0.505997691     
+5                   I support restricting the use of electricity at peak times in the summer  climate_importantno -0.818522993 0.4342782 0.059458257    *
+6                   I support restricting the use of electricity at peak times in the summer       know_climateno  0.079257550 0.4309921 0.854095348     
+7                   I support restricting the use of electricity at peak times in the summer   climate_causehuman -0.126052174 0.4569809 0.782673369     
+8                   I support restricting the use of electricity at peak times in the summer climate_causenatural  0.040074632 0.6223272 0.948655876     
+9                   I support restricting the use of electricity at peak times in the summer  climate_causeOthers -0.006753858 0.5945702 0.990936842     
+10                                        Carbon tax on food on food products and beverages.          (Intercept) -0.422447806 0.4347742 0.331225287     
+11                                        Carbon tax on food on food products and beverages.  as.factor(list_id)2  0.496743732 0.5009644 0.321404970     
+12                                        Carbon tax on food on food products and beverages.  as.factor(list_id)3 -0.074789856 0.5343347 0.888685135     
+13                                        Carbon tax on food on food products and beverages.  as.factor(list_id)4 -0.942707370 0.5893605 0.109700013     
+14                                        Carbon tax on food on food products and beverages.  climate_importantno -0.686023758 0.5224382 0.189142742     
+15                                        Carbon tax on food on food products and beverages.       know_climateno -0.705149971 0.4255814 0.097537724    *
+16                                        Carbon tax on food on food products and beverages.   climate_causehuman  0.381863390 0.4686340 0.415161863     
+17                                        Carbon tax on food on food products and beverages. climate_causenatural  0.281023278 0.6839971 0.681179238     
+18                                        Carbon tax on food on food products and beverages.  climate_causeOthers  1.690205275 0.6459881 0.008884546  ***
+19                              UK should not commit to reaching net zero emissions by 2050.          (Intercept) -0.373502725 0.3811459 0.327112360     
+20                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)2 -0.514652429 0.5096751 0.312607522     
+21                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)3 -0.832539715 0.4882081 0.088139079    *
+22                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)4 -0.808262664 0.5049487 0.109447191     
+23                              UK should not commit to reaching net zero emissions by 2050.  climate_importantno  0.204559725 0.4587149 0.655639976     
+24                              UK should not commit to reaching net zero emissions by 2050.       know_climateno -0.471337160 0.4002911 0.239001561     
+25                              UK should not commit to reaching net zero emissions by 2050.   climate_causehuman  0.789629450 0.4524991 0.080977772    *
+26                              UK should not commit to reaching net zero emissions by 2050. climate_causenatural  0.985057258 0.6293536 0.117538606     
+27                              UK should not commit to reaching net zero emissions by 2050.  climate_causeOthers  1.110243808 0.7289432 0.127736994     
+28 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          (Intercept)  0.382259006 0.4096935 0.350801104     
+29 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)2 -0.273532251 0.5106411 0.592190489     
+30 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)3 -0.234514972 0.5020404 0.640411346     
+31 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)4 -0.325059456 0.5595179 0.561265110     
+32 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  climate_importantno -0.796902953 0.4543760 0.079457854    *
+33 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       know_climateno -0.431013595 0.4079305 0.290700678     
+34 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.   climate_causehuman  0.747209674 0.4654783 0.108438467     
+35 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. climate_causenatural  0.889336781 0.6576412 0.176275213     
+36 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  climate_causeOthers  0.074179281 0.7051271 0.916217216     
 Fitting model using information treatment + climate attitudes...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + framing_effect + 
-    co2_value + climate_important + know_climate + climate_cause, 
-    data = dt_est, treat = "treatment", J = n_cs, constrained = TRUE)
-
-Sensitive item (1)
-                              Est.    S.E.
-(Intercept)                0.85246 0.60264
-as.factor(list_id)2        0.41213 0.51166
-as.factor(list_id)3       -0.80256 0.52108
-as.factor(list_id)4        0.52173 0.56893
-framing_effectconsequence -0.71734 0.58887
-framing_effectMetOffice   -0.39063 0.52380
-framing_effectUN          -1.51207 0.71966
-co2_value                  0.02594 0.16784
-climate_importantno       -1.05938 0.47186
-know_climateno             0.06040 0.44336
-climate_causehuman        -0.23323 0.47407
-climate_causenatural       0.08804 0.65042
-climate_causeOthers       -0.09498 0.62726
-
-Sensitive item (2)
-                              Est.    S.E.
-(Intercept)               -0.25544 0.60736
-as.factor(list_id)2        0.56214 0.51178
-as.factor(list_id)3       -0.00445 0.53262
-as.factor(list_id)4       -0.90630 0.59667
-framing_effectconsequence -0.40730 0.56994
-framing_effectMetOffice    0.07061 0.50189
-framing_effectUN          -0.05553 0.59529
-co2_value                 -0.05286 0.14773
-climate_importantno       -0.72145 0.51938
-know_climateno            -0.75595 0.43311
-climate_causehuman         0.37702 0.48143
-climate_causenatural       0.30053 0.69518
-climate_causeOthers        1.68246 0.64298
-
-Sensitive item (3)
-                              Est.    S.E.
-(Intercept)               -0.18241 0.55914
-as.factor(list_id)2       -0.47143 0.51277
-as.factor(list_id)3       -0.88267 0.49661
-as.factor(list_id)4       -0.77805 0.50947
-framing_effectconsequence -0.19997 0.54650
-framing_effectMetOffice   -0.04963 0.48132
-framing_effectUN           0.17310 0.57152
-co2_value                 -0.07177 0.13099
-climate_importantno        0.22164 0.46430
-know_climateno            -0.51572 0.41078
-climate_causehuman         0.76840 0.45816
-climate_causenatural       0.96996 0.64202
-climate_causeOthers        1.17918 0.73260
-
-Sensitive item (4)
-                              Est.    S.E.
-(Intercept)                0.15630 0.62056
-as.factor(list_id)2       -0.27783 0.51536
-as.factor(list_id)3       -0.14006 0.52374
-as.factor(list_id)4       -0.18830 0.57624
-framing_effectconsequence  0.33187 0.57535
-framing_effectMetOffice    0.37702 0.52146
-framing_effectUN           0.58797 0.58141
-co2_value                 -0.08220 0.15042
-climate_importantno       -0.81898 0.45805
-know_climateno            -0.43816 0.42030
-climate_causehuman         0.74738 0.47212
-climate_causenatural       0.92889 0.68108
-climate_causeOthers        0.11989 0.70729
-
-Control items
-                              Est.    S.E.
-(Intercept)               -0.03699 0.05616
-as.factor(list_id)2        0.01031 0.04726
-as.factor(list_id)3        0.17638 0.04665
-as.factor(list_id)4        0.32237 0.04871
-framing_effectconsequence  0.07636 0.05280
-framing_effectMetOffice   -0.01626 0.04628
-framing_effectUN           0.01795 0.05385
-co2_value                  0.03507 0.01260
-climate_importantno       -0.19302 0.03839
-know_climateno            -0.08705 0.03687
-climate_causehuman         0.14761 0.04354
-climate_causenatural       0.34288 0.06585
-climate_causeOthers        0.18121 0.06665
-
-Log-likelihood: -8895.818
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                   statement                  variable  coefficient        SE           p star
+1                   I support restricting the use of electricity at peak times in the summer               (Intercept)  0.852457605 0.6026359 0.157200959     
+2                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)2  0.412133848 0.5116625 0.420542834     
+3                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)3 -0.802560479 0.5210777 0.123513183     
+4                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)4  0.521733961 0.5689256 0.359115739     
+5                   I support restricting the use of electricity at peak times in the summer framing_effectconsequence -0.717336972 0.5888735 0.223166502     
+6                   I support restricting the use of electricity at peak times in the summer   framing_effectMetOffice -0.390632092 0.5238013 0.455810050     
+7                   I support restricting the use of electricity at peak times in the summer          framing_effectUN -1.512070852 0.7196649 0.035634282   **
+8                   I support restricting the use of electricity at peak times in the summer                 co2_value  0.025935656 0.1678446 0.877198260     
+9                   I support restricting the use of electricity at peak times in the summer       climate_importantno -1.059378840 0.4718638 0.024762075   **
+10                  I support restricting the use of electricity at peak times in the summer            know_climateno  0.060398091 0.4433552 0.891639796     
+11                  I support restricting the use of electricity at peak times in the summer        climate_causehuman -0.233234942 0.4740706 0.622730991     
+12                  I support restricting the use of electricity at peak times in the summer      climate_causenatural  0.088042247 0.6504155 0.892324808     
+13                  I support restricting the use of electricity at peak times in the summer       climate_causeOthers -0.094981288 0.6272581 0.879642059     
+14                                        Carbon tax on food on food products and beverages.               (Intercept) -0.255436883 0.6073604 0.674069907     
+15                                        Carbon tax on food on food products and beverages.       as.factor(list_id)2  0.562142242 0.5117784 0.272025724     
+16                                        Carbon tax on food on food products and beverages.       as.factor(list_id)3 -0.004454588 0.5326178 0.993326912     
+17                                        Carbon tax on food on food products and beverages.       as.factor(list_id)4 -0.906295443 0.5966659 0.128779375     
+18                                        Carbon tax on food on food products and beverages. framing_effectconsequence -0.407298610 0.5699360 0.474831987     
+19                                        Carbon tax on food on food products and beverages.   framing_effectMetOffice  0.070610933 0.5018922 0.888115288     
+20                                        Carbon tax on food on food products and beverages.          framing_effectUN -0.055532334 0.5952870 0.925675837     
+21                                        Carbon tax on food on food products and beverages.                 co2_value -0.052855908 0.1477291 0.720500826     
+22                                        Carbon tax on food on food products and beverages.       climate_importantno -0.721454538 0.5193848 0.164815729     
+23                                        Carbon tax on food on food products and beverages.            know_climateno -0.755950183 0.4331098 0.080915147    *
+24                                        Carbon tax on food on food products and beverages.        climate_causehuman  0.377023399 0.4814343 0.433553546     
+25                                        Carbon tax on food on food products and beverages.      climate_causenatural  0.300525785 0.6951783 0.665523178     
+26                                        Carbon tax on food on food products and beverages.       climate_causeOthers  1.682456215 0.6429795 0.008879572  ***
+27                              UK should not commit to reaching net zero emissions by 2050.               (Intercept) -0.182406009 0.5591434 0.744254850     
+28                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)2 -0.471434922 0.5127686 0.357890980     
+29                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)3 -0.882670466 0.4966053 0.075501087    *
+30                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)4 -0.778049183 0.5094708 0.126718404     
+31                              UK should not commit to reaching net zero emissions by 2050. framing_effectconsequence -0.199966096 0.5465042 0.714439420     
+32                              UK should not commit to reaching net zero emissions by 2050.   framing_effectMetOffice -0.049634339 0.4813163 0.917866088     
+33                              UK should not commit to reaching net zero emissions by 2050.          framing_effectUN  0.173102943 0.5715168 0.761978734     
+34                              UK should not commit to reaching net zero emissions by 2050.                 co2_value -0.071767021 0.1309944 0.583785657     
+35                              UK should not commit to reaching net zero emissions by 2050.       climate_importantno  0.221644740 0.4642991 0.633095163     
+36                              UK should not commit to reaching net zero emissions by 2050.            know_climateno -0.515715052 0.4107800 0.209314325     
+37                              UK should not commit to reaching net zero emissions by 2050.        climate_causehuman  0.768401521 0.4581561 0.093510996    *
+38                              UK should not commit to reaching net zero emissions by 2050.      climate_causenatural  0.969959703 0.6420163 0.130838807     
+39                              UK should not commit to reaching net zero emissions by 2050.       climate_causeOthers  1.179176811 0.7325961 0.107488148     
+40 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               (Intercept)  0.156298529 0.6205626 0.801144761     
+41 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)2 -0.277832462 0.5153554 0.589812017     
+42 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)3 -0.140056674 0.5237371 0.789147428     
+43 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)4 -0.188297673 0.5762393 0.743841924     
+44 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. framing_effectconsequence  0.331872552 0.5753521 0.564063464     
+45 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.   framing_effectMetOffice  0.377021539 0.5214638 0.469676111     
+46 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          framing_effectUN  0.587974308 0.5814060 0.311874162     
+47 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                 co2_value -0.082197198 0.1504158 0.584745266     
+48 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       climate_importantno -0.818978570 0.4580512 0.073782012    *
+49 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.            know_climateno -0.438157117 0.4203012 0.297187480     
+50 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.        climate_causehuman  0.747378200 0.4721180 0.113414008     
+51 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.      climate_causenatural  0.928887819 0.6810751 0.172613152     
+52 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       climate_causeOthers  0.119886662 0.7072888 0.865402035     
 Fitting model using demographics...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + where_live + diet + 
-    age + is_man + higher_education + income, data = dt_est, 
-    treat = "treatment", J = n_cs, constrained = TRUE)
-
-Sensitive item (1)
-                         Est.    S.E.
-(Intercept)           0.11886 0.63792
-as.factor(list_id)2   0.35524 0.54189
-as.factor(list_id)3  -0.87423 0.58982
-as.factor(list_id)4   0.58818 0.58610
-where_liveRuralarea   0.11372 0.53521
-where_liveCitycentre  0.23849 0.53292
-dietPescatarian       0.00474 0.62899
-dietvegetarian        2.12327 0.94159
-age18_34             -0.17036 0.47395
-age55_               -0.63574 0.53544
-is_manyes            -0.11875 0.44303
-higher_educationyes  -0.00863 0.44711
-income0_20k          -0.60804 0.58765
-income30_40k         -1.26784 0.79810
-income40k_            0.03486 0.62717
-incomenot_specified   0.82206 0.68391
-
-Sensitive item (2)
-                         Est.    S.E.
-(Intercept)          -0.73544 0.64906
-as.factor(list_id)2  -0.05424 0.53505
-as.factor(list_id)3  -0.33850 0.56978
-as.factor(list_id)4  -1.77277 0.66444
-where_liveRuralarea   0.90362 0.60430
-where_liveCitycentre  0.99041 0.48569
-dietPescatarian       1.17120 0.54603
-dietvegetarian        1.35436 0.73906
-age18_34              0.51407 0.47732
-age55_               -0.68833 0.57447
-is_manyes            -0.16192 0.42544
-higher_educationyes   0.37835 0.45356
-income0_20k          -0.83701 0.63609
-income30_40k         -0.79350 0.66048
-income40k_           -0.20794 0.61125
-incomenot_specified  -0.66500 0.65802
-
-Sensitive item (3)
-                         Est.    S.E.
-(Intercept)           0.48340 0.61940
-as.factor(list_id)2  -0.95348 0.58775
-as.factor(list_id)3  -1.18212 0.53923
-as.factor(list_id)4  -1.27845 0.57184
-where_liveRuralarea  -0.35830 0.53957
-where_liveCitycentre  0.14587 0.44252
-dietPescatarian       0.64755 0.58834
-dietvegetarian        0.97942 0.65880
-age18_34              0.10708 0.44559
-age55_               -0.55655 0.55662
-is_manyes             0.23710 0.39581
-higher_educationyes   0.34572 0.43333
-income0_20k          -0.32510 0.56275
-income30_40k         -1.98634 0.82181
-income40k_           -1.24553 0.57558
-incomenot_specified  -0.22812 0.61668
-
-Sensitive item (4)
-                         Est.    S.E.
-(Intercept)          -0.06028 0.71771
-as.factor(list_id)2  -0.38241 0.55902
-as.factor(list_id)3  -0.34063 0.52825
-as.factor(list_id)4  -0.55248 0.57618
-where_liveRuralarea  -0.11566 0.60098
-where_liveCitycentre  0.28928 0.43603
-dietPescatarian       0.49982 0.61911
-dietvegetarian        1.35954 0.73557
-age18_34              0.41986 0.43257
-age55_               -0.49871 0.55161
-is_manyes             0.40133 0.39521
-higher_educationyes   0.26538 0.43065
-income0_20k          -0.00025 0.60349
-income30_40k         -0.77264 0.68787
-income40k_           -0.32947 0.61506
-incomenot_specified  -0.33472 0.62661
-
-Control items
-                         Est.    S.E.
-(Intercept)          -0.13945 0.05929
-as.factor(list_id)2   0.04293 0.04772
-as.factor(list_id)3   0.19694 0.04685
-as.factor(list_id)4   0.36319 0.04781
-where_liveRuralarea   0.03306 0.04743
-where_liveCitycentre  0.21104 0.04189
-dietPescatarian       0.13841 0.05292
-dietvegetarian       -0.02240 0.06330
-age18_34              0.11895 0.04079
-age55_               -0.17753 0.04382
-is_manyes             0.03810 0.03472
-higher_educationyes   0.02024 0.03598
-income0_20k           0.02494 0.05242
-income30_40k          0.02080 0.05407
-income40k_            0.04736 0.05167
-incomenot_specified  -0.10947 0.05768
-
-Log-likelihood: -8858.616
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                   statement             variable   coefficient        SE           p star
+1                   I support restricting the use of electricity at peak times in the summer          (Intercept)  0.1188613576 0.6379166 0.852188000     
+2                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)2  0.3552378029 0.5418883 0.512110203     
+3                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)3 -0.8742296588 0.5898199 0.138287739     
+4                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)4  0.5881800737 0.5861017 0.315597448     
+5                   I support restricting the use of electricity at peak times in the summer  where_liveRuralarea  0.1137246384 0.5352086 0.831727442     
+6                   I support restricting the use of electricity at peak times in the summer where_liveCitycentre  0.2384863377 0.5329248 0.654510698     
+7                   I support restricting the use of electricity at peak times in the summer      dietPescatarian  0.0047441400 0.6289858 0.993981995     
+8                   I support restricting the use of electricity at peak times in the summer       dietvegetarian  2.1232717846 0.9415920 0.024134539   **
+9                   I support restricting the use of electricity at peak times in the summer             age18_34 -0.1703552847 0.4739510 0.719268583     
+10                  I support restricting the use of electricity at peak times in the summer               age55_ -0.6357365093 0.5354397 0.235102712     
+11                  I support restricting the use of electricity at peak times in the summer            is_manyes -0.1187457710 0.4430256 0.788673415     
+12                  I support restricting the use of electricity at peak times in the summer  higher_educationyes -0.0086314892 0.4471133 0.984597853     
+13                  I support restricting the use of electricity at peak times in the summer          income0_20k -0.6080398611 0.5876475 0.300808227     
+14                  I support restricting the use of electricity at peak times in the summer         income30_40k -1.2678423848 0.7981048 0.112158349     
+15                  I support restricting the use of electricity at peak times in the summer           income40k_  0.0348635158 0.6271669 0.955669307     
+16                  I support restricting the use of electricity at peak times in the summer  incomenot_specified  0.8220582025 0.6839149 0.229367767     
+17                                        Carbon tax on food on food products and beverages.          (Intercept) -0.7354378079 0.6490584 0.257178928     
+18                                        Carbon tax on food on food products and beverages.  as.factor(list_id)2 -0.0542353303 0.5350513 0.919260937     
+19                                        Carbon tax on food on food products and beverages.  as.factor(list_id)3 -0.3385016310 0.5697791 0.552450079     
+20                                        Carbon tax on food on food products and beverages.  as.factor(list_id)4 -1.7727653372 0.6644368 0.007628785  ***
+21                                        Carbon tax on food on food products and beverages.  where_liveRuralarea  0.9036173770 0.6042981 0.134831644     
+22                                        Carbon tax on food on food products and beverages. where_liveCitycentre  0.9904101472 0.4856884 0.041431228   **
+23                                        Carbon tax on food on food products and beverages.      dietPescatarian  1.1712036013 0.5460327 0.031958197   **
+24                                        Carbon tax on food on food products and beverages.       dietvegetarian  1.3543627236 0.7390559 0.066868333    *
+25                                        Carbon tax on food on food products and beverages.             age18_34  0.5140730645 0.4773216 0.281482428     
+26                                        Carbon tax on food on food products and beverages.               age55_ -0.6883266858 0.5744661 0.230838206     
+27                                        Carbon tax on food on food products and beverages.            is_manyes -0.1619246763 0.4254415 0.703497230     
+28                                        Carbon tax on food on food products and beverages.  higher_educationyes  0.3783541632 0.4535617 0.404177023     
+29                                        Carbon tax on food on food products and beverages.          income0_20k -0.8370080373 0.6360947 0.188222881     
+30                                        Carbon tax on food on food products and beverages.         income30_40k -0.7935048934 0.6604757 0.229590590     
+31                                        Carbon tax on food on food products and beverages.           income40k_ -0.2079398359 0.6112522 0.733715955     
+32                                        Carbon tax on food on food products and beverages.  incomenot_specified -0.6649952908 0.6580182 0.312206357     
+33                              UK should not commit to reaching net zero emissions by 2050.          (Intercept)  0.4834049404 0.6193961 0.435128687     
+34                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)2 -0.9534834593 0.5877472 0.104745999     
+35                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)3 -1.1821190051 0.5392270 0.028361652   **
+36                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)4 -1.2784473576 0.5718411 0.025373472   **
+37                              UK should not commit to reaching net zero emissions by 2050.  where_liveRuralarea -0.3583008177 0.5395666 0.506656381     
+38                              UK should not commit to reaching net zero emissions by 2050. where_liveCitycentre  0.1458695163 0.4425229 0.741678347     
+39                              UK should not commit to reaching net zero emissions by 2050.      dietPescatarian  0.6475502422 0.5883439 0.271056772     
+40                              UK should not commit to reaching net zero emissions by 2050.       dietvegetarian  0.9794170949 0.6587971 0.137100709     
+41                              UK should not commit to reaching net zero emissions by 2050.             age18_34  0.1070800682 0.4455921 0.810090250     
+42                              UK should not commit to reaching net zero emissions by 2050.               age55_ -0.5565455989 0.5566157 0.317371488     
+43                              UK should not commit to reaching net zero emissions by 2050.            is_manyes  0.2370973688 0.3958098 0.549160604     
+44                              UK should not commit to reaching net zero emissions by 2050.  higher_educationyes  0.3457215823 0.4333340 0.424976239     
+45                              UK should not commit to reaching net zero emissions by 2050.          income0_20k -0.3251031415 0.5627482 0.563462496     
+46                              UK should not commit to reaching net zero emissions by 2050.         income30_40k -1.9863398174 0.8218073 0.015647369   **
+47                              UK should not commit to reaching net zero emissions by 2050.           income40k_ -1.2455273000 0.5755812 0.030468396   **
+48                              UK should not commit to reaching net zero emissions by 2050.  incomenot_specified -0.2281227233 0.6166803 0.711441678     
+49 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          (Intercept) -0.0602789551 0.7177130 0.933066332     
+50 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)2 -0.3824099235 0.5590218 0.493931115     
+51 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)3 -0.3406306851 0.5282539 0.519041384     
+52 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)4 -0.5524814011 0.5761780 0.337622816     
+53 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  where_liveRuralarea -0.1156580521 0.6009848 0.847391638     
+54 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. where_liveCitycentre  0.2892820281 0.4360273 0.507042770     
+55 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.      dietPescatarian  0.4998228846 0.6191135 0.419482001     
+56 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       dietvegetarian  1.3595439396 0.7355732 0.064562110    *
+57 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.             age18_34  0.4198610280 0.4325652 0.331732303     
+58 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               age55_ -0.4987141231 0.5516065 0.365935955     
+59 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.            is_manyes  0.4013261504 0.3952062 0.309874529     
+60 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  higher_educationyes  0.2653759224 0.4306475 0.537745798     
+61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          income0_20k -0.0002463015 0.6034919 0.999674362     
+62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.         income30_40k -0.7726369263 0.6878706 0.261339804     
+63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.           income40k_ -0.3294748427 0.6150649 0.592183224     
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  incomenot_specified -0.3347196221 0.6266127 0.593221797     
 Fitting model using information treatment + demographics...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + framing_effect + 
-    co2_value + where_live + diet + age + is_man + higher_education + 
-    income, data = dt_est, treat = "treatment", J = n_cs, constrained = TRUE)
-
-Sensitive item (1)
-                              Est.    S.E.
-(Intercept)                0.67002 0.89159
-as.factor(list_id)2        0.62979 0.59753
-as.factor(list_id)3       -0.68643 0.59674
-as.factor(list_id)4        0.89566 0.66289
-framing_effectconsequence -1.13462 0.66517
-framing_effectMetOffice   -0.26784 0.59957
-framing_effectUN          -1.78106 0.76194
-co2_value                  0.10492 0.19892
-where_liveRuralarea       -0.00471 0.55214
-where_liveCitycentre       0.06878 0.55779
-dietPescatarian            0.37449 0.67634
-dietvegetarian             2.67650 1.02583
-age18_34                  -0.45136 0.52311
-age55_                    -0.91481 0.60354
-is_manyes                 -0.01712 0.47598
-higher_educationyes        0.22194 0.47532
-income0_20k               -0.75161 0.61174
-income30_40k              -1.69058 0.93427
-income40k_                -0.29423 0.68276
-incomenot_specified        0.66430 0.73629
-
-Sensitive item (2)
-                              Est.    S.E.
-(Intercept)               -0.71292 0.79635
-as.factor(list_id)2        0.06226 0.54237
-as.factor(list_id)3       -0.16140 0.59096
-as.factor(list_id)4       -1.71131 0.68174
-framing_effectconsequence -0.58279 0.61971
-framing_effectMetOffice    0.08089 0.55898
-framing_effectUN          -0.21536 0.62659
-co2_value                  0.04935 0.16672
-where_liveRuralarea        0.76050 0.57051
-where_liveCitycentre       0.95877 0.48752
-dietPescatarian            1.35306 0.59054
-dietvegetarian             1.67932 0.89277
-age18_34                   0.39619 0.49129
-age55_                    -0.67486 0.57530
-is_manyes                 -0.11816 0.41938
-higher_educationyes        0.44069 0.46871
-income0_20k               -0.82407 0.64086
-income30_40k              -0.85525 0.68666
-income40k_                -0.34114 0.65271
-incomenot_specified       -0.81286 0.67263
-
-Sensitive item (3)
-                              Est.    S.E.
-(Intercept)                0.71060 0.77666
-as.factor(list_id)2       -0.96025 0.61208
-as.factor(list_id)3       -1.16289 0.54724
-as.factor(list_id)4       -1.23228 0.58887
-framing_effectconsequence -0.61440 0.59058
-framing_effectMetOffice   -0.19160 0.53411
-framing_effectUN          -0.17154 0.58406
-co2_value                  0.01460 0.14037
-where_liveRuralarea       -0.40783 0.54474
-where_liveCitycentre       0.13492 0.45702
-dietPescatarian            0.69014 0.60813
-dietvegetarian             1.12670 0.71645
-age18_34                   0.08658 0.46481
-age55_                    -0.61943 0.57566
-is_manyes                  0.28354 0.40424
-higher_educationyes        0.38170 0.44795
-income0_20k               -0.28755 0.58364
-income30_40k              -2.15251 0.87398
-income40k_                -1.32758 0.61282
-incomenot_specified       -0.33007 0.62910
-
-Sensitive item (4)
-                              Est.    S.E.
-(Intercept)               -0.13389 0.88693
-as.factor(list_id)2       -0.37503 0.56655
-as.factor(list_id)3       -0.31254 0.54444
-as.factor(list_id)4       -0.47171 0.60792
-framing_effectconsequence -0.04363 0.59487
-framing_effectMetOffice    0.14832 0.54151
-framing_effectUN           0.47527 0.58850
-co2_value                 -0.07073 0.15974
-where_liveRuralarea       -0.25439 0.61192
-where_liveCitycentre       0.21021 0.44343
-dietPescatarian            0.43747 0.62866
-dietvegetarian             1.33636 0.79953
-age18_34                   0.47063 0.45756
-age55_                    -0.49311 0.56317
-is_manyes                  0.53799 0.41285
-higher_educationyes        0.28637 0.43626
-income0_20k                0.03500 0.60826
-income30_40k              -0.80282 0.69968
-income40k_                -0.34322 0.62091
-incomenot_specified       -0.34752 0.63920
-
-Control items
-                              Est.    S.E.
-(Intercept)               -0.16996 0.07215
-as.factor(list_id)2        0.03599 0.04772
-as.factor(list_id)3        0.18482 0.04682
-as.factor(list_id)4        0.35386 0.04836
-framing_effectconsequence  0.07113 0.05263
-framing_effectMetOffice   -0.01561 0.04705
-framing_effectUN           0.01255 0.05229
-co2_value                  0.01306 0.01338
-where_liveRuralarea        0.04400 0.04654
-where_liveCitycentre       0.21677 0.04179
-dietPescatarian            0.13854 0.05295
-dietvegetarian            -0.02224 0.06695
-age18_34                   0.12174 0.04119
-age55_                    -0.16750 0.04429
-is_manyes                  0.02462 0.03497
-higher_educationyes        0.01598 0.03578
-income0_20k                0.02091 0.05259
-income30_40k               0.03052 0.05498
-income40k_                 0.05215 0.05196
-incomenot_specified       -0.09764 0.05776
-
-Log-likelihood: -8851.126
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                   statement                  variable  coefficient        SE          p star
+1                   I support restricting the use of electricity at peak times in the summer               (Intercept)  0.670016624 0.8915859 0.45235868     
+2                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)2  0.629788206 0.5975324 0.29189133     
+3                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)3 -0.686432556 0.5967433 0.25002120     
+4                   I support restricting the use of electricity at peak times in the summer       as.factor(list_id)4  0.895661825 0.6628898 0.17664825     
+5                   I support restricting the use of electricity at peak times in the summer framing_effectconsequence -1.134622699 0.6651724 0.08805329    *
+6                   I support restricting the use of electricity at peak times in the summer   framing_effectMetOffice -0.267843993 0.5995719 0.65507334     
+7                   I support restricting the use of electricity at peak times in the summer          framing_effectUN -1.781055652 0.7619379 0.01941144   **
+8                   I support restricting the use of electricity at peak times in the summer                 co2_value  0.104922559 0.1989207 0.59787480     
+9                   I support restricting the use of electricity at peak times in the summer       where_liveRuralarea -0.004712023 0.5521416 0.99319087     
+10                  I support restricting the use of electricity at peak times in the summer      where_liveCitycentre  0.068778414 0.5577916 0.90186570     
+11                  I support restricting the use of electricity at peak times in the summer           dietPescatarian  0.374486188 0.6763420 0.57978859     
+12                  I support restricting the use of electricity at peak times in the summer            dietvegetarian  2.676495282 1.0258274 0.00907784  ***
+13                  I support restricting the use of electricity at peak times in the summer                  age18_34 -0.451363397 0.5231065 0.38821895     
+14                  I support restricting the use of electricity at peak times in the summer                    age55_ -0.914813090 0.6035445 0.12958654     
+15                  I support restricting the use of electricity at peak times in the summer                 is_manyes -0.017123335 0.4759812 0.97130244     
+16                  I support restricting the use of electricity at peak times in the summer       higher_educationyes  0.221943122 0.4753205 0.64054734     
+17                  I support restricting the use of electricity at peak times in the summer               income0_20k -0.751607977 0.6117360 0.21920395     
+18                  I support restricting the use of electricity at peak times in the summer              income30_40k -1.690578666 0.9342661 0.07036934    *
+19                  I support restricting the use of electricity at peak times in the summer                income40k_ -0.294225568 0.6827645 0.66651728     
+20                  I support restricting the use of electricity at peak times in the summer       incomenot_specified  0.664302034 0.7362916 0.36693638     
+21                                        Carbon tax on food on food products and beverages.               (Intercept) -0.712924910 0.7963491 0.37065789     
+22                                        Carbon tax on food on food products and beverages.       as.factor(list_id)2  0.062262142 0.5423688 0.90860627     
+23                                        Carbon tax on food on food products and beverages.       as.factor(list_id)3 -0.161396259 0.5909613 0.78477018     
+24                                        Carbon tax on food on food products and beverages.       as.factor(list_id)4 -1.711306468 0.6817441 0.01206666   **
+25                                        Carbon tax on food on food products and beverages. framing_effectconsequence -0.582791468 0.6197111 0.34699986     
+26                                        Carbon tax on food on food products and beverages.   framing_effectMetOffice  0.080887968 0.5589790 0.88494249     
+27                                        Carbon tax on food on food products and beverages.          framing_effectUN -0.215358508 0.6265871 0.73107128     
+28                                        Carbon tax on food on food products and beverages.                 co2_value  0.049346078 0.1667247 0.76725036     
+29                                        Carbon tax on food on food products and beverages.       where_liveRuralarea  0.760496033 0.5705094 0.18252778     
+30                                        Carbon tax on food on food products and beverages.      where_liveCitycentre  0.958769629 0.4875176 0.04922520   **
+31                                        Carbon tax on food on food products and beverages.           dietPescatarian  1.353059312 0.5905386 0.02195017   **
+32                                        Carbon tax on food on food products and beverages.            dietvegetarian  1.679318511 0.8927679 0.05996855    *
+33                                        Carbon tax on food on food products and beverages.                  age18_34  0.396189887 0.4912862 0.41999268     
+34                                        Carbon tax on food on food products and beverages.                    age55_ -0.674856400 0.5752965 0.24077238     
+35                                        Carbon tax on food on food products and beverages.                 is_manyes -0.118164474 0.4193773 0.77812623     
+36                                        Carbon tax on food on food products and beverages.       higher_educationyes  0.440687962 0.4687067 0.34710407     
+37                                        Carbon tax on food on food products and beverages.               income0_20k -0.824072923 0.6408641 0.19848574     
+38                                        Carbon tax on food on food products and beverages.              income30_40k -0.855246175 0.6866634 0.21294435     
+39                                        Carbon tax on food on food products and beverages.                income40k_ -0.341143955 0.6527149 0.60121517     
+40                                        Carbon tax on food on food products and beverages.       incomenot_specified -0.812858704 0.6726276 0.22686169     
+41                              UK should not commit to reaching net zero emissions by 2050.               (Intercept)  0.710595352 0.7766575 0.36022292     
+42                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)2 -0.960254040 0.6120799 0.11668575     
+43                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)3 -1.162891708 0.5472433 0.03358666   **
+44                              UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)4 -1.232277006 0.5888681 0.03638313   **
+45                              UK should not commit to reaching net zero emissions by 2050. framing_effectconsequence -0.614398705 0.5905754 0.29818233     
+46                              UK should not commit to reaching net zero emissions by 2050.   framing_effectMetOffice -0.191600721 0.5341061 0.71979593     
+47                              UK should not commit to reaching net zero emissions by 2050.          framing_effectUN -0.171537055 0.5840648 0.76899077     
+48                              UK should not commit to reaching net zero emissions by 2050.                 co2_value  0.014598477 0.1403697 0.91716918     
+49                              UK should not commit to reaching net zero emissions by 2050.       where_liveRuralarea -0.407834885 0.5447444 0.45405494     
+50                              UK should not commit to reaching net zero emissions by 2050.      where_liveCitycentre  0.134916488 0.4570179 0.76783307     
+51                              UK should not commit to reaching net zero emissions by 2050.           dietPescatarian  0.690141418 0.6081296 0.25643437     
+52                              UK should not commit to reaching net zero emissions by 2050.            dietvegetarian  1.126701239 0.7164517 0.11580844     
+53                              UK should not commit to reaching net zero emissions by 2050.                  age18_34  0.086576583 0.4648092 0.85223883     
+54                              UK should not commit to reaching net zero emissions by 2050.                    age55_ -0.619426591 0.5756632 0.28191717     
+55                              UK should not commit to reaching net zero emissions by 2050.                 is_manyes  0.283540868 0.4042437 0.48304672     
+56                              UK should not commit to reaching net zero emissions by 2050.       higher_educationyes  0.381699622 0.4479494 0.39415619     
+57                              UK should not commit to reaching net zero emissions by 2050.               income0_20k -0.287545951 0.5836401 0.62224093     
+58                              UK should not commit to reaching net zero emissions by 2050.              income30_40k -2.152507494 0.8739772 0.01378232   **
+59                              UK should not commit to reaching net zero emissions by 2050.                income40k_ -1.327582367 0.6128224 0.03028513   **
+60                              UK should not commit to reaching net zero emissions by 2050.       incomenot_specified -0.330069830 0.6290967 0.59981075     
+61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               (Intercept) -0.133893780 0.8869279 0.88000448     
+62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)2 -0.375029430 0.5665466 0.50799887     
+63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)3 -0.312535680 0.5444437 0.56593674     
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)4 -0.471711413 0.6079154 0.43777905     
+65 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. framing_effectconsequence -0.043630021 0.5948726 0.94153280     
+66 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.   framing_effectMetOffice  0.148321340 0.5415136 0.78416039     
+67 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          framing_effectUN  0.475269954 0.5884951 0.41931962     
+68 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                 co2_value -0.070727697 0.1597438 0.65794137     
+69 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       where_liveRuralarea -0.254387891 0.6119207 0.67761466     
+70 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.      where_liveCitycentre  0.210212034 0.4434265 0.63545507     
+71 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.           dietPescatarian  0.437473811 0.6286608 0.48650267     
+72 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.            dietvegetarian  1.336362589 0.7995327 0.09463688    *
+73 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                  age18_34  0.470627302 0.4575577 0.30368468     
+74 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                    age55_ -0.493110340 0.5631698 0.38124861     
+75 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                 is_manyes  0.537992056 0.4128498 0.19253448     
+76 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       higher_educationyes  0.286370645 0.4362569 0.51154970     
+77 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               income0_20k  0.035001952 0.6082620 0.95411170     
+78 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.              income30_40k -0.802822810 0.6996772 0.25120855     
+79 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                income40k_ -0.343219273 0.6209099 0.58042213     
+80 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       incomenot_specified -0.347517825 0.6391976 0.58666289     
 Fitting model using climate attitudes + demographics...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + climate_important + 
-    know_climate + climate_cause + where_live + diet + age + 
-    is_man + higher_education + income, data = dt_est, treat = "treatment", 
-    J = n_cs, constrained = TRUE)
-
-Sensitive item (1)
-                         Est.    S.E.
-(Intercept)           0.32802 0.70695
-as.factor(list_id)2   0.26798 0.56672
-as.factor(list_id)3  -0.84902 0.61507
-as.factor(list_id)4   0.60751 0.59704
-climate_importantno  -0.49961 0.53112
-know_climateno        0.33901 0.53512
-climate_causehuman   -0.31381 0.51712
-climate_causenatural  0.22760 0.78419
-climate_causeOthers  -0.71513 0.85565
-where_liveRuralarea   0.22011 0.62820
-where_liveCitycentre  0.11645 0.56554
-dietPescatarian       0.03123 0.64624
-dietvegetarian        2.21502 0.99193
-age18_34             -0.14585 0.48984
-age55_               -0.91989 0.57674
-is_manyes            -0.09524 0.44930
-higher_educationyes  -0.08852 0.47608
-income0_20k          -0.47589 0.65711
-income30_40k         -1.21733 0.83716
-income40k_           -0.00404 0.67881
-incomenot_specified   0.76622 0.69941
-
-Sensitive item (2)
-                         Est.    S.E.
-(Intercept)          -0.68698 0.80659
-as.factor(list_id)2  -0.03734 0.56674
-as.factor(list_id)3  -0.30464 0.58642
-as.factor(list_id)4  -1.90333 0.70968
-climate_importantno  -0.40214 0.57260
-know_climateno       -0.55376 0.49304
-climate_causehuman    0.52818 0.53428
-climate_causenatural  0.68099 0.79525
-climate_causeOthers   1.68690 0.71141
-where_liveRuralarea   0.75037 0.62839
-where_liveCitycentre  0.67896 0.50296
-dietPescatarian       1.01100 0.58614
-dietvegetarian        1.22775 0.73443
-age18_34              0.34350 0.48497
-age55_               -0.89758 0.62498
-is_manyes            -0.33937 0.46982
-higher_educationyes   0.56683 0.48590
-income0_20k          -0.60592 0.68943
-income30_40k         -0.51219 0.72358
-income40k_            0.12049 0.64844
-incomenot_specified  -0.63711 0.69629
-
-Sensitive item (3)
-                         Est.    S.E.
-(Intercept)           0.28047 0.70109
-as.factor(list_id)2  -1.07502 0.62692
-as.factor(list_id)3  -1.37906 0.58984
-as.factor(list_id)4  -1.57731 0.61516
-climate_importantno   0.77702 0.53747
-know_climateno       -0.44533 0.45154
-climate_causehuman    0.94274 0.60464
-climate_causenatural  1.71176 0.87285
-climate_causeOthers   0.88096 0.79496
-where_liveRuralarea  -0.28316 0.58693
-where_liveCitycentre  0.02131 0.48283
-dietPescatarian       0.75409 0.63563
-dietvegetarian        0.72700 0.69439
-age18_34             -0.06040 0.47671
-age55_               -0.75355 0.59484
-is_manyes             0.10869 0.44149
-higher_educationyes   0.76529 0.48664
-income0_20k          -0.30934 0.60192
-income30_40k         -2.08999 0.83279
-income40k_           -1.51379 0.65419
-incomenot_specified  -0.16784 0.64212
-
-Sensitive item (4)
-                         Est.    S.E.
-(Intercept)           0.30744 0.87386
-as.factor(list_id)2  -0.30522 0.61016
-as.factor(list_id)3  -0.38070 0.58580
-as.factor(list_id)4  -0.47696 0.64841
-climate_importantno  -0.87331 0.56485
-know_climateno       -0.24819 0.46916
-climate_causehuman    0.72380 0.53791
-climate_causenatural  1.48113 0.91308
-climate_causeOthers  -0.40363 0.90802
-where_liveRuralarea  -0.20295 0.72864
-where_liveCitycentre -0.10669 0.49254
-dietPescatarian       0.05145 0.75184
-dietvegetarian        1.13238 0.85061
-age18_34              0.42196 0.48619
-age55_               -0.98039 0.66486
-is_manyes             0.35948 0.44178
-higher_educationyes   0.21336 0.48206
-income0_20k           0.39752 0.70633
-income30_40k         -0.88580 0.73768
-income40k_           -0.18817 0.65331
-incomenot_specified  -0.43356 0.68347
-
-Control items
-                         Est.    S.E.
-(Intercept)          -0.02834 0.06438
-as.factor(list_id)2   0.04199 0.04779
-as.factor(list_id)3   0.19612 0.04702
-as.factor(list_id)4   0.36013 0.04793
-climate_importantno  -0.18449 0.03932
-know_climateno       -0.09743 0.03740
-climate_causehuman    0.11001 0.04465
-climate_causenatural  0.24314 0.07016
-climate_causeOthers   0.15838 0.06962
-where_liveRuralarea   0.02577 0.04912
-where_liveCitycentre  0.19354 0.04240
-dietPescatarian       0.09060 0.05467
-dietvegetarian       -0.06774 0.06370
-age18_34              0.12817 0.04143
-age55_               -0.13743 0.04442
-is_manyes             0.00535 0.03556
-higher_educationyes  -0.00214 0.03670
-income0_20k           0.01542 0.05328
-income30_40k          0.00705 0.05425
-income40k_            0.04236 0.05220
-incomenot_specified  -0.11244 0.05688
-
-Log-likelihood: -8779.083
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                   statement             variable coefficient        SE           p star
+1                   I support restricting the use of electricity at peak times in the summer          (Intercept)  0.32801802 0.7069533 0.642656186     
+2                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)2  0.26797724 0.5667239 0.636317890     
+3                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)3 -0.84901772 0.6150740 0.167478762     
+4                   I support restricting the use of electricity at peak times in the summer  as.factor(list_id)4  0.60750760 0.5970352 0.308896252     
+5                   I support restricting the use of electricity at peak times in the summer  climate_importantno -0.49960668 0.5311214 0.346877195     
+6                   I support restricting the use of electricity at peak times in the summer       know_climateno  0.33901130 0.5351222 0.526393271     
+7                   I support restricting the use of electricity at peak times in the summer   climate_causehuman -0.31380847 0.5171178 0.543956177     
+8                   I support restricting the use of electricity at peak times in the summer climate_causenatural  0.22760377 0.7841887 0.771631819     
+9                   I support restricting the use of electricity at peak times in the summer  climate_causeOthers -0.71513142 0.8556474 0.403279694     
+10                  I support restricting the use of electricity at peak times in the summer  where_liveRuralarea  0.22011085 0.6282029 0.726052223     
+11                  I support restricting the use of electricity at peak times in the summer where_liveCitycentre  0.11645077 0.5655397 0.836860538     
+12                  I support restricting the use of electricity at peak times in the summer      dietPescatarian  0.03123153 0.6462404 0.961454809     
+13                  I support restricting the use of electricity at peak times in the summer       dietvegetarian  2.21502306 0.9919263 0.025545513   **
+14                  I support restricting the use of electricity at peak times in the summer             age18_34 -0.14584726 0.4898372 0.765896716     
+15                  I support restricting the use of electricity at peak times in the summer               age55_ -0.91988974 0.5767419 0.110717528     
+16                  I support restricting the use of electricity at peak times in the summer            is_manyes -0.09523916 0.4493036 0.832129943     
+17                  I support restricting the use of electricity at peak times in the summer  higher_educationyes -0.08851720 0.4760769 0.852499300     
+18                  I support restricting the use of electricity at peak times in the summer          income0_20k -0.47588824 0.6571065 0.468932000     
+19                  I support restricting the use of electricity at peak times in the summer         income30_40k -1.21733379 0.8371581 0.145911239     
+20                  I support restricting the use of electricity at peak times in the summer           income40k_ -0.00404485 0.6788067 0.995245621     
+21                  I support restricting the use of electricity at peak times in the summer  incomenot_specified  0.76621932 0.6994096 0.273287573     
+22                                        Carbon tax on food on food products and beverages.          (Intercept) -0.68697794 0.8065930 0.394378760     
+23                                        Carbon tax on food on food products and beverages.  as.factor(list_id)2 -0.03734100 0.5667447 0.947467939     
+24                                        Carbon tax on food on food products and beverages.  as.factor(list_id)3 -0.30463575 0.5864236 0.603425558     
+25                                        Carbon tax on food on food products and beverages.  as.factor(list_id)4 -1.90333049 0.7096826 0.007319528  ***
+26                                        Carbon tax on food on food products and beverages.  climate_importantno -0.40214041 0.5725962 0.482485448     
+27                                        Carbon tax on food on food products and beverages.       know_climateno -0.55375951 0.4930413 0.261373653     
+28                                        Carbon tax on food on food products and beverages.   climate_causehuman  0.52818082 0.5342816 0.322868039     
+29                                        Carbon tax on food on food products and beverages. climate_causenatural  0.68099390 0.7952544 0.391819653     
+30                                        Carbon tax on food on food products and beverages.  climate_causeOthers  1.68690159 0.7114142 0.017730689   **
+31                                        Carbon tax on food on food products and beverages.  where_liveRuralarea  0.75036712 0.6283944 0.232437997     
+32                                        Carbon tax on food on food products and beverages. where_liveCitycentre  0.67895651 0.5029644 0.177045002     
+33                                        Carbon tax on food on food products and beverages.      dietPescatarian  1.01099553 0.5861367 0.084555238    *
+34                                        Carbon tax on food on food products and beverages.       dietvegetarian  1.22774839 0.7344344 0.094584985    *
+35                                        Carbon tax on food on food products and beverages.             age18_34  0.34349769 0.4849746 0.478771560     
+36                                        Carbon tax on food on food products and beverages.               age55_ -0.89757739 0.6249772 0.150952219     
+37                                        Carbon tax on food on food products and beverages.            is_manyes -0.33936531 0.4698167 0.470088201     
+38                                        Carbon tax on food on food products and beverages.  higher_educationyes  0.56682995 0.4859018 0.243391110     
+39                                        Carbon tax on food on food products and beverages.          income0_20k -0.60592354 0.6894310 0.379469166     
+40                                        Carbon tax on food on food products and beverages.         income30_40k -0.51219431 0.7235813 0.479032130     
+41                                        Carbon tax on food on food products and beverages.           income40k_  0.12048927 0.6484386 0.852590252     
+42                                        Carbon tax on food on food products and beverages.  incomenot_specified -0.63711198 0.6962945 0.360189734     
+43                              UK should not commit to reaching net zero emissions by 2050.          (Intercept)  0.28046636 0.7010909 0.689125006     
+44                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)2 -1.07501855 0.6269231 0.086390455    *
+45                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)3 -1.37905794 0.5898447 0.019387163   **
+46                              UK should not commit to reaching net zero emissions by 2050.  as.factor(list_id)4 -1.57731199 0.6151575 0.010345027   **
+47                              UK should not commit to reaching net zero emissions by 2050.  climate_importantno  0.77702214 0.5374715 0.148261548     
+48                              UK should not commit to reaching net zero emissions by 2050.       know_climateno -0.44532945 0.4515432 0.324015948     
+49                              UK should not commit to reaching net zero emissions by 2050.   climate_causehuman  0.94274223 0.6046440 0.118956354     
+50                              UK should not commit to reaching net zero emissions by 2050. climate_causenatural  1.71175536 0.8728525 0.049866777   **
+51                              UK should not commit to reaching net zero emissions by 2050.  climate_causeOthers  0.88096489 0.7949615 0.267781649     
+52                              UK should not commit to reaching net zero emissions by 2050.  where_liveRuralarea -0.28316224 0.5869341 0.629491318     
+53                              UK should not commit to reaching net zero emissions by 2050. where_liveCitycentre  0.02131232 0.4828264 0.964792216     
+54                              UK should not commit to reaching net zero emissions by 2050.      dietPescatarian  0.75409067 0.6356274 0.235475375     
+55                              UK should not commit to reaching net zero emissions by 2050.       dietvegetarian  0.72700151 0.6943924 0.295117710     
+56                              UK should not commit to reaching net zero emissions by 2050.             age18_34 -0.06039563 0.4767105 0.899183815     
+57                              UK should not commit to reaching net zero emissions by 2050.               age55_ -0.75354605 0.5948430 0.205227415     
+58                              UK should not commit to reaching net zero emissions by 2050.            is_manyes  0.10869034 0.4414871 0.805534030     
+59                              UK should not commit to reaching net zero emissions by 2050.  higher_educationyes  0.76528901 0.4866440 0.115814980     
+60                              UK should not commit to reaching net zero emissions by 2050.          income0_20k -0.30933979 0.6019175 0.607305209     
+61                              UK should not commit to reaching net zero emissions by 2050.         income30_40k -2.08998994 0.8327933 0.012086315   **
+62                              UK should not commit to reaching net zero emissions by 2050.           income40k_ -1.51379489 0.6541943 0.020668613   **
+63                              UK should not commit to reaching net zero emissions by 2050.  incomenot_specified -0.16784129 0.6421215 0.793795201     
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          (Intercept)  0.30743507 0.8738614 0.724979144     
+65 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)2 -0.30521689 0.6101640 0.616919404     
+66 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)3 -0.38069648 0.5858000 0.515773299     
+67 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  as.factor(list_id)4 -0.47696046 0.6484089 0.461982735     
+68 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  climate_importantno -0.87331358 0.5648499 0.122080815     
+69 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       know_climateno -0.24818953 0.4691561 0.596796666     
+70 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.   climate_causehuman  0.72380192 0.5379136 0.178440289     
+71 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. climate_causenatural  1.48112655 0.9130785 0.104776787     
+72 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  climate_causeOthers -0.40363377 0.9080249 0.656667828     
+73 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  where_liveRuralarea -0.20295348 0.7286368 0.780598914     
+74 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. where_liveCitycentre -0.10668962 0.4925354 0.828509872     
+75 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.      dietPescatarian  0.05145293 0.7518431 0.945438788     
+76 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       dietvegetarian  1.13237670 0.8506060 0.183103857     
+77 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.             age18_34  0.42196495 0.4861927 0.385451008     
+78 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               age55_ -0.98038868 0.6648618 0.140326818     
+79 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.            is_manyes  0.35948368 0.4417763 0.415803505     
+80 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  higher_educationyes  0.21335678 0.4820578 0.658058092     
+81 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          income0_20k  0.39751620 0.7063292 0.573576767     
+82 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.         income30_40k -0.88580180 0.7376761 0.229828607     
+83 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.           income40k_ -0.18817335 0.6533061 0.773321916     
+84 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.  incomenot_specified -0.43356436 0.6834725 0.525849041     
 Fitting model using information treatment + climate attitudes + demographics...
-
-Item Count Technique Regression 
-
-Call: ictreg(formula = count ~ as.factor(list_id) + framing_effect + 
-    co2_value + climate_important + know_climate + climate_cause + 
-    where_live + diet + age + is_man + higher_education + income, 
-    data = dt_est, treat = "treatment", J = n_cs, constrained = TRUE)
-
-Sensitive item (1)
-                              Est.    S.E.
-(Intercept)                1.68506 1.11476
-as.factor(list_id)2        1.18338 0.85367
-as.factor(list_id)3       -0.46958 0.70370
-as.factor(list_id)4        1.50395 1.00661
-framing_effectconsequence -2.63687 1.35030
-framing_effectMetOffice   -0.99865 0.87016
-framing_effectUN          -3.49613 1.61647
-co2_value                  0.39037 0.38980
-climate_importantno       -1.71230 1.10378
-know_climateno            -0.21391 0.81047
-climate_causehuman        -0.63602 0.77572
-climate_causenatural       0.80141 1.36377
-climate_causeOthers       -0.69770 1.04110
-where_liveRuralarea        0.24205 0.74152
-where_liveCitycentre      -0.99712 0.97839
-dietPescatarian            0.49981 0.85553
-dietvegetarian             3.85763 1.71468
-age18_34                  -0.17672 0.68891
-age55_                    -1.96499 1.07483
-is_manyes                 -0.20886 0.66707
-higher_educationyes        0.18067 0.63071
-income0_20k                0.08878 0.88669
-income30_40k              -1.79818 1.10474
-income40k_                -0.05338 0.83642
-incomenot_specified        1.10199 1.13865
-
-Sensitive item (2)
-                              Est.    S.E.
-(Intercept)               -0.20960 0.98707
-as.factor(list_id)2        0.08349 0.57426
-as.factor(list_id)3       -0.09219 0.61351
-as.factor(list_id)4       -1.87064 0.73479
-framing_effectconsequence -0.97893 0.68603
-framing_effectMetOffice   -0.17013 0.60006
-framing_effectUN          -0.54298 0.65863
-co2_value                  0.06712 0.16563
-climate_importantno       -0.63749 0.58358
-know_climateno            -0.73200 0.50880
-climate_causehuman         0.57733 0.54281
-climate_causenatural       0.77590 0.83290
-climate_causeOthers        1.79682 0.70972
-where_liveRuralarea        0.60878 0.58789
-where_liveCitycentre       0.54055 0.50657
-dietPescatarian            1.20891 0.64223
-dietvegetarian             1.56345 0.84812
-age18_34                   0.17100 0.50950
-age55_                    -0.93331 0.62889
-is_manyes                 -0.38415 0.47015
-higher_educationyes        0.64270 0.50349
-income0_20k               -0.56560 0.69711
-income30_40k              -0.68654 0.78017
-income40k_                -0.03863 0.68245
-incomenot_specified       -0.83753 0.71353
-
-Sensitive item (3)
-                              Est.    S.E.
-(Intercept)                0.76810 0.90676
-as.factor(list_id)2       -1.08248 0.69194
-as.factor(list_id)3       -1.28282 0.63143
-as.factor(list_id)4       -1.61668 0.65637
-framing_effectconsequence -0.92479 0.66379
-framing_effectMetOffice   -0.49520 0.61126
-framing_effectUN          -0.27031 0.65931
-co2_value                  0.11657 0.17299
-climate_importantno        0.72567 0.60146
-know_climateno            -0.78572 0.52747
-climate_causehuman         1.01754 0.63296
-climate_causenatural       1.99123 0.97250
-climate_causeOthers        0.93997 0.85880
-where_liveRuralarea       -0.35164 0.61087
-where_liveCitycentre      -0.08989 0.49601
-dietPescatarian            0.95380 0.75061
-dietvegetarian             0.91212 0.76821
-age18_34                  -0.13072 0.51475
-age55_                    -1.07761 0.70294
-is_manyes                  0.11561 0.45805
-higher_educationyes        0.80118 0.51773
-income0_20k               -0.26201 0.64396
-income30_40k              -2.42385 0.95631
-income40k_                -1.67716 0.74881
-incomenot_specified       -0.33106 0.67736
-
-Sensitive item (4)
-                              Est.    S.E.
-(Intercept)                0.68761 1.07195
-as.factor(list_id)2       -0.32397 0.64523
-as.factor(list_id)3       -0.47685 0.63469
-as.factor(list_id)4       -0.40859 0.70871
-framing_effectconsequence -0.70979 0.74898
-framing_effectMetOffice   -0.01687 0.63728
-framing_effectUN           0.41032 0.73300
-co2_value                 -0.07636 0.18207
-climate_importantno       -1.06367 0.57768
-know_climateno            -0.54660 0.53293
-climate_causehuman         0.69586 0.55754
-climate_causenatural       2.11157 1.10527
-climate_causeOthers       -0.20465 1.03577
-where_liveRuralarea       -0.37716 0.75037
-where_liveCitycentre      -0.45374 0.53943
-dietPescatarian           -0.04892 0.80973
-dietvegetarian             1.02535 0.95522
-age18_34                   0.56048 0.53495
-age55_                    -1.29474 0.77706
-is_manyes                  0.59809 0.50141
-higher_educationyes        0.38003 0.51576
-income0_20k                0.68268 0.75400
-income30_40k              -1.05795 0.77663
-income40k_                -0.26724 0.67094
-incomenot_specified       -0.52634 0.71849
-
-Control items
-                              Est.    S.E.
-(Intercept)               -0.09288 0.07488
-as.factor(list_id)2        0.02705 0.04645
-as.factor(list_id)3        0.17766 0.04604
-as.factor(list_id)4        0.34810 0.04707
-framing_effectconsequence  0.12052 0.05264
-framing_effectMetOffice    0.00441 0.04681
-framing_effectUN           0.04329 0.05361
-co2_value                  0.00949 0.01371
-climate_importantno       -0.16311 0.03995
-know_climateno            -0.07136 0.03736
-climate_causehuman         0.11240 0.04419
-climate_causenatural       0.22156 0.07199
-climate_causeOthers        0.14367 0.07022
-where_liveRuralarea        0.03450 0.04588
-where_liveCitycentre       0.22301 0.04143
-dietPescatarian            0.09153 0.05495
-dietvegetarian            -0.06175 0.06534
-age18_34                   0.11950 0.04197
-age55_                    -0.11441 0.04603
-is_manyes                 -0.00413 0.03585
-higher_educationyes       -0.00794 0.03622
-income0_20k               -0.00428 0.05196
-income30_40k               0.01592 0.05386
-income40k_                 0.04079 0.05098
-incomenot_specified       -0.10136 0.05648
-
-Log-likelihood: -8768.422
-
-Number of control items J set to 4. Treatment groups were indicated by '1' and '2' and '3' and '4' and the control group by '0'.
-
+                                                                                    statement                  variable coefficient        SE          p star
+1                    I support restricting the use of electricity at peak times in the summer               (Intercept)  1.68506339 1.1147611 0.13063781     
+2                    I support restricting the use of electricity at peak times in the summer       as.factor(list_id)2  1.18337739 0.8536707 0.16567900     
+3                    I support restricting the use of electricity at peak times in the summer       as.factor(list_id)3 -0.46957895 0.7036986 0.50457976     
+4                    I support restricting the use of electricity at peak times in the summer       as.factor(list_id)4  1.50395486 1.0066057 0.13515331     
+5                    I support restricting the use of electricity at peak times in the summer framing_effectconsequence -2.63687169 1.3502988 0.05084257    *
+6                    I support restricting the use of electricity at peak times in the summer   framing_effectMetOffice -0.99864902 0.8701586 0.25110764     
+7                    I support restricting the use of electricity at peak times in the summer          framing_effectUN -3.49613179 1.6164692 0.03055503   **
+8                    I support restricting the use of electricity at peak times in the summer                 co2_value  0.39037007 0.3898026 0.31660645     
+9                    I support restricting the use of electricity at peak times in the summer       climate_importantno -1.71230098 1.1037804 0.12082842     
+10                   I support restricting the use of electricity at peak times in the summer            know_climateno -0.21391465 0.8104670 0.79182616     
+11                   I support restricting the use of electricity at peak times in the summer        climate_causehuman -0.63602067 0.7757218 0.41226845     
+12                   I support restricting the use of electricity at peak times in the summer      climate_causenatural  0.80140549 1.3637692 0.55677387     
+13                   I support restricting the use of electricity at peak times in the summer       climate_causeOthers -0.69770481 1.0411000 0.50275506     
+14                   I support restricting the use of electricity at peak times in the summer       where_liveRuralarea  0.24204666 0.7415157 0.74410548     
+15                   I support restricting the use of electricity at peak times in the summer      where_liveCitycentre -0.99712296 0.9783928 0.30813470     
+16                   I support restricting the use of electricity at peak times in the summer           dietPescatarian  0.49980691 0.8555331 0.55908226     
+17                   I support restricting the use of electricity at peak times in the summer            dietvegetarian  3.85763242 1.7146760 0.02446333   **
+18                   I support restricting the use of electricity at peak times in the summer                  age18_34 -0.17671583 0.6889085 0.79755268     
+19                   I support restricting the use of electricity at peak times in the summer                    age55_ -1.96499100 1.0748254 0.06752022    *
+20                   I support restricting the use of electricity at peak times in the summer                 is_manyes -0.20886485 0.6670673 0.75419775     
+21                   I support restricting the use of electricity at peak times in the summer       higher_educationyes  0.18067053 0.6307132 0.77453017     
+22                   I support restricting the use of electricity at peak times in the summer               income0_20k  0.08878276 0.8866920 0.92024264     
+23                   I support restricting the use of electricity at peak times in the summer              income30_40k -1.79817628 1.1047443 0.10359158     
+24                   I support restricting the use of electricity at peak times in the summer                income40k_ -0.05337897 0.8364210 0.94911491     
+25                   I support restricting the use of electricity at peak times in the summer       incomenot_specified  1.10198779 1.1386520 0.33314409     
+26                                         Carbon tax on food on food products and beverages.               (Intercept) -0.20960426 0.9870747 0.83183483     
+27                                         Carbon tax on food on food products and beverages.       as.factor(list_id)2  0.08348650 0.5742578 0.88440962     
+28                                         Carbon tax on food on food products and beverages.       as.factor(list_id)3 -0.09218825 0.6135092 0.88055647     
+29                                         Carbon tax on food on food products and beverages.       as.factor(list_id)4 -1.87064213 0.7347913 0.01090232   **
+30                                         Carbon tax on food on food products and beverages. framing_effectconsequence -0.97892767 0.6860293 0.15359506     
+31                                         Carbon tax on food on food products and beverages.   framing_effectMetOffice -0.17013338 0.6000635 0.77677394     
+32                                         Carbon tax on food on food products and beverages.          framing_effectUN -0.54298455 0.6586340 0.40970655     
+33                                         Carbon tax on food on food products and beverages.                 co2_value  0.06711539 0.1656340 0.68532834     
+34                                         Carbon tax on food on food products and beverages.       climate_importantno -0.63748959 0.5835838 0.27467036     
+35                                         Carbon tax on food on food products and beverages.            know_climateno -0.73200155 0.5087966 0.15023787     
+36                                         Carbon tax on food on food products and beverages.        climate_causehuman  0.57733057 0.5428141 0.28751534     
+37                                         Carbon tax on food on food products and beverages.      climate_causenatural  0.77590113 0.8329016 0.35156193     
+38                                         Carbon tax on food on food products and beverages.       climate_causeOthers  1.79682182 0.7097245 0.01135054   **
+39                                         Carbon tax on food on food products and beverages.       where_liveRuralarea  0.60878265 0.5878924 0.30041953     
+40                                         Carbon tax on food on food products and beverages.      where_liveCitycentre  0.54054788 0.5065740 0.28594200     
+41                                         Carbon tax on food on food products and beverages.           dietPescatarian  1.20890740 0.6422261 0.05978573    *
+42                                         Carbon tax on food on food products and beverages.            dietvegetarian  1.56344928 0.8481242 0.06526767    *
+43                                         Carbon tax on food on food products and beverages.                  age18_34  0.17100168 0.5094953 0.73715022     
+44                                         Carbon tax on food on food products and beverages.                    age55_ -0.93330530 0.6288911 0.13779589     
+45                                         Carbon tax on food on food products and beverages.                 is_manyes -0.38414951 0.4701515 0.41388500     
+46                                         Carbon tax on food on food products and beverages.       higher_educationyes  0.64269974 0.5034851 0.20177812     
+47                                         Carbon tax on food on food products and beverages.               income0_20k -0.56559527 0.6971060 0.41716611     
+48                                         Carbon tax on food on food products and beverages.              income30_40k -0.68654414 0.7801748 0.37886605     
+49                                         Carbon tax on food on food products and beverages.                income40k_ -0.03863303 0.6824525 0.95485658     
+50                                         Carbon tax on food on food products and beverages.       incomenot_specified -0.83753145 0.7135292 0.24048026     
+51                               UK should not commit to reaching net zero emissions by 2050.               (Intercept)  0.76809896 0.9067637 0.39695204     
+52                               UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)2 -1.08248307 0.6919353 0.11771705     
+53                               UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)3 -1.28281879 0.6314285 0.04219277   **
+54                               UK should not commit to reaching net zero emissions by 2050.       as.factor(list_id)4 -1.61667902 0.6563659 0.01377508   **
+55                               UK should not commit to reaching net zero emissions by 2050. framing_effectconsequence -0.92478579 0.6637917 0.16356333     
+56                               UK should not commit to reaching net zero emissions by 2050.   framing_effectMetOffice -0.49520314 0.6112626 0.41786455     
+57                               UK should not commit to reaching net zero emissions by 2050.          framing_effectUN -0.27030987 0.6593128 0.68181525     
+58                               UK should not commit to reaching net zero emissions by 2050.                 co2_value  0.11657118 0.1729890 0.50039736     
+59                               UK should not commit to reaching net zero emissions by 2050.       climate_importantno  0.72567123 0.6014586 0.22761743     
+60                               UK should not commit to reaching net zero emissions by 2050.            know_climateno -0.78571826 0.5274731 0.13633229     
+61                               UK should not commit to reaching net zero emissions by 2050.        climate_causehuman  1.01753910 0.6329611 0.10792597     
+62                               UK should not commit to reaching net zero emissions by 2050.      climate_causenatural  1.99122953 0.9725050 0.04060644   **
+63                               UK should not commit to reaching net zero emissions by 2050.       climate_causeOthers  0.93997313 0.8588041 0.27372962     
+64                               UK should not commit to reaching net zero emissions by 2050.       where_liveRuralarea -0.35164394 0.6108702 0.56485566     
+65                               UK should not commit to reaching net zero emissions by 2050.      where_liveCitycentre -0.08989226 0.4960106 0.85618665     
+66                               UK should not commit to reaching net zero emissions by 2050.           dietPescatarian  0.95380154 0.7506064 0.20383257     
+67                               UK should not commit to reaching net zero emissions by 2050.            dietvegetarian  0.91211841 0.7682120 0.23509890     
+68                               UK should not commit to reaching net zero emissions by 2050.                  age18_34 -0.13071936 0.5147493 0.79953602     
+69                               UK should not commit to reaching net zero emissions by 2050.                    age55_ -1.07761063 0.7029369 0.12527294     
+70                               UK should not commit to reaching net zero emissions by 2050.                 is_manyes  0.11560572 0.4580547 0.80074419     
+71                               UK should not commit to reaching net zero emissions by 2050.       higher_educationyes  0.80117895 0.5177335 0.12174910     
+72                               UK should not commit to reaching net zero emissions by 2050.               income0_20k -0.26200514 0.6439626 0.68410795     
+73                               UK should not commit to reaching net zero emissions by 2050.              income30_40k -2.42385333 0.9563114 0.01125803   **
+74                               UK should not commit to reaching net zero emissions by 2050.                income40k_ -1.67716143 0.7488061 0.02510518   **
+75                               UK should not commit to reaching net zero emissions by 2050.       incomenot_specified -0.33106476 0.6773645 0.62501572     
+76  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               (Intercept)  0.68761322 1.0719515 0.52122435     
+77  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)2 -0.32396511 0.6452281 0.61560144     
+78  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)3 -0.47685470 0.6346932 0.45246296     
+79  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       as.factor(list_id)4 -0.40858749 0.7087084 0.56426095     
+80  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined. framing_effectconsequence -0.70978715 0.7489844 0.34329942     
+81  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.   framing_effectMetOffice -0.01687056 0.6372803 0.97888027     
+82  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.          framing_effectUN  0.41031951 0.7330040 0.57563089     
+83  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                 co2_value -0.07636042 0.1820672 0.67491798     
+84  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       climate_importantno -1.06367067 0.5776780 0.06557959    *
+85  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.            know_climateno -0.54660113 0.5329345 0.30505933     
+86  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.        climate_causehuman  0.69586147 0.5575416 0.21199849     
+87  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.      climate_causenatural  2.11156624 1.1052736 0.05607573    *
+88  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       climate_causeOthers -0.20465180 1.0357676 0.84337003     
+89  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       where_liveRuralarea -0.37715809 0.7503664 0.61522311     
+90  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.      where_liveCitycentre -0.45374202 0.5394294 0.40026290     
+91  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.           dietPescatarian -0.04891805 0.8097340 0.95182711     
+92  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.            dietvegetarian  1.02535095 0.9552170 0.28308183     
+93  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                  age18_34  0.56047540 0.5349516 0.29477116     
+94  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                    age55_ -1.29473501 0.7770551 0.09567208    *
+95  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                 is_manyes  0.59809049 0.5014094 0.23294042     
+96  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       higher_educationyes  0.38003244 0.5157576 0.46121772     
+97  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.               income0_20k  0.68268277 0.7539962 0.36524325     
+98  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.              income30_40k -1.05794841 0.7766291 0.17312493     
+99  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.                income40k_ -0.26724114 0.6709436 0.69040431     
+100 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.       incomenot_specified -0.52634355 0.7184870 0.46381944     
 Save output...
 [1] "Done!"

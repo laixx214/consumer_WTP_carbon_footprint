@@ -16,6 +16,52 @@ sink(my_log, append = TRUE, type = "output")
 sink(my_log, append = TRUE, type = "message")
 
 ################################################################################
+### Define functions
+################################################################################
+
+### make summary table
+make_summary <-
+    function(est) {
+        tbl_temp <-
+            lapply(
+                1:n_ss,
+                function(i) {
+                    par <- est$par.treat[[i]]
+                    se <- est$se.treat[[i]]
+                    p <- 2 * (1 - pnorm(abs(par / se)))
+                    star <- ifelse(
+                        p < 0.01,
+                        "***",
+                        ifelse(
+                            p < 0.05,
+                            "**",
+                            ifelse(p < 0.1, "*", "")
+                        )
+                    )
+                    variable <- names(par)
+
+                    names(par) <- NULL
+                    names(se) <- NULL
+                    names(p) <- NULL
+                    names(star) <- NULL
+
+                    return(
+                        data.frame(
+                            statement = statement_reference$statement[statement_reference$treatment == i],
+                            variable = variable,
+                            coefficient = par,
+                            SE = se,
+                            p = p,
+                            star = star
+                        )
+                    )
+                }
+            )
+        tbl_temp <- do.call(rbind, tbl_temp)
+        return(tbl_temp)
+    }
+
+################################################################################
 ### Read in data
 ################################################################################
 message("Reading in data...")
@@ -283,11 +329,11 @@ design_effect <- do.call(rbind, design_effect)
 ################################################################################
 ### run list experiment, with demographics
 ################################################################################
-message("Running list experiment, with demographics...")
 dt_demo <- fread("csv/dt_demo.csv")
 message("Sensitive statements:")
 print(sensitive_statements)
 
+message("Running list experiment, with demographics...")
 ### merge demographics with counts
 dt_est <-
     dt_count %>%
@@ -389,7 +435,7 @@ ict_fit_info <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_info)
+make_summary(ict_fit_info)
 
 ### fit model using attitudes only
 message("Fitting model using climate attitudes...")
@@ -404,7 +450,7 @@ ict_fit_att <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_att)
+make_summary(ict_fit_att)
 
 ### fit model using information treatment + climate attitudes
 message("Fitting model using information treatment + climate attitudes...")
@@ -421,7 +467,7 @@ ict_fit_info_att <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_info_att)
+make_summary(ict_fit_info_att)
 
 ### fit model using demographics
 message("Fitting model using demographics...")
@@ -439,7 +485,7 @@ ict_fit_demo <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_demo)
+make_summary(ict_fit_demo)
 
 ### fit model using information treatment + demographics
 message("Fitting model using information treatment + demographics...")
@@ -459,7 +505,7 @@ ict_fit_info_demo <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_info_demo)
+make_summary(ict_fit_info_demo)
 
 ### fit model using climate attitudes + demographics
 message("Fitting model using climate attitudes + demographics...")
@@ -480,7 +526,7 @@ ict_fit_att_demo <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_att_demo)
+make_summary(ict_fit_att_demo)
 
 ### fit model using information treatment + climate attitudes + demographics
 message("Fitting model using information treatment + climate attitudes + demographics...")
@@ -503,7 +549,7 @@ ict_fit_info_att_demo <-
         J = n_cs,
         constrained = TRUE
     )
-summary(ict_fit_info_att_demo)
+make_summary(ict_fit_info_att_demo)
 
 ################################################################################
 ### save output
