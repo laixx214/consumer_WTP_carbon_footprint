@@ -11,7 +11,7 @@ set.seed(1201202)
 
 date <- gsub("-", "", as.character(Sys.Date()))
 ### sink message
-my_log <- file(paste("run_list", date, ".log", sep = ""))
+my_log <- file(paste("run_list_", date, ".log", sep = ""))
 sink(my_log, append = TRUE, type = "output")
 sink(my_log, append = TRUE, type = "message")
 
@@ -285,63 +285,225 @@ design_effect <- do.call(rbind, design_effect)
 ################################################################################
 message("Running list experiment, with demographics...")
 dt_demo <- fread("csv/dt_demo.csv")
+message("Sensitive statements:")
+print(sensitive_statements)
 
 ### merge demographics with counts
-dt_count <-
+dt_est <-
     dt_count %>%
     left_join(
         dt_demo
+    ) %>%
+    mutate(
+        climate_important = case_when(
+            climate_important >= 4 ~ "yes",
+            .default = "no"
+        ),
+        know_climate = case_when(
+            know_climate >= 4 ~ "yes",
+            .default = "no"
+        ),
+        climate_cause = case_when(
+            climate_cause %in% c(
+                "noclimatechange",
+                "notknow"
+            ) ~ "Others",
+            .default = climate_cause
+        ),
+        is_man = ifelse(
+            gender == "Man",
+            "yes",
+            "no"
+        ),
+        education = case_when(
+            education == "None" ~ "Other",
+            .default = education
+        ),
+        diet = case_when(
+            diet %in% c(
+                "Vegan",
+                "Vegetarian"
+            ) ~ "vegetarian",
+            diet %in% c(
+                "Pescatarian",
+                "Flexitarian"
+            ) ~ "Pescatarian",
+            diet %in% c(
+                "Omnivorous",
+                "others"
+            ) ~ "Omnivorous"
+        ),
+        age = case_when(
+            age %in% c(
+                "18_24",
+                "25_34"
+            ) ~ "18_34",
+            age %in% c(
+                "35_44",
+                "45_54"
+            ) ~ "35_54",
+            age %in% c(
+                "55_64",
+                "65_"
+            ) ~ "55_",
+            .default = age
+        ),
+        higher_education = case_when(
+            education %in% c(
+                "Degree",
+                "Postgraduate"
+            ) ~ "yes",
+            .default = "no"
+        ),
+        income = case_when(
+            income %in% c(
+                "0_10k",
+                "10_20k"
+            ) ~ "0_20k",
+            income %in% c(
+                "40_50k",
+                "60k_"
+            ) ~ "40k_",
+            .default = income
+        )
+    ) %>%
+    mutate(
+        climate_important = factor(climate_important, levels = c("yes", "no")),
+        know_climate = factor(know_climate, levels = c("yes", "no")),
+        where_live = factor(where_live, levels = c("Townorsuburb", "Ruralarea", "Citycentre")),
+        age = relevel(as.factor(age), ref = "35_54"),
+        education = relevel(as.factor(education), ref = "Degree"),
+        meat_frequency = relevel(as.factor(meat_frequency), ref = "3_5weekly"),
+        income = relevel(as.factor(income), ref = "20_30k")
     )
 
 ### fit model using information treatment
-ict_fit_demo_info <-
+message("Fitting model using information treatment...")
+ict_fit_info <-
     ictreg(
-        count ~ as.factor(list_id) - 1 +
+        count ~ as.factor(list_id) +
         framing_effect +
         co2_value,
-        data = dt_count,
+        data = dt_est,
         treat = "treatment",
         J = n_cs,
         constrained = TRUE
     )
+summary(ict_fit_info)
 
-### fit model using information treatment + attitudes
-ict_fit_demo_info_att <-
+### fit model using attitudes only
+message("Fitting model using climate attitudes...")
+ict_fit_att <-
     ictreg(
-        count ~ as.factor(list_id) - 1 +
+        count ~ as.factor(list_id) +
+            climate_important +
+            know_climate +
+            climate_cause,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+summary(ict_fit_att)
+
+### fit model using information treatment + climate attitudes
+message("Fitting model using information treatment + climate attitudes...")
+ict_fit_info_att <-
+    ictreg(
+        count ~ as.factor(list_id) +
         framing_effect +
         co2_value +
-        climate_important+
+        climate_important +
         know_climate +
         climate_cause,
-        data = dt_count,
+        data = dt_est,
         treat = "treatment",
         J = n_cs,
         constrained = TRUE
     )
+summary(ict_fit_info_att)
 
-### fit model using information treatment + attitudes + demographics
-ict_fit_demo_info_att_demo <-
+### fit model using demographics
+message("Fitting model using demographics...")
+ict_fit_demo <-
     ictreg(
-        count ~ as.factor(list_id) - 1 +
+        count ~ as.factor(list_id) +
+        where_live +
+        diet +
+        age +
+        is_man +
+        higher_education +
+        income,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+summary(ict_fit_demo)
+
+### fit model using information treatment + demographics
+message("Fitting model using information treatment + demographics...")
+ict_fit_info_demo <-
+    ictreg(
+        count ~ as.factor(list_id) +
         framing_effect +
         co2_value +
-        climate_important+
-        know_climate +
-        climate_cause +
-        location +
         where_live +
-        age +
-        gender +
-        education +
         diet +
-        meat_frequeny +
+        age +
+        is_man +
+        higher_education +
         income,
-        data = dt_count,
+        data = dt_est,
         treat = "treatment",
         J = n_cs,
         constrained = TRUE
     )
+summary(ict_fit_info_demo)
+
+### fit model using climate attitudes + demographics
+message("Fitting model using climate attitudes + demographics...")
+ict_fit_att_demo <-
+    ictreg(
+        count ~ as.factor(list_id) +
+        climate_important +
+        know_climate +
+        climate_cause +
+        where_live +
+        diet +
+        age +
+        is_man +
+        higher_education +
+        income,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+summary(ict_fit_att_demo)
+
+### fit model using information treatment + climate attitudes + demographics
+message("Fitting model using information treatment + climate attitudes + demographics...")
+ict_fit_info_att_demo <-
+    ictreg(
+        count ~ as.factor(list_id) +
+        framing_effect +
+        co2_value +
+        climate_important +
+        know_climate +
+        climate_cause +
+        where_live +
+        diet +
+        age +
+        is_man +
+        higher_education +
+        income,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+summary(ict_fit_info_att_demo)
 
 ################################################################################
 ### save output

@@ -111,7 +111,7 @@ dt_demo <-
         climate_important = Q5,
         know_climate = Q6,
         climate_cause = Q7,
-        meat_frequeny = Q8,
+        meat_frequency = Q8,
         env_friendly_consumer = Q11_1,
         concerned_environment = Q11_2,
         education = Q15,
@@ -159,12 +159,12 @@ dt_demo <-
             grepl("know what is causing climate change", climate_cause) ~ "notknow",
             grepl("no such thing as climate change", climate_cause) ~ "noclimatechange"
         ),
-        meat_frequeny = case_when(
-            meat_frequeny == "2 times weekly" ~ "2weekly",
-            meat_frequeny == "3- 5 times weekly" ~ "3_5weekly",
-            grepl("Never", meat_frequeny) ~ "Never",
-            meat_frequeny == "Once a day" ~ "1daily",
-            meat_frequeny == "Twice a day or more" ~ "2daily"
+        meat_frequency = case_when(
+            meat_frequency == "2 times weekly" ~ "2weekly",
+            meat_frequency == "3- 5 times weekly" ~ "3_5weekly",
+            grepl("Never", meat_frequency) ~ "Never",
+            meat_frequency == "Once a day" ~ "1daily",
+            meat_frequency == "Twice a day or more" ~ "2daily"
         ),
         env_friendly_consumer = gsub(" ", "", env_friendly_consumer),
         concerned_environment = gsub(" ", "", concerned_environment),
@@ -195,7 +195,7 @@ dt_demo <-
             grepl("£40,001 - £50,000", income) ~ "40_50k",
             grepl("£50,001 - £60,000", income) ~ "50_60k",
             grepl("> £60,001", income) ~ "60k_",
-            income == "I do not wish to specify" ~ "not_specify"
+            .default = "not_specified"
         ),
         where_live = gsub(" ", "", where_live),
         co2_value = as.numeric(co2_value),
@@ -236,7 +236,7 @@ vars <-
         "age",
         "gender",
         "diet",
-        "meat_frequeny",
+        "meat_frequency",
         "climate_important",
         "know_climate",
         "climate_cause",
@@ -348,8 +348,8 @@ tbl_diet <-
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
-### for meat_frequeny
-tbl_meat_frequeny <- 
+### for meat_frequency
+tbl_meat_frequency <- 
     dt_demo_raw %>%
     mutate(
         Q8 = case_when(
@@ -681,7 +681,7 @@ tbl_demo <-
             tbl_age,
             tbl_gender,
             tbl_diet,
-            tbl_meat_frequeny,
+            tbl_meat_frequency,
             tbl_climate_important,
             tbl_know_climate,
             tbl_climate_cause,
