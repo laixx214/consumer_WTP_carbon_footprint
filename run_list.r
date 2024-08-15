@@ -77,7 +77,7 @@ statement_reference <-
     ) %>%
     distinct() %>%
     arrange(treatment)
-    
+
 ### number of control lists
 n_cl <- dt_count %>%
     select(list_id) %>%
@@ -115,7 +115,7 @@ tbl_intercept <-
             par <- ict_fit_intercept$par.treat[[i]]
             se <- ict_fit_intercept$se.treat[[i]]
             control <- paste0("Control List ", 1:4)
-            
+
             names(par) <- NULL
             names(se) <- NULL
             names(control) <- NULL
@@ -130,7 +130,7 @@ tbl_intercept <-
                 )
         }
     )
-    
+
 tbl_intercept <-
     do.call(rbind, tbl_intercept) %>%
     as.data.frame() %>%
@@ -150,7 +150,7 @@ tbl_intercept <-
 
 ### use delta method to estimate the average treatment effect across control lists
 # construct formulas
-delta_f <- 
+delta_f <-
     lapply(
         1:n_ss,
         function(i) {
@@ -214,7 +214,7 @@ tbl_intercept <-
         tbl_intercept,
         tbl_ate
     )
-    
+
 ### delta method for testing if there is a variation in treatment effect across control lists
 # construct formulas
 design_effect <-
@@ -325,7 +325,7 @@ design_effect <-
         }
     )
 design_effect <- do.call(rbind, design_effect)
-    
+
 ################################################################################
 ### run list experiment, with demographics
 ################################################################################
@@ -411,6 +411,16 @@ dt_est <-
                 "60k_"
             ) ~ "40k_",
             .default = income
+        ),
+        across(
+            starts_with("Q12_"),
+            ~ case_when(
+                .x %in% c(
+                    "Stronglyagree",
+                    "Mildlyagree"
+                ) ~ "Agree",
+                .default = "Unsure_or_disagree"
+            )
         )
     ) %>%
     mutate(
@@ -428,8 +438,8 @@ message("Fitting model using information treatment...")
 ict_fit_info <-
     ictreg(
         count ~ as.factor(list_id) +
-        framing_effect +
-        co2_value,
+            framing_effect +
+            co2_value,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
@@ -444,7 +454,13 @@ ict_fit_att <-
         count ~ as.factor(list_id) +
             climate_important +
             know_climate +
-            climate_cause,
+            climate_cause +
+            Q12_1 +
+            Q12_2 +
+            Q12_3 +
+            Q12_4 +
+            Q12_5 +
+            Q12_6,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
@@ -457,11 +473,17 @@ message("Fitting model using information treatment + climate attitudes...")
 ict_fit_info_att <-
     ictreg(
         count ~ as.factor(list_id) +
-        framing_effect +
-        co2_value +
-        climate_important +
-        know_climate +
-        climate_cause,
+            framing_effect +
+            co2_value +
+            climate_important +
+            know_climate +
+            climate_cause +
+            Q12_1 +
+            Q12_2 +
+            Q12_3 +
+            Q12_4 +
+            Q12_5 +
+            Q12_6,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
@@ -474,12 +496,12 @@ message("Fitting model using demographics...")
 ict_fit_demo <-
     ictreg(
         count ~ as.factor(list_id) +
-        where_live +
-        diet +
-        age +
-        is_man +
-        higher_education +
-        income,
+            where_live +
+            diet +
+            age +
+            is_man +
+            higher_education +
+            income,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
@@ -492,14 +514,14 @@ message("Fitting model using information treatment + demographics...")
 ict_fit_info_demo <-
     ictreg(
         count ~ as.factor(list_id) +
-        framing_effect +
-        co2_value +
-        where_live +
-        diet +
-        age +
-        is_man +
-        higher_education +
-        income,
+            framing_effect +
+            co2_value +
+            where_live +
+            diet +
+            age +
+            is_man +
+            higher_education +
+            income,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
@@ -512,15 +534,21 @@ message("Fitting model using climate attitudes + demographics...")
 ict_fit_att_demo <-
     ictreg(
         count ~ as.factor(list_id) +
-        climate_important +
-        know_climate +
-        climate_cause +
-        where_live +
-        diet +
-        age +
-        is_man +
-        higher_education +
-        income,
+            climate_important +
+            know_climate +
+            climate_cause +
+                Q12_1 +
+                Q12_2 +
+                Q12_3 +
+                Q12_4 +
+                Q12_5 +
+                Q12_6 +
+            where_live +
+            diet +
+            age +
+            is_man +
+            higher_education +
+            income,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
@@ -533,17 +561,23 @@ message("Fitting model using information treatment + climate attitudes + demogra
 ict_fit_info_att_demo <-
     ictreg(
         count ~ as.factor(list_id) +
-        framing_effect +
-        co2_value +
-        climate_important +
-        know_climate +
-        climate_cause +
-        where_live +
-        diet +
-        age +
-        is_man +
-        higher_education +
-        income,
+            framing_effect +
+            co2_value +
+            climate_important +
+            know_climate +
+            climate_cause +
+                Q12_1 +
+                Q12_2 +
+                Q12_3 +
+                Q12_4 +
+                Q12_5 +
+                Q12_6 +
+            where_live +
+            diet +
+            age +
+            is_man +
+            higher_education +
+            income,
         data = dt_est,
         treat = "treatment",
         J = n_cs,

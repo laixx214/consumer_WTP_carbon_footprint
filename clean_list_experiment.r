@@ -96,6 +96,7 @@ dt_demo <-
         ResponseId,
         Q1:Q8,
         Q11_1:Q11_2,
+        Q12_1:Q12_6,
         Q15:Q20,
         Framing,
         Framing_assigned,
@@ -205,6 +206,10 @@ dt_demo <-
             Framing_assigned == 3 ~ "MetOffice",
             Framing_assigned == 4 ~ "MetOffice",
             Framing_assigned == 5 ~ "UN"
+        ),
+        across(
+            starts_with("Q12_"),
+            ~ str_replace_all(.x, " ", "")
         )
     )
 
@@ -217,6 +222,7 @@ lapply(
 lapply(fread("csv/list_data.csv") %>% select(
     Q1:Q8,
     Q11_1:Q11_2,
+    Q12_1:Q12_6,
     Q15:Q20
 ), table)
 
@@ -497,6 +503,43 @@ tbl_concerned_environment <-
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
+### for Q12_*
+tbl_q12 <- 
+    dt_demo_raw %>%
+    select(
+        ResponseId,
+        Q12_1:Q12_6
+    ) %>%
+    pivot_longer(
+        cols = Q12_1:Q12_6,
+        names_to = "Variable",
+        values_to = "Group"
+    ) %>%
+    group_by(Group, Variable) %>%
+    summarise(
+        Frequency = n_distinct(ResponseId)
+    ) %>%
+    ungroup() %>%
+    mutate(
+        Percentage = Frequency / sum(Frequency) * 100
+    ) %>%
+    ### order from Strongly Agree to Strongly Disagree
+    arrange(
+        Variable,
+        match(
+            Group,
+            c(
+                "Strongly agree",
+                "Mildly agree",
+                "Unsure",
+                "Mildly disagree",
+                "Strongly disagree"
+            )
+        )
+    ) %>%
+    ### rearrange columns
+    select(Variable, Group, Frequency, Percentage)
+
 ### for education
 tbl_education <- 
     dt_demo_raw %>%
@@ -693,7 +736,8 @@ tbl_demo <-
             tbl_shopper,
             tbl_income,
             tbl_where_live,
-            tbl_framing_effect
+            tbl_framing_effect,
+            tbl_q12
         )
     )
 
