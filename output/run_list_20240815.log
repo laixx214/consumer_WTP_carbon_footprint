@@ -1,0 +1,1125 @@
+Reading in data...
+Running list experiment, intercept only...
+Joining with `by = join_by(treatment)`
+Sensitive statements:
+                                                                                        ss1 
+                 "I support restricting the use of electricity at peak times in the summer" 
+                                                                                        ss2 
+                                       "Carbon tax on food on food products and beverages." 
+                                                                                        ss3 
+                             "UK should not commit to reaching net zero emissions by 2050." 
+                                                                                        ss4 
+"Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined." 
+Running list experiment, with demographics...
+Joining with `by = join_by(ResponseId)`
+Fitting model using information treatment...
+                                                                                   statement
+1                   I support restricting the use of electricity at peak times in the summer
+2                   I support restricting the use of electricity at peak times in the summer
+3                   I support restricting the use of electricity at peak times in the summer
+4                   I support restricting the use of electricity at peak times in the summer
+5                   I support restricting the use of electricity at peak times in the summer
+6                   I support restricting the use of electricity at peak times in the summer
+7                   I support restricting the use of electricity at peak times in the summer
+8                   I support restricting the use of electricity at peak times in the summer
+9                                         Carbon tax on food on food products and beverages.
+10                                        Carbon tax on food on food products and beverages.
+11                                        Carbon tax on food on food products and beverages.
+12                                        Carbon tax on food on food products and beverages.
+13                                        Carbon tax on food on food products and beverages.
+14                                        Carbon tax on food on food products and beverages.
+15                                        Carbon tax on food on food products and beverages.
+16                                        Carbon tax on food on food products and beverages.
+17                              UK should not commit to reaching net zero emissions by 2050.
+18                              UK should not commit to reaching net zero emissions by 2050.
+19                              UK should not commit to reaching net zero emissions by 2050.
+20                              UK should not commit to reaching net zero emissions by 2050.
+21                              UK should not commit to reaching net zero emissions by 2050.
+22                              UK should not commit to reaching net zero emissions by 2050.
+23                              UK should not commit to reaching net zero emissions by 2050.
+24                              UK should not commit to reaching net zero emissions by 2050.
+25 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+26 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+27 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+28 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+29 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+30 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+31 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+32 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                    variable  coefficient        SE          p star
+1                (Intercept)  0.362397969 0.4976371 0.46646821     
+2        as.factor(list_id)2  0.353266581 0.4710129 0.45324588     
+3        as.factor(list_id)3 -0.699987539 0.4821438 0.14655078     
+4        as.factor(list_id)4  0.371230136 0.5056176 0.46282002     
+5  framing_effectconsequence -0.320405195 0.5094529 0.52940137     
+6    framing_effectMetOffice -0.139768396 0.4753615 0.76873843     
+7           framing_effectUN -1.055084181 0.5924195 0.07491660    *
+8                  co2_value -0.048245632 0.1449396 0.73923461     
+9                (Intercept) -0.466577522 0.5181815 0.36790035     
+10       as.factor(list_id)2  0.439432397 0.4736513 0.35353465     
+11       as.factor(list_id)3 -0.071156215 0.4881522 0.88410575     
+12       as.factor(list_id)4 -0.760822068 0.5688985 0.18110519     
+13 framing_effectconsequence -0.170130265 0.5255323 0.74614288     
+14   framing_effectMetOffice  0.192830995 0.4731568 0.68361040     
+15          framing_effectUN -0.002932414 0.5384731 0.99565491     
+16                 co2_value -0.097083864 0.1391613 0.48540505     
+17               (Intercept) -0.060764575 0.4854597 0.90038964     
+18       as.factor(list_id)2 -0.347532675 0.4849970 0.47364156     
+19       as.factor(list_id)3 -0.844297191 0.4799470 0.07855258    *
+20       as.factor(list_id)4 -0.570339985 0.4664037 0.22138775     
+21 framing_effectconsequence -0.056293628 0.5121452 0.91247495     
+22   framing_effectMetOffice  0.074808369 0.4499949 0.86796594     
+23          framing_effectUN  0.088596928 0.5326356 0.86789188     
+24                 co2_value -0.108148412 0.1288763 0.40137718     
+25               (Intercept)  0.129400977 0.5404626 0.81077503     
+26       as.factor(list_id)2 -0.440329188 0.4755440 0.35447279     
+27       as.factor(list_id)3 -0.226955560 0.4767472 0.63403867     
+28       as.factor(list_id)4 -0.345462692 0.5175304 0.50443902     
+29 framing_effectconsequence  0.486533859 0.5223970 0.35167315     
+30   framing_effectMetOffice  0.454901114 0.4752301 0.33845478     
+31          framing_effectUN  0.511792675 0.5163290 0.32158095     
+32                 co2_value -0.132166221 0.1400928 0.34546675     
+Fitting model using climate attitudes...
+                                                                                   statement
+1                   I support restricting the use of electricity at peak times in the summer
+2                   I support restricting the use of electricity at peak times in the summer
+3                   I support restricting the use of electricity at peak times in the summer
+4                   I support restricting the use of electricity at peak times in the summer
+5                   I support restricting the use of electricity at peak times in the summer
+6                   I support restricting the use of electricity at peak times in the summer
+7                   I support restricting the use of electricity at peak times in the summer
+8                   I support restricting the use of electricity at peak times in the summer
+9                   I support restricting the use of electricity at peak times in the summer
+10                  I support restricting the use of electricity at peak times in the summer
+11                  I support restricting the use of electricity at peak times in the summer
+12                  I support restricting the use of electricity at peak times in the summer
+13                  I support restricting the use of electricity at peak times in the summer
+14                  I support restricting the use of electricity at peak times in the summer
+15                  I support restricting the use of electricity at peak times in the summer
+16                                        Carbon tax on food on food products and beverages.
+17                                        Carbon tax on food on food products and beverages.
+18                                        Carbon tax on food on food products and beverages.
+19                                        Carbon tax on food on food products and beverages.
+20                                        Carbon tax on food on food products and beverages.
+21                                        Carbon tax on food on food products and beverages.
+22                                        Carbon tax on food on food products and beverages.
+23                                        Carbon tax on food on food products and beverages.
+24                                        Carbon tax on food on food products and beverages.
+25                                        Carbon tax on food on food products and beverages.
+26                                        Carbon tax on food on food products and beverages.
+27                                        Carbon tax on food on food products and beverages.
+28                                        Carbon tax on food on food products and beverages.
+29                                        Carbon tax on food on food products and beverages.
+30                                        Carbon tax on food on food products and beverages.
+31                              UK should not commit to reaching net zero emissions by 2050.
+32                              UK should not commit to reaching net zero emissions by 2050.
+33                              UK should not commit to reaching net zero emissions by 2050.
+34                              UK should not commit to reaching net zero emissions by 2050.
+35                              UK should not commit to reaching net zero emissions by 2050.
+36                              UK should not commit to reaching net zero emissions by 2050.
+37                              UK should not commit to reaching net zero emissions by 2050.
+38                              UK should not commit to reaching net zero emissions by 2050.
+39                              UK should not commit to reaching net zero emissions by 2050.
+40                              UK should not commit to reaching net zero emissions by 2050.
+41                              UK should not commit to reaching net zero emissions by 2050.
+42                              UK should not commit to reaching net zero emissions by 2050.
+43                              UK should not commit to reaching net zero emissions by 2050.
+44                              UK should not commit to reaching net zero emissions by 2050.
+45                              UK should not commit to reaching net zero emissions by 2050.
+46 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+47 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+48 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+49 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+50 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+51 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+52 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+53 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+54 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+55 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+56 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+57 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+58 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+59 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+60 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                  variable coefficient        SE          p star
+1              (Intercept)  1.11261348 0.5835939 0.05658722    *
+2      as.factor(list_id)2  0.10012938 0.5183579 0.84682856     
+3      as.factor(list_id)3 -1.08272206 0.5545893 0.05090317    *
+4      as.factor(list_id)4  0.38908785 0.5845588 0.50566078     
+5      climate_importantno -1.22607411 0.5011689 0.01442793   **
+6           know_climateno  0.32814713 0.4874291 0.50080719     
+7       climate_causehuman -0.45632615 0.4998744 0.36130477     
+8     climate_causenatural -0.38187609 0.7388206 0.60524514     
+9      climate_causeOthers -0.08323148 0.6800120 0.90258456     
+10 Q12_1Unsure_or_disagree -0.52383258 0.4387055 0.23246169     
+11 Q12_2Unsure_or_disagree  0.10107369 0.5782697 0.86124747     
+12 Q12_3Unsure_or_disagree  0.65069501 0.4847911 0.17952559     
+13 Q12_4Unsure_or_disagree  0.20659717 0.5053122 0.68264933     
+14 Q12_5Unsure_or_disagree -0.86221319 0.5088660 0.09019277    *
+15 Q12_6Unsure_or_disagree -0.30844297 0.4993524 0.53678233     
+16             (Intercept)  0.43861672 0.5751510 0.44569515     
+17     as.factor(list_id)2  0.56701218 0.5649097 0.31551272     
+18     as.factor(list_id)3  0.09041966 0.5975823 0.87973186     
+19     as.factor(list_id)4 -0.86525054 0.6365553 0.17406107     
+20     climate_importantno -1.12489506 0.6050506 0.06300232    *
+21          know_climateno -0.40944459 0.5087418 0.42092468     
+22      climate_causehuman  0.31227484 0.5153169 0.54452407     
+23    climate_causenatural -0.14333231 0.8497119 0.86604566     
+24     climate_causeOthers  1.82887707 0.7796106 0.01898194   **
+25 Q12_1Unsure_or_disagree -0.58089069 0.4512496 0.19799202     
+26 Q12_2Unsure_or_disagree -0.07834194 0.6110885 0.89799019     
+27 Q12_3Unsure_or_disagree  0.22086600 0.5132823 0.66697651     
+28 Q12_4Unsure_or_disagree -0.01202896 0.5676339 0.98309297     
+29 Q12_5Unsure_or_disagree -1.09783453 0.5021949 0.02881031   **
+30 Q12_6Unsure_or_disagree  0.09751333 0.5294904 0.85388441     
+31             (Intercept)  0.58822228 0.6764368 0.38452485     
+32     as.factor(list_id)2 -0.68926952 0.6678714 0.30205375     
+33     as.factor(list_id)3 -0.46429601 0.6506510 0.47548266     
+34     as.factor(list_id)4 -0.82305152 0.6141208 0.18017669     
+35     climate_importantno -0.48494582 0.7342713 0.50896829     
+36          know_climateno -0.42489049 0.5259411 0.41916715     
+37      climate_causehuman  0.52755257 0.5213353 0.31157355     
+38    climate_causenatural -0.10406034 0.8479234 0.90232586     
+39     climate_causeOthers  0.50295911 0.9201419 0.58464644     
+40 Q12_1Unsure_or_disagree -0.01532645 0.5056818 0.97582102     
+41 Q12_2Unsure_or_disagree  1.46738520 0.6154534 0.01711470   **
+42 Q12_3Unsure_or_disagree  0.77577440 0.5422754 0.15254743     
+43 Q12_4Unsure_or_disagree -0.84805672 0.6191007 0.17074299     
+44 Q12_5Unsure_or_disagree -0.88294693 0.5315910 0.09672320    *
+45 Q12_6Unsure_or_disagree -0.46821780 0.5982023 0.43379853     
+46             (Intercept)  0.62919283 0.6114898 0.30350285     
+47     as.factor(list_id)2 -0.29778682 0.5337905 0.57693174     
+48     as.factor(list_id)3 -0.32935060 0.5425999 0.54386016     
+49     as.factor(list_id)4 -0.40255142 0.5987737 0.50139712     
+50     climate_importantno -1.04269376 0.4904878 0.03351741   **
+51          know_climateno -0.40348823 0.4391729 0.35822861     
+52      climate_causehuman  0.59738939 0.4819175 0.21511995     
+53    climate_causenatural  0.89161849 0.7959098 0.26260699     
+54     climate_causeOthers -0.05276829 0.7688684 0.94528326     
+55 Q12_1Unsure_or_disagree -0.38661116 0.4629133 0.40362216     
+56 Q12_2Unsure_or_disagree -0.19771514 0.6453229 0.75931404     
+57 Q12_3Unsure_or_disagree  0.03098613 0.5031619 0.95089506     
+58 Q12_4Unsure_or_disagree  0.21743870 0.5018675 0.66482652     
+59 Q12_5Unsure_or_disagree -0.19775258 0.4790439 0.67974814     
+60 Q12_6Unsure_or_disagree  0.73337385 0.6166040 0.23429184     
+Fitting model using information treatment + climate attitudes...
+                                                                                   statement
+1                   I support restricting the use of electricity at peak times in the summer
+2                   I support restricting the use of electricity at peak times in the summer
+3                   I support restricting the use of electricity at peak times in the summer
+4                   I support restricting the use of electricity at peak times in the summer
+5                   I support restricting the use of electricity at peak times in the summer
+6                   I support restricting the use of electricity at peak times in the summer
+7                   I support restricting the use of electricity at peak times in the summer
+8                   I support restricting the use of electricity at peak times in the summer
+9                   I support restricting the use of electricity at peak times in the summer
+10                  I support restricting the use of electricity at peak times in the summer
+11                  I support restricting the use of electricity at peak times in the summer
+12                  I support restricting the use of electricity at peak times in the summer
+13                  I support restricting the use of electricity at peak times in the summer
+14                  I support restricting the use of electricity at peak times in the summer
+15                  I support restricting the use of electricity at peak times in the summer
+16                  I support restricting the use of electricity at peak times in the summer
+17                  I support restricting the use of electricity at peak times in the summer
+18                  I support restricting the use of electricity at peak times in the summer
+19                  I support restricting the use of electricity at peak times in the summer
+20                                        Carbon tax on food on food products and beverages.
+21                                        Carbon tax on food on food products and beverages.
+22                                        Carbon tax on food on food products and beverages.
+23                                        Carbon tax on food on food products and beverages.
+24                                        Carbon tax on food on food products and beverages.
+25                                        Carbon tax on food on food products and beverages.
+26                                        Carbon tax on food on food products and beverages.
+27                                        Carbon tax on food on food products and beverages.
+28                                        Carbon tax on food on food products and beverages.
+29                                        Carbon tax on food on food products and beverages.
+30                                        Carbon tax on food on food products and beverages.
+31                                        Carbon tax on food on food products and beverages.
+32                                        Carbon tax on food on food products and beverages.
+33                                        Carbon tax on food on food products and beverages.
+34                                        Carbon tax on food on food products and beverages.
+35                                        Carbon tax on food on food products and beverages.
+36                                        Carbon tax on food on food products and beverages.
+37                                        Carbon tax on food on food products and beverages.
+38                                        Carbon tax on food on food products and beverages.
+39                              UK should not commit to reaching net zero emissions by 2050.
+40                              UK should not commit to reaching net zero emissions by 2050.
+41                              UK should not commit to reaching net zero emissions by 2050.
+42                              UK should not commit to reaching net zero emissions by 2050.
+43                              UK should not commit to reaching net zero emissions by 2050.
+44                              UK should not commit to reaching net zero emissions by 2050.
+45                              UK should not commit to reaching net zero emissions by 2050.
+46                              UK should not commit to reaching net zero emissions by 2050.
+47                              UK should not commit to reaching net zero emissions by 2050.
+48                              UK should not commit to reaching net zero emissions by 2050.
+49                              UK should not commit to reaching net zero emissions by 2050.
+50                              UK should not commit to reaching net zero emissions by 2050.
+51                              UK should not commit to reaching net zero emissions by 2050.
+52                              UK should not commit to reaching net zero emissions by 2050.
+53                              UK should not commit to reaching net zero emissions by 2050.
+54                              UK should not commit to reaching net zero emissions by 2050.
+55                              UK should not commit to reaching net zero emissions by 2050.
+56                              UK should not commit to reaching net zero emissions by 2050.
+57                              UK should not commit to reaching net zero emissions by 2050.
+58 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+59 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+60 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+65 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+66 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+67 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+68 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+69 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+70 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+71 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+72 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+73 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+74 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+75 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+76 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                    variable coefficient        SE           p star
+1                (Intercept)  1.79060740 0.8430837 0.033680306   **
+2        as.factor(list_id)2  0.33412771 0.5567664 0.548425023     
+3        as.factor(list_id)3 -1.04429859 0.5692333 0.066569360    *
+4        as.factor(list_id)4  0.52311305 0.6320259 0.407853660     
+5  framing_effectconsequence -0.49970278 0.6251277 0.424081039     
+6    framing_effectMetOffice -0.29534959 0.5543644 0.594191685     
+7           framing_effectUN -1.24233365 0.7948099 0.118039046     
+8                  co2_value -0.08533008 0.2009597 0.671118918     
+9        climate_importantno -1.37745272 0.5184817 0.007890861  ***
+10            know_climateno  0.46122592 0.5198712 0.374975152     
+11        climate_causehuman -0.52845594 0.5169467 0.306656059     
+12      climate_causenatural -0.27149173 0.7617988 0.721554152     
+13       climate_causeOthers -0.07444189 0.7126281 0.916803460     
+14   Q12_1Unsure_or_disagree -0.58007708 0.4536669 0.201023507     
+15   Q12_2Unsure_or_disagree -0.09894770 0.6426634 0.877637296     
+16   Q12_3Unsure_or_disagree  0.46692867 0.5522759 0.397852539     
+17   Q12_4Unsure_or_disagree  0.19468892 0.5473674 0.722078486     
+18   Q12_5Unsure_or_disagree -0.94566979 0.5600961 0.091333288    *
+19   Q12_6Unsure_or_disagree -0.27445499 0.5349836 0.607940350     
+20               (Intercept)  0.92513248 0.7874679 0.240067031     
+21       as.factor(list_id)2  0.52712226 0.5696859 0.354817315     
+22       as.factor(list_id)3  0.12343692 0.5924728 0.834962015     
+23       as.factor(list_id)4 -0.96809035 0.6408647 0.130890361     
+24 framing_effectconsequence -0.37047105 0.5986326 0.536007200     
+25   framing_effectMetOffice  0.12867680 0.5578553 0.817576305     
+26          framing_effectUN  0.28188017 0.6921127 0.683806063     
+27                 co2_value -0.19170641 0.1645891 0.244117216     
+28       climate_importantno -1.14109737 0.5829279 0.050285480    *
+29            know_climateno -0.36825185 0.5108761 0.471017710     
+30        climate_causehuman  0.28975057 0.5203755 0.577656846     
+31      climate_causenatural -0.09154189 0.8650453 0.915722609     
+32       climate_causeOthers  1.87824261 0.7809934 0.016175104   **
+33   Q12_1Unsure_or_disagree -0.67532096 0.4553440 0.138047694     
+34   Q12_2Unsure_or_disagree -0.17889002 0.6083860 0.768727074     
+35   Q12_3Unsure_or_disagree  0.28808165 0.5244916 0.582827857     
+36   Q12_4Unsure_or_disagree -0.06198397 0.5615372 0.912105896     
+37   Q12_5Unsure_or_disagree -1.17312256 0.5042131 0.019984414   **
+38   Q12_6Unsure_or_disagree  0.09129780 0.5471840 0.867487860     
+39               (Intercept)  1.21427816 0.8432386 0.149862527     
+40       as.factor(list_id)2 -0.72622561 0.6719567 0.279802795     
+41       as.factor(list_id)3 -0.74082694 0.6667154 0.266499836     
+42       as.factor(list_id)4 -0.86117934 0.6117881 0.159236731     
+43 framing_effectconsequence -0.16278530 0.6420485 0.799850566     
+44   framing_effectMetOffice  0.00436185 0.6100852 0.994295512     
+45          framing_effectUN  0.45541847 0.7089366 0.520615692     
+46                 co2_value -0.22700359 0.1547073 0.142291828     
+47       climate_importantno -0.45353753 0.7039473 0.519395399     
+48            know_climateno -0.30530486 0.5193991 0.556663902     
+49        climate_causehuman  0.44893834 0.5274745 0.394708738     
+50      climate_causenatural -0.34499960 0.9432718 0.714553263     
+51       climate_causeOthers  0.50020039 0.8690561 0.564907610     
+52   Q12_1Unsure_or_disagree -0.11679659 0.5219606 0.822940058     
+53   Q12_2Unsure_or_disagree  1.53190438 0.6488616 0.018230114   **
+54   Q12_3Unsure_or_disagree  0.76166830 0.5427676 0.160525981     
+55   Q12_4Unsure_or_disagree -0.83578580 0.6126803 0.172521375     
+56   Q12_5Unsure_or_disagree -1.03784981 0.5377752 0.053619814    *
+57   Q12_6Unsure_or_disagree -0.53404195 0.6181844 0.387649553     
+58               (Intercept)  0.33891159 0.8528548 0.691083681     
+59       as.factor(list_id)2 -0.32009797 0.5411710 0.554191256     
+60       as.factor(list_id)3 -0.25297892 0.5698852 0.657106163     
+61       as.factor(list_id)4 -0.28098284 0.6350399 0.658152866     
+62 framing_effectconsequence  0.45434147 0.6115676 0.457534377     
+63   framing_effectMetOffice  0.34167669 0.5570998 0.539669266     
+64          framing_effectUN  0.76208211 0.6009236 0.204731982     
+65                 co2_value -0.08295609 0.1568456 0.596872921     
+66       climate_importantno -1.10350712 0.4989300 0.026984129   **
+67            know_climateno -0.36530758 0.4602620 0.427373084     
+68        climate_causehuman  0.62290532 0.4972723 0.210335166     
+69      climate_causenatural  0.95933256 0.8528551 0.260653320     
+70       climate_causeOthers  0.03907450 0.7851608 0.960308676     
+71   Q12_1Unsure_or_disagree -0.40677590 0.4794459 0.396198972     
+72   Q12_2Unsure_or_disagree -0.31091946 0.7023799 0.658007587     
+73   Q12_3Unsure_or_disagree  0.10853236 0.5189464 0.834339082     
+74   Q12_4Unsure_or_disagree  0.26945641 0.5063927 0.594650065     
+75   Q12_5Unsure_or_disagree -0.23652438 0.4892387 0.628773455     
+76   Q12_6Unsure_or_disagree  0.76149705 0.6453085 0.237979847     
+Fitting model using demographics...
+                                                                                   statement
+1                   I support restricting the use of electricity at peak times in the summer
+2                   I support restricting the use of electricity at peak times in the summer
+3                   I support restricting the use of electricity at peak times in the summer
+4                   I support restricting the use of electricity at peak times in the summer
+5                   I support restricting the use of electricity at peak times in the summer
+6                   I support restricting the use of electricity at peak times in the summer
+7                   I support restricting the use of electricity at peak times in the summer
+8                   I support restricting the use of electricity at peak times in the summer
+9                   I support restricting the use of electricity at peak times in the summer
+10                  I support restricting the use of electricity at peak times in the summer
+11                  I support restricting the use of electricity at peak times in the summer
+12                  I support restricting the use of electricity at peak times in the summer
+13                  I support restricting the use of electricity at peak times in the summer
+14                  I support restricting the use of electricity at peak times in the summer
+15                  I support restricting the use of electricity at peak times in the summer
+16                  I support restricting the use of electricity at peak times in the summer
+17                                        Carbon tax on food on food products and beverages.
+18                                        Carbon tax on food on food products and beverages.
+19                                        Carbon tax on food on food products and beverages.
+20                                        Carbon tax on food on food products and beverages.
+21                                        Carbon tax on food on food products and beverages.
+22                                        Carbon tax on food on food products and beverages.
+23                                        Carbon tax on food on food products and beverages.
+24                                        Carbon tax on food on food products and beverages.
+25                                        Carbon tax on food on food products and beverages.
+26                                        Carbon tax on food on food products and beverages.
+27                                        Carbon tax on food on food products and beverages.
+28                                        Carbon tax on food on food products and beverages.
+29                                        Carbon tax on food on food products and beverages.
+30                                        Carbon tax on food on food products and beverages.
+31                                        Carbon tax on food on food products and beverages.
+32                                        Carbon tax on food on food products and beverages.
+33                              UK should not commit to reaching net zero emissions by 2050.
+34                              UK should not commit to reaching net zero emissions by 2050.
+35                              UK should not commit to reaching net zero emissions by 2050.
+36                              UK should not commit to reaching net zero emissions by 2050.
+37                              UK should not commit to reaching net zero emissions by 2050.
+38                              UK should not commit to reaching net zero emissions by 2050.
+39                              UK should not commit to reaching net zero emissions by 2050.
+40                              UK should not commit to reaching net zero emissions by 2050.
+41                              UK should not commit to reaching net zero emissions by 2050.
+42                              UK should not commit to reaching net zero emissions by 2050.
+43                              UK should not commit to reaching net zero emissions by 2050.
+44                              UK should not commit to reaching net zero emissions by 2050.
+45                              UK should not commit to reaching net zero emissions by 2050.
+46                              UK should not commit to reaching net zero emissions by 2050.
+47                              UK should not commit to reaching net zero emissions by 2050.
+48                              UK should not commit to reaching net zero emissions by 2050.
+49 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+50 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+51 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+52 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+53 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+54 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+55 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+56 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+57 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+58 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+59 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+60 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+               variable   coefficient        SE           p star
+1           (Intercept)  0.1188613576 0.6379166 0.852188000     
+2   as.factor(list_id)2  0.3552378029 0.5418883 0.512110203     
+3   as.factor(list_id)3 -0.8742296588 0.5898199 0.138287739     
+4   as.factor(list_id)4  0.5881800737 0.5861017 0.315597448     
+5   where_liveRuralarea  0.1137246384 0.5352086 0.831727442     
+6  where_liveCitycentre  0.2384863377 0.5329248 0.654510698     
+7       dietPescatarian  0.0047441400 0.6289858 0.993981995     
+8        dietvegetarian  2.1232717846 0.9415920 0.024134539   **
+9              age18_34 -0.1703552847 0.4739510 0.719268583     
+10               age55_ -0.6357365093 0.5354397 0.235102712     
+11            is_manyes -0.1187457710 0.4430256 0.788673415     
+12  higher_educationyes -0.0086314892 0.4471133 0.984597853     
+13          income0_20k -0.6080398611 0.5876475 0.300808227     
+14         income30_40k -1.2678423848 0.7981048 0.112158349     
+15           income40k_  0.0348635158 0.6271669 0.955669307     
+16  incomenot_specified  0.8220582025 0.6839149 0.229367767     
+17          (Intercept) -0.7354378079 0.6490584 0.257178928     
+18  as.factor(list_id)2 -0.0542353303 0.5350513 0.919260937     
+19  as.factor(list_id)3 -0.3385016310 0.5697791 0.552450079     
+20  as.factor(list_id)4 -1.7727653372 0.6644368 0.007628785  ***
+21  where_liveRuralarea  0.9036173770 0.6042981 0.134831644     
+22 where_liveCitycentre  0.9904101472 0.4856884 0.041431228   **
+23      dietPescatarian  1.1712036013 0.5460327 0.031958197   **
+24       dietvegetarian  1.3543627236 0.7390559 0.066868333    *
+25             age18_34  0.5140730645 0.4773216 0.281482428     
+26               age55_ -0.6883266858 0.5744661 0.230838206     
+27            is_manyes -0.1619246763 0.4254415 0.703497230     
+28  higher_educationyes  0.3783541632 0.4535617 0.404177023     
+29          income0_20k -0.8370080373 0.6360947 0.188222881     
+30         income30_40k -0.7935048934 0.6604757 0.229590590     
+31           income40k_ -0.2079398359 0.6112522 0.733715955     
+32  incomenot_specified -0.6649952908 0.6580182 0.312206357     
+33          (Intercept)  0.4834049404 0.6193961 0.435128687     
+34  as.factor(list_id)2 -0.9534834593 0.5877472 0.104745999     
+35  as.factor(list_id)3 -1.1821190051 0.5392270 0.028361652   **
+36  as.factor(list_id)4 -1.2784473576 0.5718411 0.025373472   **
+37  where_liveRuralarea -0.3583008177 0.5395666 0.506656381     
+38 where_liveCitycentre  0.1458695163 0.4425229 0.741678347     
+39      dietPescatarian  0.6475502422 0.5883439 0.271056772     
+40       dietvegetarian  0.9794170949 0.6587971 0.137100709     
+41             age18_34  0.1070800682 0.4455921 0.810090250     
+42               age55_ -0.5565455989 0.5566157 0.317371488     
+43            is_manyes  0.2370973688 0.3958098 0.549160604     
+44  higher_educationyes  0.3457215823 0.4333340 0.424976239     
+45          income0_20k -0.3251031415 0.5627482 0.563462496     
+46         income30_40k -1.9863398174 0.8218073 0.015647369   **
+47           income40k_ -1.2455273000 0.5755812 0.030468396   **
+48  incomenot_specified -0.2281227233 0.6166803 0.711441678     
+49          (Intercept) -0.0602789551 0.7177130 0.933066332     
+50  as.factor(list_id)2 -0.3824099235 0.5590218 0.493931115     
+51  as.factor(list_id)3 -0.3406306851 0.5282539 0.519041384     
+52  as.factor(list_id)4 -0.5524814011 0.5761780 0.337622816     
+53  where_liveRuralarea -0.1156580521 0.6009848 0.847391638     
+54 where_liveCitycentre  0.2892820281 0.4360273 0.507042770     
+55      dietPescatarian  0.4998228846 0.6191135 0.419482001     
+56       dietvegetarian  1.3595439396 0.7355732 0.064562110    *
+57             age18_34  0.4198610280 0.4325652 0.331732303     
+58               age55_ -0.4987141231 0.5516065 0.365935955     
+59            is_manyes  0.4013261504 0.3952062 0.309874529     
+60  higher_educationyes  0.2653759224 0.4306475 0.537745798     
+61          income0_20k -0.0002463015 0.6034919 0.999674362     
+62         income30_40k -0.7726369263 0.6878706 0.261339804     
+63           income40k_ -0.3294748427 0.6150649 0.592183224     
+64  incomenot_specified -0.3347196221 0.6266127 0.593221797     
+Fitting model using information treatment + demographics...
+                                                                                   statement
+1                   I support restricting the use of electricity at peak times in the summer
+2                   I support restricting the use of electricity at peak times in the summer
+3                   I support restricting the use of electricity at peak times in the summer
+4                   I support restricting the use of electricity at peak times in the summer
+5                   I support restricting the use of electricity at peak times in the summer
+6                   I support restricting the use of electricity at peak times in the summer
+7                   I support restricting the use of electricity at peak times in the summer
+8                   I support restricting the use of electricity at peak times in the summer
+9                   I support restricting the use of electricity at peak times in the summer
+10                  I support restricting the use of electricity at peak times in the summer
+11                  I support restricting the use of electricity at peak times in the summer
+12                  I support restricting the use of electricity at peak times in the summer
+13                  I support restricting the use of electricity at peak times in the summer
+14                  I support restricting the use of electricity at peak times in the summer
+15                  I support restricting the use of electricity at peak times in the summer
+16                  I support restricting the use of electricity at peak times in the summer
+17                  I support restricting the use of electricity at peak times in the summer
+18                  I support restricting the use of electricity at peak times in the summer
+19                  I support restricting the use of electricity at peak times in the summer
+20                  I support restricting the use of electricity at peak times in the summer
+21                                        Carbon tax on food on food products and beverages.
+22                                        Carbon tax on food on food products and beverages.
+23                                        Carbon tax on food on food products and beverages.
+24                                        Carbon tax on food on food products and beverages.
+25                                        Carbon tax on food on food products and beverages.
+26                                        Carbon tax on food on food products and beverages.
+27                                        Carbon tax on food on food products and beverages.
+28                                        Carbon tax on food on food products and beverages.
+29                                        Carbon tax on food on food products and beverages.
+30                                        Carbon tax on food on food products and beverages.
+31                                        Carbon tax on food on food products and beverages.
+32                                        Carbon tax on food on food products and beverages.
+33                                        Carbon tax on food on food products and beverages.
+34                                        Carbon tax on food on food products and beverages.
+35                                        Carbon tax on food on food products and beverages.
+36                                        Carbon tax on food on food products and beverages.
+37                                        Carbon tax on food on food products and beverages.
+38                                        Carbon tax on food on food products and beverages.
+39                                        Carbon tax on food on food products and beverages.
+40                                        Carbon tax on food on food products and beverages.
+41                              UK should not commit to reaching net zero emissions by 2050.
+42                              UK should not commit to reaching net zero emissions by 2050.
+43                              UK should not commit to reaching net zero emissions by 2050.
+44                              UK should not commit to reaching net zero emissions by 2050.
+45                              UK should not commit to reaching net zero emissions by 2050.
+46                              UK should not commit to reaching net zero emissions by 2050.
+47                              UK should not commit to reaching net zero emissions by 2050.
+48                              UK should not commit to reaching net zero emissions by 2050.
+49                              UK should not commit to reaching net zero emissions by 2050.
+50                              UK should not commit to reaching net zero emissions by 2050.
+51                              UK should not commit to reaching net zero emissions by 2050.
+52                              UK should not commit to reaching net zero emissions by 2050.
+53                              UK should not commit to reaching net zero emissions by 2050.
+54                              UK should not commit to reaching net zero emissions by 2050.
+55                              UK should not commit to reaching net zero emissions by 2050.
+56                              UK should not commit to reaching net zero emissions by 2050.
+57                              UK should not commit to reaching net zero emissions by 2050.
+58                              UK should not commit to reaching net zero emissions by 2050.
+59                              UK should not commit to reaching net zero emissions by 2050.
+60                              UK should not commit to reaching net zero emissions by 2050.
+61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+65 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+66 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+67 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+68 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+69 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+70 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+71 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+72 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+73 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+74 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+75 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+76 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+77 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+78 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+79 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+80 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                    variable  coefficient        SE          p star
+1                (Intercept)  0.670016624 0.8915859 0.45235868     
+2        as.factor(list_id)2  0.629788206 0.5975324 0.29189133     
+3        as.factor(list_id)3 -0.686432556 0.5967433 0.25002120     
+4        as.factor(list_id)4  0.895661825 0.6628898 0.17664825     
+5  framing_effectconsequence -1.134622699 0.6651724 0.08805329    *
+6    framing_effectMetOffice -0.267843993 0.5995719 0.65507334     
+7           framing_effectUN -1.781055652 0.7619379 0.01941144   **
+8                  co2_value  0.104922559 0.1989207 0.59787480     
+9        where_liveRuralarea -0.004712023 0.5521416 0.99319087     
+10      where_liveCitycentre  0.068778414 0.5577916 0.90186570     
+11           dietPescatarian  0.374486188 0.6763420 0.57978859     
+12            dietvegetarian  2.676495282 1.0258274 0.00907784  ***
+13                  age18_34 -0.451363397 0.5231065 0.38821895     
+14                    age55_ -0.914813090 0.6035445 0.12958654     
+15                 is_manyes -0.017123335 0.4759812 0.97130244     
+16       higher_educationyes  0.221943122 0.4753205 0.64054734     
+17               income0_20k -0.751607977 0.6117360 0.21920395     
+18              income30_40k -1.690578666 0.9342661 0.07036934    *
+19                income40k_ -0.294225568 0.6827645 0.66651728     
+20       incomenot_specified  0.664302034 0.7362916 0.36693638     
+21               (Intercept) -0.712924910 0.7963491 0.37065789     
+22       as.factor(list_id)2  0.062262142 0.5423688 0.90860627     
+23       as.factor(list_id)3 -0.161396259 0.5909613 0.78477018     
+24       as.factor(list_id)4 -1.711306468 0.6817441 0.01206666   **
+25 framing_effectconsequence -0.582791468 0.6197111 0.34699986     
+26   framing_effectMetOffice  0.080887968 0.5589790 0.88494249     
+27          framing_effectUN -0.215358508 0.6265871 0.73107128     
+28                 co2_value  0.049346078 0.1667247 0.76725036     
+29       where_liveRuralarea  0.760496033 0.5705094 0.18252778     
+30      where_liveCitycentre  0.958769629 0.4875176 0.04922520   **
+31           dietPescatarian  1.353059312 0.5905386 0.02195017   **
+32            dietvegetarian  1.679318511 0.8927679 0.05996855    *
+33                  age18_34  0.396189887 0.4912862 0.41999268     
+34                    age55_ -0.674856400 0.5752965 0.24077238     
+35                 is_manyes -0.118164474 0.4193773 0.77812623     
+36       higher_educationyes  0.440687962 0.4687067 0.34710407     
+37               income0_20k -0.824072923 0.6408641 0.19848574     
+38              income30_40k -0.855246175 0.6866634 0.21294435     
+39                income40k_ -0.341143955 0.6527149 0.60121517     
+40       incomenot_specified -0.812858704 0.6726276 0.22686169     
+41               (Intercept)  0.710595352 0.7766575 0.36022292     
+42       as.factor(list_id)2 -0.960254040 0.6120799 0.11668575     
+43       as.factor(list_id)3 -1.162891708 0.5472433 0.03358666   **
+44       as.factor(list_id)4 -1.232277006 0.5888681 0.03638313   **
+45 framing_effectconsequence -0.614398705 0.5905754 0.29818233     
+46   framing_effectMetOffice -0.191600721 0.5341061 0.71979593     
+47          framing_effectUN -0.171537055 0.5840648 0.76899077     
+48                 co2_value  0.014598477 0.1403697 0.91716918     
+49       where_liveRuralarea -0.407834885 0.5447444 0.45405494     
+50      where_liveCitycentre  0.134916488 0.4570179 0.76783307     
+51           dietPescatarian  0.690141418 0.6081296 0.25643437     
+52            dietvegetarian  1.126701239 0.7164517 0.11580844     
+53                  age18_34  0.086576583 0.4648092 0.85223883     
+54                    age55_ -0.619426591 0.5756632 0.28191717     
+55                 is_manyes  0.283540868 0.4042437 0.48304672     
+56       higher_educationyes  0.381699622 0.4479494 0.39415619     
+57               income0_20k -0.287545951 0.5836401 0.62224093     
+58              income30_40k -2.152507494 0.8739772 0.01378232   **
+59                income40k_ -1.327582367 0.6128224 0.03028513   **
+60       incomenot_specified -0.330069830 0.6290967 0.59981075     
+61               (Intercept) -0.133893780 0.8869279 0.88000448     
+62       as.factor(list_id)2 -0.375029430 0.5665466 0.50799887     
+63       as.factor(list_id)3 -0.312535680 0.5444437 0.56593674     
+64       as.factor(list_id)4 -0.471711413 0.6079154 0.43777905     
+65 framing_effectconsequence -0.043630021 0.5948726 0.94153280     
+66   framing_effectMetOffice  0.148321340 0.5415136 0.78416039     
+67          framing_effectUN  0.475269954 0.5884951 0.41931962     
+68                 co2_value -0.070727697 0.1597438 0.65794137     
+69       where_liveRuralarea -0.254387891 0.6119207 0.67761466     
+70      where_liveCitycentre  0.210212034 0.4434265 0.63545507     
+71           dietPescatarian  0.437473811 0.6286608 0.48650267     
+72            dietvegetarian  1.336362589 0.7995327 0.09463688    *
+73                  age18_34  0.470627302 0.4575577 0.30368468     
+74                    age55_ -0.493110340 0.5631698 0.38124861     
+75                 is_manyes  0.537992056 0.4128498 0.19253448     
+76       higher_educationyes  0.286370645 0.4362569 0.51154970     
+77               income0_20k  0.035001952 0.6082620 0.95411170     
+78              income30_40k -0.802822810 0.6996772 0.25120855     
+79                income40k_ -0.343219273 0.6209099 0.58042213     
+80       incomenot_specified -0.347517825 0.6391976 0.58666289     
+Fitting model using climate attitudes + demographics...
+                                                                                    statement
+1                    I support restricting the use of electricity at peak times in the summer
+2                    I support restricting the use of electricity at peak times in the summer
+3                    I support restricting the use of electricity at peak times in the summer
+4                    I support restricting the use of electricity at peak times in the summer
+5                    I support restricting the use of electricity at peak times in the summer
+6                    I support restricting the use of electricity at peak times in the summer
+7                    I support restricting the use of electricity at peak times in the summer
+8                    I support restricting the use of electricity at peak times in the summer
+9                    I support restricting the use of electricity at peak times in the summer
+10                   I support restricting the use of electricity at peak times in the summer
+11                   I support restricting the use of electricity at peak times in the summer
+12                   I support restricting the use of electricity at peak times in the summer
+13                   I support restricting the use of electricity at peak times in the summer
+14                   I support restricting the use of electricity at peak times in the summer
+15                   I support restricting the use of electricity at peak times in the summer
+16                   I support restricting the use of electricity at peak times in the summer
+17                   I support restricting the use of electricity at peak times in the summer
+18                   I support restricting the use of electricity at peak times in the summer
+19                   I support restricting the use of electricity at peak times in the summer
+20                   I support restricting the use of electricity at peak times in the summer
+21                   I support restricting the use of electricity at peak times in the summer
+22                   I support restricting the use of electricity at peak times in the summer
+23                   I support restricting the use of electricity at peak times in the summer
+24                   I support restricting the use of electricity at peak times in the summer
+25                   I support restricting the use of electricity at peak times in the summer
+26                   I support restricting the use of electricity at peak times in the summer
+27                   I support restricting the use of electricity at peak times in the summer
+28                                         Carbon tax on food on food products and beverages.
+29                                         Carbon tax on food on food products and beverages.
+30                                         Carbon tax on food on food products and beverages.
+31                                         Carbon tax on food on food products and beverages.
+32                                         Carbon tax on food on food products and beverages.
+33                                         Carbon tax on food on food products and beverages.
+34                                         Carbon tax on food on food products and beverages.
+35                                         Carbon tax on food on food products and beverages.
+36                                         Carbon tax on food on food products and beverages.
+37                                         Carbon tax on food on food products and beverages.
+38                                         Carbon tax on food on food products and beverages.
+39                                         Carbon tax on food on food products and beverages.
+40                                         Carbon tax on food on food products and beverages.
+41                                         Carbon tax on food on food products and beverages.
+42                                         Carbon tax on food on food products and beverages.
+43                                         Carbon tax on food on food products and beverages.
+44                                         Carbon tax on food on food products and beverages.
+45                                         Carbon tax on food on food products and beverages.
+46                                         Carbon tax on food on food products and beverages.
+47                                         Carbon tax on food on food products and beverages.
+48                                         Carbon tax on food on food products and beverages.
+49                                         Carbon tax on food on food products and beverages.
+50                                         Carbon tax on food on food products and beverages.
+51                                         Carbon tax on food on food products and beverages.
+52                                         Carbon tax on food on food products and beverages.
+53                                         Carbon tax on food on food products and beverages.
+54                                         Carbon tax on food on food products and beverages.
+55                               UK should not commit to reaching net zero emissions by 2050.
+56                               UK should not commit to reaching net zero emissions by 2050.
+57                               UK should not commit to reaching net zero emissions by 2050.
+58                               UK should not commit to reaching net zero emissions by 2050.
+59                               UK should not commit to reaching net zero emissions by 2050.
+60                               UK should not commit to reaching net zero emissions by 2050.
+61                               UK should not commit to reaching net zero emissions by 2050.
+62                               UK should not commit to reaching net zero emissions by 2050.
+63                               UK should not commit to reaching net zero emissions by 2050.
+64                               UK should not commit to reaching net zero emissions by 2050.
+65                               UK should not commit to reaching net zero emissions by 2050.
+66                               UK should not commit to reaching net zero emissions by 2050.
+67                               UK should not commit to reaching net zero emissions by 2050.
+68                               UK should not commit to reaching net zero emissions by 2050.
+69                               UK should not commit to reaching net zero emissions by 2050.
+70                               UK should not commit to reaching net zero emissions by 2050.
+71                               UK should not commit to reaching net zero emissions by 2050.
+72                               UK should not commit to reaching net zero emissions by 2050.
+73                               UK should not commit to reaching net zero emissions by 2050.
+74                               UK should not commit to reaching net zero emissions by 2050.
+75                               UK should not commit to reaching net zero emissions by 2050.
+76                               UK should not commit to reaching net zero emissions by 2050.
+77                               UK should not commit to reaching net zero emissions by 2050.
+78                               UK should not commit to reaching net zero emissions by 2050.
+79                               UK should not commit to reaching net zero emissions by 2050.
+80                               UK should not commit to reaching net zero emissions by 2050.
+81                               UK should not commit to reaching net zero emissions by 2050.
+82  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+83  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+84  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+85  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+86  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+87  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+88  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+89  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+90  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+91  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+92  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+93  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+94  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+95  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+96  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+97  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+98  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+99  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+100 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+101 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+102 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+103 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+104 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+105 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+106 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+107 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+108 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                   variable coefficient        SE          p star
+1               (Intercept)  1.84658581 0.9878011 0.06156853    *
+2       as.factor(list_id)2  0.25900936 0.6771016 0.70207083     
+3       as.factor(list_id)3 -0.73252436 0.6365418 0.24981966     
+4       as.factor(list_id)4  0.67998350 0.6973848 0.32953656     
+5       climate_importantno -0.93511677 0.6361671 0.14158257     
+6            know_climateno  0.48553574 0.6025787 0.42037938     
+7        climate_causehuman -0.62567877 0.5484100 0.25391320     
+8      climate_causenatural -0.18998898 1.0202974 0.85228055     
+9       climate_causeOthers -1.20707550 0.9641263 0.21057386     
+10  Q12_1Unsure_or_disagree -0.65637686 0.5787666 0.25675428     
+11  Q12_2Unsure_or_disagree  0.12598305 0.7145652 0.86005253     
+12  Q12_3Unsure_or_disagree  0.91459324 0.7024918 0.19294123     
+13  Q12_4Unsure_or_disagree  0.05811311 0.5818745 0.92044576     
+14  Q12_5Unsure_or_disagree -0.94259822 0.6057200 0.11966967     
+15  Q12_6Unsure_or_disagree -0.39506218 0.5968245 0.50800952     
+16      where_liveRuralarea  0.47738608 0.7391630 0.51837855     
+17     where_liveCitycentre -0.21224249 0.6659407 0.74994581     
+18          dietPescatarian  0.21090583 0.8060887 0.79359825     
+19           dietvegetarian  2.35647848 1.0153125 0.02029014   **
+20                 age18_34 -0.52132704 0.6388726 0.41449388     
+21                   age55_ -1.20740697 0.6382780 0.05853587    *
+22                is_manyes -0.15677037 0.5029050 0.75524602     
+23      higher_educationyes -0.33832946 0.5474255 0.53655064     
+24              income0_20k -0.41157986 0.7482572 0.58228418     
+25             income30_40k -1.45153922 0.9668501 0.13327608     
+26               income40k_ -0.20996662 0.7219877 0.77119093     
+27      incomenot_specified  0.72710059 0.7711551 0.34574637     
+28              (Intercept)  0.59070697 0.9697638 0.54244186     
+29      as.factor(list_id)2 -0.06118762 0.6151767 0.92077027     
+30      as.factor(list_id)3 -0.11154638 0.6392221 0.86146992     
+31      as.factor(list_id)4 -1.93032553 0.7717404 0.01237513   **
+32      climate_importantno -0.67586297 0.6167505 0.27314660     
+33           know_climateno -0.43922830 0.5890933 0.45590870     
+34       climate_causehuman  0.29741520 0.5638110 0.59784039     
+35     climate_causenatural  0.31804303 0.9724098 0.74361730     
+36      climate_causeOthers  1.44554156 0.8497805 0.08892864    *
+37  Q12_1Unsure_or_disagree -0.17073322 0.5136822 0.73960892     
+38  Q12_2Unsure_or_disagree  0.01079309 0.6491424 0.98673443     
+39  Q12_3Unsure_or_disagree  0.56237961 0.5701953 0.32398936     
+40  Q12_4Unsure_or_disagree -0.30844457 0.5642565 0.58462680     
+41  Q12_5Unsure_or_disagree -1.11315659 0.5407385 0.03953392   **
+42  Q12_6Unsure_or_disagree  0.06962667 0.5650285 0.90192749     
+43      where_liveRuralarea  0.94127043 0.7084697 0.18398109     
+44     where_liveCitycentre  0.39934590 0.5503483 0.46806931     
+45          dietPescatarian  1.16450767 0.6620079 0.07856835    *
+46           dietvegetarian  1.46940499 0.8434281 0.08147664    *
+47                 age18_34  0.25227645 0.5227696 0.62939632     
+48                   age55_ -0.85928152 0.6635590 0.19533447     
+49                is_manyes -0.57389563 0.5980193 0.33722603     
+50      higher_educationyes  0.57298370 0.5423470 0.29074482     
+51              income0_20k -0.88509326 0.7697755 0.25022335     
+52             income30_40k -0.73348440 0.8306741 0.37723680     
+53               income40k_ -0.03014106 0.7228777 0.96674109     
+54      incomenot_specified -0.92918798 0.7544749 0.21811010     
+55              (Intercept)  3.00942632 1.3062037 0.02122552   **
+56      as.factor(list_id)2 -1.56567604 0.8527145 0.06634166    *
+57      as.factor(list_id)3 -1.24894373 0.7500389 0.09587844    *
+58      as.factor(list_id)4 -2.03844014 0.8333646 0.01444364   **
+59      climate_importantno  0.19258917 0.7093020 0.78599168     
+60           know_climateno -0.79508173 0.6664575 0.23287059     
+61       climate_causehuman  0.55284348 0.6702496 0.40946685     
+62     climate_causenatural  0.57616004 0.9571157 0.54719056     
+63      climate_causeOthers -0.96698687 1.0920408 0.37589456     
+64  Q12_1Unsure_or_disagree -0.45902886 0.6499999 0.48006478     
+65  Q12_2Unsure_or_disagree  1.68043295 0.8207348 0.04061158   **
+66  Q12_3Unsure_or_disagree  1.28986052 0.8355697 0.12266347     
+67  Q12_4Unsure_or_disagree -1.33842930 0.7107819 0.05969521    *
+68  Q12_5Unsure_or_disagree -0.64303257 0.6155367 0.29617561     
+69  Q12_6Unsure_or_disagree -0.38112247 0.7424792 0.60773403     
+70      where_liveRuralarea -0.21459661 0.6793081 0.75207485     
+71     where_liveCitycentre -0.46516823 0.6338843 0.46304759     
+72          dietPescatarian  1.48779304 0.8266806 0.07190497    *
+73           dietvegetarian  1.40694225 0.7993188 0.07837787    *
+74                 age18_34 -0.60788420 0.6010122 0.31180870     
+75                   age55_ -1.28923343 0.7656791 0.09222462    *
+76                is_manyes -0.10883561 0.5472668 0.84236350     
+77      higher_educationyes  0.30300303 0.7146043 0.67155479     
+78              income0_20k -0.35150566 0.7727215 0.64918618     
+79             income30_40k -2.59164153 1.0380903 0.01254090   **
+80               income40k_ -1.96056905 0.8139035 0.01600301   **
+81      incomenot_specified -0.51194843 0.7880056 0.51590142     
+82              (Intercept)  0.33632934 1.2101651 0.78107361     
+83      as.factor(list_id)2 -0.27862236 0.6564410 0.67124213     
+84      as.factor(list_id)3 -0.37375595 0.6064160 0.53767286     
+85      as.factor(list_id)4 -0.75548409 0.7032883 0.28272553     
+86      climate_importantno -0.91065138 0.6009308 0.12967075     
+87           know_climateno -0.39099419 0.5081459 0.44162467     
+88       climate_causehuman  0.54798948 0.6025984 0.36315085     
+89     climate_causenatural  1.76092032 1.4138997 0.21297187     
+90      climate_causeOthers -1.00400503 0.9425789 0.28679984     
+91  Q12_1Unsure_or_disagree -0.24073513 0.5604272 0.66751829     
+92  Q12_2Unsure_or_disagree -0.49734651 0.9744021 0.60976287     
+93  Q12_3Unsure_or_disagree  0.62959733 0.6652605 0.34394859     
+94  Q12_4Unsure_or_disagree  0.21843040 0.6190167 0.72418836     
+95  Q12_5Unsure_or_disagree  0.13032052 0.6209952 0.83377885     
+96  Q12_6Unsure_or_disagree  0.90039031 1.0784642 0.40378419     
+97      where_liveRuralarea -0.15573015 0.7546901 0.83651767     
+98     where_liveCitycentre -0.34167404 0.5542932 0.53762133     
+99          dietPescatarian  0.49824672 1.1233403 0.65737496     
+100          dietvegetarian  1.71731101 0.8849824 0.05231859    *
+101                age18_34  0.36372272 0.5314907 0.49375768     
+102                  age55_ -1.16127625 0.6556392 0.07652539    *
+103               is_manyes  0.42154457 0.5290095 0.42553450     
+104     higher_educationyes -0.11748716 0.4975173 0.81331868     
+105             income0_20k  0.66880466 0.9567085 0.48450928     
+106            income30_40k -0.84177337 0.8200588 0.30466570     
+107              income40k_ -0.09027865 0.7199680 0.90021276     
+108     incomenot_specified -0.56311161 0.7227720 0.43592084     
+Fitting model using information treatment + climate attitudes + demographics...
+                                                                                    statement
+1                    I support restricting the use of electricity at peak times in the summer
+2                    I support restricting the use of electricity at peak times in the summer
+3                    I support restricting the use of electricity at peak times in the summer
+4                    I support restricting the use of electricity at peak times in the summer
+5                    I support restricting the use of electricity at peak times in the summer
+6                    I support restricting the use of electricity at peak times in the summer
+7                    I support restricting the use of electricity at peak times in the summer
+8                    I support restricting the use of electricity at peak times in the summer
+9                    I support restricting the use of electricity at peak times in the summer
+10                   I support restricting the use of electricity at peak times in the summer
+11                   I support restricting the use of electricity at peak times in the summer
+12                   I support restricting the use of electricity at peak times in the summer
+13                   I support restricting the use of electricity at peak times in the summer
+14                   I support restricting the use of electricity at peak times in the summer
+15                   I support restricting the use of electricity at peak times in the summer
+16                   I support restricting the use of electricity at peak times in the summer
+17                   I support restricting the use of electricity at peak times in the summer
+18                   I support restricting the use of electricity at peak times in the summer
+19                   I support restricting the use of electricity at peak times in the summer
+20                   I support restricting the use of electricity at peak times in the summer
+21                   I support restricting the use of electricity at peak times in the summer
+22                   I support restricting the use of electricity at peak times in the summer
+23                   I support restricting the use of electricity at peak times in the summer
+24                   I support restricting the use of electricity at peak times in the summer
+25                   I support restricting the use of electricity at peak times in the summer
+26                   I support restricting the use of electricity at peak times in the summer
+27                   I support restricting the use of electricity at peak times in the summer
+28                   I support restricting the use of electricity at peak times in the summer
+29                   I support restricting the use of electricity at peak times in the summer
+30                   I support restricting the use of electricity at peak times in the summer
+31                   I support restricting the use of electricity at peak times in the summer
+32                                         Carbon tax on food on food products and beverages.
+33                                         Carbon tax on food on food products and beverages.
+34                                         Carbon tax on food on food products and beverages.
+35                                         Carbon tax on food on food products and beverages.
+36                                         Carbon tax on food on food products and beverages.
+37                                         Carbon tax on food on food products and beverages.
+38                                         Carbon tax on food on food products and beverages.
+39                                         Carbon tax on food on food products and beverages.
+40                                         Carbon tax on food on food products and beverages.
+41                                         Carbon tax on food on food products and beverages.
+42                                         Carbon tax on food on food products and beverages.
+43                                         Carbon tax on food on food products and beverages.
+44                                         Carbon tax on food on food products and beverages.
+45                                         Carbon tax on food on food products and beverages.
+46                                         Carbon tax on food on food products and beverages.
+47                                         Carbon tax on food on food products and beverages.
+48                                         Carbon tax on food on food products and beverages.
+49                                         Carbon tax on food on food products and beverages.
+50                                         Carbon tax on food on food products and beverages.
+51                                         Carbon tax on food on food products and beverages.
+52                                         Carbon tax on food on food products and beverages.
+53                                         Carbon tax on food on food products and beverages.
+54                                         Carbon tax on food on food products and beverages.
+55                                         Carbon tax on food on food products and beverages.
+56                                         Carbon tax on food on food products and beverages.
+57                                         Carbon tax on food on food products and beverages.
+58                                         Carbon tax on food on food products and beverages.
+59                                         Carbon tax on food on food products and beverages.
+60                                         Carbon tax on food on food products and beverages.
+61                                         Carbon tax on food on food products and beverages.
+62                                         Carbon tax on food on food products and beverages.
+63                               UK should not commit to reaching net zero emissions by 2050.
+64                               UK should not commit to reaching net zero emissions by 2050.
+65                               UK should not commit to reaching net zero emissions by 2050.
+66                               UK should not commit to reaching net zero emissions by 2050.
+67                               UK should not commit to reaching net zero emissions by 2050.
+68                               UK should not commit to reaching net zero emissions by 2050.
+69                               UK should not commit to reaching net zero emissions by 2050.
+70                               UK should not commit to reaching net zero emissions by 2050.
+71                               UK should not commit to reaching net zero emissions by 2050.
+72                               UK should not commit to reaching net zero emissions by 2050.
+73                               UK should not commit to reaching net zero emissions by 2050.
+74                               UK should not commit to reaching net zero emissions by 2050.
+75                               UK should not commit to reaching net zero emissions by 2050.
+76                               UK should not commit to reaching net zero emissions by 2050.
+77                               UK should not commit to reaching net zero emissions by 2050.
+78                               UK should not commit to reaching net zero emissions by 2050.
+79                               UK should not commit to reaching net zero emissions by 2050.
+80                               UK should not commit to reaching net zero emissions by 2050.
+81                               UK should not commit to reaching net zero emissions by 2050.
+82                               UK should not commit to reaching net zero emissions by 2050.
+83                               UK should not commit to reaching net zero emissions by 2050.
+84                               UK should not commit to reaching net zero emissions by 2050.
+85                               UK should not commit to reaching net zero emissions by 2050.
+86                               UK should not commit to reaching net zero emissions by 2050.
+87                               UK should not commit to reaching net zero emissions by 2050.
+88                               UK should not commit to reaching net zero emissions by 2050.
+89                               UK should not commit to reaching net zero emissions by 2050.
+90                               UK should not commit to reaching net zero emissions by 2050.
+91                               UK should not commit to reaching net zero emissions by 2050.
+92                               UK should not commit to reaching net zero emissions by 2050.
+93                               UK should not commit to reaching net zero emissions by 2050.
+94  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+95  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+96  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+97  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+98  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+99  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+100 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+101 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+102 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+103 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+104 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+105 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+106 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+107 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+108 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+109 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+110 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+111 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+112 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+113 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+114 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+115 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+116 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+117 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+118 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+119 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+120 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+121 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+122 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+123 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+124 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                     variable  coefficient        SE           p star
+1                 (Intercept)  3.243653860 1.6412117 0.048112037   **
+2         as.factor(list_id)2  0.813465031 0.8607614 0.344631862     
+3         as.factor(list_id)3 -0.657037694 0.7737821 0.395811753     
+4         as.factor(list_id)4  1.269997328 0.9052355 0.160632687     
+5   framing_effectconsequence -1.767716341 1.0928721 0.105771243     
+6     framing_effectMetOffice -0.369038359 0.8886476 0.677936296     
+7            framing_effectUN -1.929505735 1.3475953 0.152197075     
+8                   co2_value  0.046076400 0.3245090 0.887089455     
+9         climate_importantno -1.415910110 0.7954520 0.075074831    *
+10             know_climateno  0.446020544 0.7477818 0.550869199     
+11         climate_causehuman -0.937242567 0.7054530 0.183990372     
+12       climate_causenatural -0.144793694 1.2064519 0.904470367     
+13        climate_causeOthers -1.179493724 1.1915122 0.322216526     
+14    Q12_1Unsure_or_disagree -1.054362146 0.8945910 0.238558746     
+15    Q12_2Unsure_or_disagree  0.284365035 0.9035333 0.752970022     
+16    Q12_3Unsure_or_disagree  0.728606617 0.7865467 0.354271303     
+17    Q12_4Unsure_or_disagree -0.163586444 0.7324141 0.823261261     
+18    Q12_5Unsure_or_disagree -0.632263997 0.7684095 0.410609433     
+19    Q12_6Unsure_or_disagree -0.209701740 0.8345740 0.801606920     
+20        where_liveRuralarea -0.062701138 0.8296853 0.939759458     
+21       where_liveCitycentre -0.640201783 0.9063976 0.479992549     
+22            dietPescatarian  0.690105256 0.9997135 0.490003625     
+23             dietvegetarian  3.449282736 1.5604701 0.027076538   **
+24                   age18_34 -0.574528358 0.8847212 0.516086888     
+25                     age55_ -1.602827711 0.8256341 0.052218335    *
+26                  is_manyes -0.106677748 0.5848577 0.855269220     
+27        higher_educationyes -0.237619512 0.6537635 0.716258267     
+28                income0_20k -0.720885044 0.8729475 0.408914299     
+29               income30_40k -2.386830402 1.8342641 0.193173976     
+30                 income40k_ -0.547824335 0.8432218 0.515898951     
+31        incomenot_specified  0.613517923 0.9557290 0.520913989     
+32                (Intercept)  1.085599964 1.1598353 0.349275809     
+33        as.factor(list_id)2 -0.014443243 0.6265543 0.981608905     
+34        as.factor(list_id)3 -0.087399970 0.6534878 0.893605135     
+35        as.factor(list_id)4 -1.958571273 0.7746045 0.011455796   **
+36  framing_effectconsequence -0.805163880 0.7114810 0.257771932     
+37    framing_effectMetOffice -0.021847876 0.6961988 0.974965167     
+38           framing_effectUN  0.024136171 0.7396207 0.973967114     
+39                  co2_value -0.047123904 0.1771736 0.790257790     
+40        climate_importantno -0.929315590 0.6416461 0.147524655     
+41             know_climateno -0.462493459 0.6049104 0.444530507     
+42         climate_causehuman  0.281176168 0.5617847 0.616719385     
+43       climate_causenatural  0.351108587 1.0022664 0.726102577     
+44        climate_causeOthers  1.516356509 0.8743265 0.082862412    *
+45    Q12_1Unsure_or_disagree -0.269703366 0.5566399 0.628016627     
+46    Q12_2Unsure_or_disagree -0.002360341 0.6489862 0.997098127     
+47    Q12_3Unsure_or_disagree  0.558379565 0.5859545 0.340620369     
+48    Q12_4Unsure_or_disagree -0.346311657 0.5997702 0.563664380     
+49    Q12_5Unsure_or_disagree -1.092381283 0.5524139 0.047988673   **
+50    Q12_6Unsure_or_disagree  0.135906039 0.6074555 0.822967370     
+51        where_liveRuralarea  0.678183093 0.6677263 0.309791160     
+52       where_liveCitycentre  0.310691725 0.5551467 0.575713433     
+53            dietPescatarian  1.289343855 0.7220616 0.074157167    *
+54             dietvegetarian  1.651810359 0.9217269 0.073119793    *
+55                   age18_34  0.158128543 0.5634808 0.778995679     
+56                     age55_ -0.827645660 0.6710444 0.217437979     
+57                  is_manyes -0.545252462 0.5604656 0.330624790     
+58        higher_educationyes  0.552933535 0.5562209 0.320179162     
+59                income0_20k -0.833618990 0.8061429 0.301097180     
+60               income30_40k -0.812149184 0.8264025 0.325729206     
+61                 income40k_ -0.130702610 0.7231370 0.856568596     
+62        incomenot_specified -1.031551727 0.7728072 0.181938160     
+63                (Intercept)  3.907103024 1.6185654 0.015781511   **
+64        as.factor(list_id)2 -1.784472811 0.8922682 0.045507957   **
+65        as.factor(list_id)3 -1.332336696 0.8878622 0.133455923     
+66        as.factor(list_id)4 -2.087923203 0.9399868 0.026335659   **
+67  framing_effectconsequence -1.250403892 0.7834517 0.110484528     
+68    framing_effectMetOffice -0.613518087 0.7863621 0.435274391     
+69           framing_effectUN  0.058936574 0.7988443 0.941187590     
+70                  co2_value  0.009817604 0.1931222 0.959456027     
+71        climate_importantno  0.062398665 0.8923715 0.944253721     
+72             know_climateno -1.247136227 0.8326845 0.134203519     
+73         climate_causehuman  0.651290275 0.6875496 0.343504812     
+74       climate_causenatural  0.721631158 0.9905245 0.466286516     
+75        climate_causeOthers -0.957813065 1.1138441 0.389834983     
+76    Q12_1Unsure_or_disagree -0.422595621 0.8199748 0.606290075     
+77    Q12_2Unsure_or_disagree  1.995620988 0.9845654 0.042672075   **
+78    Q12_3Unsure_or_disagree  1.520885772 0.9251941 0.100205990     
+79    Q12_4Unsure_or_disagree -1.562308743 0.8104068 0.053879013    *
+80    Q12_5Unsure_or_disagree -0.522496004 0.7273818 0.472557355     
+81    Q12_6Unsure_or_disagree -0.473334061 0.7778336 0.542836882     
+82        where_liveRuralarea -0.435003398 0.6940384 0.530809113     
+83       where_liveCitycentre -0.537580071 0.7189094 0.454597875     
+84            dietPescatarian  2.074490139 1.0765046 0.053972018    *
+85             dietvegetarian  1.727588195 0.8953888 0.053677745    *
+86                   age18_34 -0.465057046 0.6426038 0.469245447     
+87                     age55_ -1.529669004 0.8306744 0.065551489    *
+88                  is_manyes -0.267421349 0.6128254 0.662565062     
+89        higher_educationyes  0.108357979 0.7820885 0.889806136     
+90                income0_20k -0.437640832 0.9399242 0.641492608     
+91               income30_40k -3.348851571 1.2222557 0.006145894  ***
+92                 income40k_ -2.133859103 0.8765256 0.014914378   **
+93        incomenot_specified -0.826214300 0.8668584 0.340532630     
+94                (Intercept)  0.678018314 1.4273603 0.634775906     
+95        as.factor(list_id)2 -0.391579296 0.6991203 0.575409241     
+96        as.factor(list_id)3 -0.816428620 0.7245600 0.259830339     
+97        as.factor(list_id)4 -0.870556931 0.7495776 0.245480593     
+98  framing_effectconsequence -0.455228812 0.8315717 0.584082100     
+99    framing_effectMetOffice -0.056134575 0.6479698 0.930964448     
+100          framing_effectUN  1.200480590 0.7777161 0.122685861     
+101                 co2_value -0.099838002 0.2146537 0.641851222     
+102       climate_importantno -1.300949438 0.5824366 0.025507251   **
+103            know_climateno -0.606767999 0.5470686 0.267375820     
+104        climate_causehuman  0.373453307 0.5990699 0.533029198     
+105      climate_causenatural  2.269165439 1.2260289 0.064194683    *
+106       climate_causeOthers -1.135600340 1.0235126 0.267209018     
+107   Q12_1Unsure_or_disagree -0.319607953 0.6046307 0.597082762     
+108   Q12_2Unsure_or_disagree -0.056677450 0.9994275 0.954776272     
+109   Q12_3Unsure_or_disagree  0.696594574 0.8353702 0.404351271     
+110   Q12_4Unsure_or_disagree  0.187005325 0.6466376 0.772431031     
+111   Q12_5Unsure_or_disagree  0.270001194 0.6969181 0.698444038     
+112   Q12_6Unsure_or_disagree  0.910694291 0.7817188 0.244023183     
+113       where_liveRuralarea -0.853579435 0.8163179 0.295724587     
+114      where_liveCitycentre -0.621609236 0.5879071 0.290363013     
+115           dietPescatarian  0.184573804 0.9763366 0.850055746     
+116            dietvegetarian  1.908271399 0.9880422 0.053437766    *
+117                  age18_34  0.719808910 0.6312952 0.254198956     
+118                    age55_ -1.134584261 0.7048239 0.107454307     
+119                 is_manyes  0.666859388 0.5168215 0.196943442     
+120       higher_educationyes -0.089420059 0.5298291 0.865976356     
+121               income0_20k  0.711285727 0.9027596 0.430754252     
+122              income30_40k -1.317541236 0.9273885 0.155403871     
+123                income40k_ -0.237694906 0.7546947 0.752795783     
+124       incomenot_specified -0.724794174 0.7620650 0.341557483     
+Save output...
+[1] "Done!"
