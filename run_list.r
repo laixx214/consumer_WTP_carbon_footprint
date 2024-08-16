@@ -349,13 +349,13 @@ dt_est <-
             know_climate >= 4 ~ "yes",
             .default = "no"
         ),
-        climate_cause = case_when(
-            climate_cause %in% c(
-                "noclimatechange",
-                "notknow"
-            ) ~ "Others",
-            .default = climate_cause
-        ),
+        # climate_cause = case_when(
+        #     climate_cause %in% c(
+        #         "noclimatechange",
+        #         "notknow"
+        #     ) ~ "Others",
+        #     .default = climate_cause
+        # ),
         is_man = ifelse(
             gender == "Man",
             "yes",

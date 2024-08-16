@@ -96,7 +96,7 @@ Fitting model using climate attitudes...
 13                  I support restricting the use of electricity at peak times in the summer
 14                  I support restricting the use of electricity at peak times in the summer
 15                  I support restricting the use of electricity at peak times in the summer
-16                                        Carbon tax on food on food products and beverages.
+16                  I support restricting the use of electricity at peak times in the summer
 17                                        Carbon tax on food on food products and beverages.
 18                                        Carbon tax on food on food products and beverages.
 19                                        Carbon tax on food on food products and beverages.
@@ -111,8 +111,8 @@ Fitting model using climate attitudes...
 28                                        Carbon tax on food on food products and beverages.
 29                                        Carbon tax on food on food products and beverages.
 30                                        Carbon tax on food on food products and beverages.
-31                              UK should not commit to reaching net zero emissions by 2050.
-32                              UK should not commit to reaching net zero emissions by 2050.
+31                                        Carbon tax on food on food products and beverages.
+32                                        Carbon tax on food on food products and beverages.
 33                              UK should not commit to reaching net zero emissions by 2050.
 34                              UK should not commit to reaching net zero emissions by 2050.
 35                              UK should not commit to reaching net zero emissions by 2050.
@@ -126,9 +126,9 @@ Fitting model using climate attitudes...
 43                              UK should not commit to reaching net zero emissions by 2050.
 44                              UK should not commit to reaching net zero emissions by 2050.
 45                              UK should not commit to reaching net zero emissions by 2050.
-46 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-47 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-48 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+46                              UK should not commit to reaching net zero emissions by 2050.
+47                              UK should not commit to reaching net zero emissions by 2050.
+48                              UK should not commit to reaching net zero emissions by 2050.
 49 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 50 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 51 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
@@ -141,67 +141,75 @@ Fitting model using climate attitudes...
 58 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 59 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 60 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-                  variable coefficient        SE          p star
-1              (Intercept)  1.11261348 0.5835939 0.05658722    *
-2      as.factor(list_id)2  0.10012938 0.5183579 0.84682856     
-3      as.factor(list_id)3 -1.08272206 0.5545893 0.05090317    *
-4      as.factor(list_id)4  0.38908785 0.5845588 0.50566078     
-5      climate_importantno -1.22607411 0.5011689 0.01442793   **
-6           know_climateno  0.32814713 0.4874291 0.50080719     
-7       climate_causehuman -0.45632615 0.4998744 0.36130477     
-8     climate_causenatural -0.38187609 0.7388206 0.60524514     
-9      climate_causeOthers -0.08323148 0.6800120 0.90258456     
-10 Q12_1Unsure_or_disagree -0.52383258 0.4387055 0.23246169     
-11 Q12_2Unsure_or_disagree  0.10107369 0.5782697 0.86124747     
-12 Q12_3Unsure_or_disagree  0.65069501 0.4847911 0.17952559     
-13 Q12_4Unsure_or_disagree  0.20659717 0.5053122 0.68264933     
-14 Q12_5Unsure_or_disagree -0.86221319 0.5088660 0.09019277    *
-15 Q12_6Unsure_or_disagree -0.30844297 0.4993524 0.53678233     
-16             (Intercept)  0.43861672 0.5751510 0.44569515     
-17     as.factor(list_id)2  0.56701218 0.5649097 0.31551272     
-18     as.factor(list_id)3  0.09041966 0.5975823 0.87973186     
-19     as.factor(list_id)4 -0.86525054 0.6365553 0.17406107     
-20     climate_importantno -1.12489506 0.6050506 0.06300232    *
-21          know_climateno -0.40944459 0.5087418 0.42092468     
-22      climate_causehuman  0.31227484 0.5153169 0.54452407     
-23    climate_causenatural -0.14333231 0.8497119 0.86604566     
-24     climate_causeOthers  1.82887707 0.7796106 0.01898194   **
-25 Q12_1Unsure_or_disagree -0.58089069 0.4512496 0.19799202     
-26 Q12_2Unsure_or_disagree -0.07834194 0.6110885 0.89799019     
-27 Q12_3Unsure_or_disagree  0.22086600 0.5132823 0.66697651     
-28 Q12_4Unsure_or_disagree -0.01202896 0.5676339 0.98309297     
-29 Q12_5Unsure_or_disagree -1.09783453 0.5021949 0.02881031   **
-30 Q12_6Unsure_or_disagree  0.09751333 0.5294904 0.85388441     
-31             (Intercept)  0.58822228 0.6764368 0.38452485     
-32     as.factor(list_id)2 -0.68926952 0.6678714 0.30205375     
-33     as.factor(list_id)3 -0.46429601 0.6506510 0.47548266     
-34     as.factor(list_id)4 -0.82305152 0.6141208 0.18017669     
-35     climate_importantno -0.48494582 0.7342713 0.50896829     
-36          know_climateno -0.42489049 0.5259411 0.41916715     
-37      climate_causehuman  0.52755257 0.5213353 0.31157355     
-38    climate_causenatural -0.10406034 0.8479234 0.90232586     
-39     climate_causeOthers  0.50295911 0.9201419 0.58464644     
-40 Q12_1Unsure_or_disagree -0.01532645 0.5056818 0.97582102     
-41 Q12_2Unsure_or_disagree  1.46738520 0.6154534 0.01711470   **
-42 Q12_3Unsure_or_disagree  0.77577440 0.5422754 0.15254743     
-43 Q12_4Unsure_or_disagree -0.84805672 0.6191007 0.17074299     
-44 Q12_5Unsure_or_disagree -0.88294693 0.5315910 0.09672320    *
-45 Q12_6Unsure_or_disagree -0.46821780 0.5982023 0.43379853     
-46             (Intercept)  0.62919283 0.6114898 0.30350285     
-47     as.factor(list_id)2 -0.29778682 0.5337905 0.57693174     
-48     as.factor(list_id)3 -0.32935060 0.5425999 0.54386016     
-49     as.factor(list_id)4 -0.40255142 0.5987737 0.50139712     
-50     climate_importantno -1.04269376 0.4904878 0.03351741   **
-51          know_climateno -0.40348823 0.4391729 0.35822861     
-52      climate_causehuman  0.59738939 0.4819175 0.21511995     
-53    climate_causenatural  0.89161849 0.7959098 0.26260699     
-54     climate_causeOthers -0.05276829 0.7688684 0.94528326     
-55 Q12_1Unsure_or_disagree -0.38661116 0.4629133 0.40362216     
-56 Q12_2Unsure_or_disagree -0.19771514 0.6453229 0.75931404     
-57 Q12_3Unsure_or_disagree  0.03098613 0.5031619 0.95089506     
-58 Q12_4Unsure_or_disagree  0.21743870 0.5018675 0.66482652     
-59 Q12_5Unsure_or_disagree -0.19775258 0.4790439 0.67974814     
-60 Q12_6Unsure_or_disagree  0.73337385 0.6166040 0.23429184     
+61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+64 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                       variable  coefficient          SE          p star
+1                   (Intercept)  1.157112693   0.5975237 0.05280486    *
+2           as.factor(list_id)2  0.111008381   0.5219594 0.83157947     
+3           as.factor(list_id)3 -1.111771868   0.5620931 0.04793841   **
+4           as.factor(list_id)4  0.393185496   0.5880416 0.50372800     
+5           climate_importantno -1.237943726   0.5078140 0.01477736   **
+6                know_climateno  0.315962553   0.4910192 0.51991068     
+7            climate_causehuman -0.461757011   0.5040122 0.35958172     
+8          climate_causenatural -0.380848530   0.7478597 0.61057610     
+9  climate_causenoclimatechange -0.255873159   1.2690409 0.84020818     
+10         climate_causenotknow  0.190955631   0.7381818 0.79587926     
+11      Q12_1Unsure_or_disagree -0.569209713   0.4485343 0.20442538     
+12      Q12_2Unsure_or_disagree  0.066177284   0.5887106 0.91049789     
+13      Q12_3Unsure_or_disagree  0.667774755   0.4905771 0.17344975     
+14      Q12_4Unsure_or_disagree  0.206241914   0.5107858 0.68637908     
+15      Q12_5Unsure_or_disagree -0.874656945   0.5145329 0.08914883    *
+16      Q12_6Unsure_or_disagree -0.298419822   0.5064648 0.55571288     
+17                  (Intercept)  0.410034222   0.5819953 0.48110160     
+18          as.factor(list_id)2  0.589552288   0.5685705 0.29978123     
+19          as.factor(list_id)3  0.112740385   0.6035228 0.85181442     
+20          as.factor(list_id)4 -0.776749411   0.6415781 0.22601589     
+21          climate_importantno -1.081306069   0.6073775 0.07502906    *
+22               know_climateno -0.423464352   0.5145806 0.41054723     
+23           climate_causehuman  0.320806218   0.5177333 0.53549746     
+24         climate_causenatural -0.146364856   0.8519855 0.86360053     
+25 climate_causenoclimatechange  1.885592719   1.1570603 0.10317744     
+26         climate_causenotknow  1.923391857   0.8820877 0.02922044   **
+27      Q12_1Unsure_or_disagree -0.612623077   0.4486875 0.17213772     
+28      Q12_2Unsure_or_disagree -0.096392097   0.6098006 0.87440046     
+29      Q12_3Unsure_or_disagree  0.236294553   0.5155612 0.64671900     
+30      Q12_4Unsure_or_disagree -0.009217587   0.5772599 0.98726006     
+31      Q12_5Unsure_or_disagree -1.097451199   0.5055934 0.02995989   **
+32      Q12_6Unsure_or_disagree  0.092598429   0.5368364 0.86305302     
+33                  (Intercept)  0.313827645   0.6727830 0.64088492     
+34          as.factor(list_id)2 -0.613671129   0.6722388 0.36130740     
+35          as.factor(list_id)3 -0.376602472   0.6636422 0.57038932     
+36          as.factor(list_id)4 -0.668775590   0.6222174 0.28245255     
+37          climate_importantno -0.452887448   0.7902271 0.56656986     
+38               know_climateno -0.549051506   0.5512912 0.31928061     
+39           climate_causehuman  0.585288937   0.5151137 0.25585923     
+40         climate_causenatural -0.009731403   0.8182085 0.99051054     
+41 climate_causenoclimatechange 10.771013905 527.2311489 0.98370083     
+42         climate_causenotknow -0.714628560   1.5023663 0.63431045     
+43      Q12_1Unsure_or_disagree  0.032067362   0.5017502 0.94904109     
+44      Q12_2Unsure_or_disagree  1.437470231   0.6440177 0.02561263   **
+45      Q12_3Unsure_or_disagree  0.755677424   0.5632946 0.17974794     
+46      Q12_4Unsure_or_disagree -0.742650059   0.6369241 0.24361663     
+47      Q12_5Unsure_or_disagree -0.782923276   0.5502390 0.15477137     
+48      Q12_6Unsure_or_disagree -0.284784576   0.6123294 0.64187131     
+49                  (Intercept)  0.517476304   0.6469093 0.42375663     
+50          as.factor(list_id)2 -0.226837907   0.5404741 0.67470336     
+51          as.factor(list_id)3 -0.325021645   0.5530467 0.55673843     
+52          as.factor(list_id)4 -0.365391774   0.6129787 0.55111371     
+53          climate_importantno -1.108090416   0.5056292 0.02841505   **
+54               know_climateno -0.298037489   0.4490424 0.50687082     
+55           climate_causehuman  0.614839249   0.4858919 0.20573412     
+56         climate_causenatural  0.952982895   0.8231456 0.24697295     
+57 climate_causenoclimatechange  2.362786792   1.7580260 0.17894841     
+58         climate_causenotknow -0.934947080   0.9418461 0.32086834     
+59      Q12_1Unsure_or_disagree -0.383879919   0.4716025 0.41565039     
+60      Q12_2Unsure_or_disagree -0.216518235   0.6730207 0.74767156     
+61      Q12_3Unsure_or_disagree -0.034344103   0.5113154 0.94644785     
+62      Q12_4Unsure_or_disagree  0.240637961   0.5049193 0.63365628     
+63      Q12_5Unsure_or_disagree -0.168192667   0.4868838 0.72975816     
+64      Q12_6Unsure_or_disagree  0.876789211   0.6502142 0.17750983     
 Fitting model using information treatment + climate attitudes...
                                                                                    statement
 1                   I support restricting the use of electricity at peak times in the summer
@@ -223,7 +231,7 @@ Fitting model using information treatment + climate attitudes...
 17                  I support restricting the use of electricity at peak times in the summer
 18                  I support restricting the use of electricity at peak times in the summer
 19                  I support restricting the use of electricity at peak times in the summer
-20                                        Carbon tax on food on food products and beverages.
+20                  I support restricting the use of electricity at peak times in the summer
 21                                        Carbon tax on food on food products and beverages.
 22                                        Carbon tax on food on food products and beverages.
 23                                        Carbon tax on food on food products and beverages.
@@ -242,8 +250,8 @@ Fitting model using information treatment + climate attitudes...
 36                                        Carbon tax on food on food products and beverages.
 37                                        Carbon tax on food on food products and beverages.
 38                                        Carbon tax on food on food products and beverages.
-39                              UK should not commit to reaching net zero emissions by 2050.
-40                              UK should not commit to reaching net zero emissions by 2050.
+39                                        Carbon tax on food on food products and beverages.
+40                                        Carbon tax on food on food products and beverages.
 41                              UK should not commit to reaching net zero emissions by 2050.
 42                              UK should not commit to reaching net zero emissions by 2050.
 43                              UK should not commit to reaching net zero emissions by 2050.
@@ -261,9 +269,9 @@ Fitting model using information treatment + climate attitudes...
 55                              UK should not commit to reaching net zero emissions by 2050.
 56                              UK should not commit to reaching net zero emissions by 2050.
 57                              UK should not commit to reaching net zero emissions by 2050.
-58 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-59 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-60 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+58                              UK should not commit to reaching net zero emissions by 2050.
+59                              UK should not commit to reaching net zero emissions by 2050.
+60                              UK should not commit to reaching net zero emissions by 2050.
 61 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 62 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 63 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
@@ -280,83 +288,91 @@ Fitting model using information treatment + climate attitudes...
 74 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 75 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 76 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-                    variable coefficient        SE           p star
-1                (Intercept)  1.79060740 0.8430837 0.033680306   **
-2        as.factor(list_id)2  0.33412771 0.5567664 0.548425023     
-3        as.factor(list_id)3 -1.04429859 0.5692333 0.066569360    *
-4        as.factor(list_id)4  0.52311305 0.6320259 0.407853660     
-5  framing_effectconsequence -0.49970278 0.6251277 0.424081039     
-6    framing_effectMetOffice -0.29534959 0.5543644 0.594191685     
-7           framing_effectUN -1.24233365 0.7948099 0.118039046     
-8                  co2_value -0.08533008 0.2009597 0.671118918     
-9        climate_importantno -1.37745272 0.5184817 0.007890861  ***
-10            know_climateno  0.46122592 0.5198712 0.374975152     
-11        climate_causehuman -0.52845594 0.5169467 0.306656059     
-12      climate_causenatural -0.27149173 0.7617988 0.721554152     
-13       climate_causeOthers -0.07444189 0.7126281 0.916803460     
-14   Q12_1Unsure_or_disagree -0.58007708 0.4536669 0.201023507     
-15   Q12_2Unsure_or_disagree -0.09894770 0.6426634 0.877637296     
-16   Q12_3Unsure_or_disagree  0.46692867 0.5522759 0.397852539     
-17   Q12_4Unsure_or_disagree  0.19468892 0.5473674 0.722078486     
-18   Q12_5Unsure_or_disagree -0.94566979 0.5600961 0.091333288    *
-19   Q12_6Unsure_or_disagree -0.27445499 0.5349836 0.607940350     
-20               (Intercept)  0.92513248 0.7874679 0.240067031     
-21       as.factor(list_id)2  0.52712226 0.5696859 0.354817315     
-22       as.factor(list_id)3  0.12343692 0.5924728 0.834962015     
-23       as.factor(list_id)4 -0.96809035 0.6408647 0.130890361     
-24 framing_effectconsequence -0.37047105 0.5986326 0.536007200     
-25   framing_effectMetOffice  0.12867680 0.5578553 0.817576305     
-26          framing_effectUN  0.28188017 0.6921127 0.683806063     
-27                 co2_value -0.19170641 0.1645891 0.244117216     
-28       climate_importantno -1.14109737 0.5829279 0.050285480    *
-29            know_climateno -0.36825185 0.5108761 0.471017710     
-30        climate_causehuman  0.28975057 0.5203755 0.577656846     
-31      climate_causenatural -0.09154189 0.8650453 0.915722609     
-32       climate_causeOthers  1.87824261 0.7809934 0.016175104   **
-33   Q12_1Unsure_or_disagree -0.67532096 0.4553440 0.138047694     
-34   Q12_2Unsure_or_disagree -0.17889002 0.6083860 0.768727074     
-35   Q12_3Unsure_or_disagree  0.28808165 0.5244916 0.582827857     
-36   Q12_4Unsure_or_disagree -0.06198397 0.5615372 0.912105896     
-37   Q12_5Unsure_or_disagree -1.17312256 0.5042131 0.019984414   **
-38   Q12_6Unsure_or_disagree  0.09129780 0.5471840 0.867487860     
-39               (Intercept)  1.21427816 0.8432386 0.149862527     
-40       as.factor(list_id)2 -0.72622561 0.6719567 0.279802795     
-41       as.factor(list_id)3 -0.74082694 0.6667154 0.266499836     
-42       as.factor(list_id)4 -0.86117934 0.6117881 0.159236731     
-43 framing_effectconsequence -0.16278530 0.6420485 0.799850566     
-44   framing_effectMetOffice  0.00436185 0.6100852 0.994295512     
-45          framing_effectUN  0.45541847 0.7089366 0.520615692     
-46                 co2_value -0.22700359 0.1547073 0.142291828     
-47       climate_importantno -0.45353753 0.7039473 0.519395399     
-48            know_climateno -0.30530486 0.5193991 0.556663902     
-49        climate_causehuman  0.44893834 0.5274745 0.394708738     
-50      climate_causenatural -0.34499960 0.9432718 0.714553263     
-51       climate_causeOthers  0.50020039 0.8690561 0.564907610     
-52   Q12_1Unsure_or_disagree -0.11679659 0.5219606 0.822940058     
-53   Q12_2Unsure_or_disagree  1.53190438 0.6488616 0.018230114   **
-54   Q12_3Unsure_or_disagree  0.76166830 0.5427676 0.160525981     
-55   Q12_4Unsure_or_disagree -0.83578580 0.6126803 0.172521375     
-56   Q12_5Unsure_or_disagree -1.03784981 0.5377752 0.053619814    *
-57   Q12_6Unsure_or_disagree -0.53404195 0.6181844 0.387649553     
-58               (Intercept)  0.33891159 0.8528548 0.691083681     
-59       as.factor(list_id)2 -0.32009797 0.5411710 0.554191256     
-60       as.factor(list_id)3 -0.25297892 0.5698852 0.657106163     
-61       as.factor(list_id)4 -0.28098284 0.6350399 0.658152866     
-62 framing_effectconsequence  0.45434147 0.6115676 0.457534377     
-63   framing_effectMetOffice  0.34167669 0.5570998 0.539669266     
-64          framing_effectUN  0.76208211 0.6009236 0.204731982     
-65                 co2_value -0.08295609 0.1568456 0.596872921     
-66       climate_importantno -1.10350712 0.4989300 0.026984129   **
-67            know_climateno -0.36530758 0.4602620 0.427373084     
-68        climate_causehuman  0.62290532 0.4972723 0.210335166     
-69      climate_causenatural  0.95933256 0.8528551 0.260653320     
-70       climate_causeOthers  0.03907450 0.7851608 0.960308676     
-71   Q12_1Unsure_or_disagree -0.40677590 0.4794459 0.396198972     
-72   Q12_2Unsure_or_disagree -0.31091946 0.7023799 0.658007587     
-73   Q12_3Unsure_or_disagree  0.10853236 0.5189464 0.834339082     
-74   Q12_4Unsure_or_disagree  0.26945641 0.5063927 0.594650065     
-75   Q12_5Unsure_or_disagree -0.23652438 0.4892387 0.628773455     
-76   Q12_6Unsure_or_disagree  0.76149705 0.6453085 0.237979847     
+77 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+78 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+79 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+80 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                       variable coefficient        SE           p star
+1                   (Intercept)  1.82914171 0.8697598 0.035462066   **
+2           as.factor(list_id)2  0.34150733 0.5625989 0.543839326     
+3           as.factor(list_id)3 -1.06895936 0.5764092 0.063665543    *
+4           as.factor(list_id)4  0.48669561 0.6382962 0.445766531     
+5     framing_effectconsequence -0.45279298 0.6306154 0.472746429     
+6       framing_effectMetOffice -0.27782023 0.5606703 0.620237028     
+7              framing_effectUN -1.20954519 0.8007853 0.130928963     
+8                     co2_value -0.09586171 0.2023883 0.635747833     
+9           climate_importantno -1.37273048 0.5221215 0.008560108  ***
+10               know_climateno  0.49548191 0.5258536 0.346068253     
+11           climate_causehuman -0.52938268 0.5175111 0.306336355     
+12         climate_causenatural -0.26347594 0.7691873 0.731946004     
+13 climate_causenoclimatechange -0.36698577 1.3865377 0.791257675     
+14         climate_causenotknow  0.13712557 0.7935708 0.862812075     
+15      Q12_1Unsure_or_disagree -0.63382892 0.4608907 0.169061316     
+16      Q12_2Unsure_or_disagree -0.12488627 0.6491432 0.847439606     
+17      Q12_3Unsure_or_disagree  0.46886823 0.5568346 0.399774384     
+18      Q12_4Unsure_or_disagree  0.20035336 0.5512019 0.716242975     
+19      Q12_5Unsure_or_disagree -0.97630897 0.5697718 0.086618983    *
+20      Q12_6Unsure_or_disagree -0.27462938 0.5440503 0.613708661     
+21                  (Intercept)  0.89742965 0.7897323 0.255800950     
+22          as.factor(list_id)2  0.54206096 0.5762681 0.346889237     
+23          as.factor(list_id)3  0.13098395 0.6030580 0.828052793     
+24          as.factor(list_id)4 -0.91352066 0.6508905 0.160469692     
+25    framing_effectconsequence -0.33404239 0.6006661 0.578128884     
+26      framing_effectMetOffice  0.14681743 0.5608413 0.793490513     
+27             framing_effectUN  0.31311836 0.7104777 0.659419141     
+28                    co2_value -0.19845208 0.1650443 0.229202019     
+29          climate_importantno -1.09774245 0.5860974 0.061072628    *
+30               know_climateno -0.36339008 0.5211083 0.485589554     
+31           climate_causehuman  0.30029546 0.5231019 0.565922535     
+32         climate_causenatural -0.08353691 0.8648279 0.923049079     
+33 climate_causenoclimatechange  1.84987584 1.2701393 0.145272304     
+34         climate_causenotknow  1.95961637 0.8748965 0.025102188   **
+35      Q12_1Unsure_or_disagree -0.71573093 0.4549166 0.115643975     
+36      Q12_2Unsure_or_disagree -0.18751403 0.6088039 0.758079299     
+37      Q12_3Unsure_or_disagree  0.29959070 0.5255807 0.568665198     
+38      Q12_4Unsure_or_disagree -0.04427282 0.5671408 0.937777787     
+39      Q12_5Unsure_or_disagree -1.18474784 0.5074310 0.019554084   **
+40      Q12_6Unsure_or_disagree  0.08396318 0.5649526 0.881853593     
+41                  (Intercept)  1.00886586 0.8520527 0.236396591     
+42          as.factor(list_id)2 -0.62876836 0.6692562 0.347472413     
+43          as.factor(list_id)3 -0.67758374 0.6755764 0.315874690     
+44          as.factor(list_id)4 -0.84216407 0.6468540 0.192937470     
+45    framing_effectconsequence -0.06380935 0.6473335 0.921477626     
+46      framing_effectMetOffice -0.08903410 0.6129467 0.884508855     
+47             framing_effectUN  0.39146370 0.7059267 0.579210179     
+48                    co2_value -0.22376094 0.1666928 0.179480862     
+49          climate_importantno -0.29201388 0.6846464 0.669730594     
+50               know_climateno -0.30206939 0.5481914 0.581613771     
+51           climate_causehuman  0.49746613 0.5195203 0.338290251     
+52         climate_causenatural -0.17014309 0.8920111 0.848728517     
+53 climate_causenoclimatechange  2.23737487 1.9895352 0.260770599     
+54         climate_causenotknow -0.84761016 1.4811682 0.567147284     
+55      Q12_1Unsure_or_disagree -0.12411314 0.5156764 0.809802921     
+56      Q12_2Unsure_or_disagree  1.50839739 0.6901304 0.028839744   **
+57      Q12_3Unsure_or_disagree  0.64787916 0.5476548 0.236806603     
+58      Q12_4Unsure_or_disagree -0.70368355 0.6039738 0.243982749     
+59      Q12_5Unsure_or_disagree -0.97284950 0.5397864 0.071500419    *
+60      Q12_6Unsure_or_disagree -0.37781189 0.6279758 0.547417482     
+61                  (Intercept)  0.30892328 0.8689415 0.722202477     
+62          as.factor(list_id)2 -0.29349055 0.5526318 0.595364756     
+63          as.factor(list_id)3 -0.28889337 0.5885601 0.623534173     
+64          as.factor(list_id)4 -0.30201916 0.6626729 0.648563259     
+65    framing_effectconsequence  0.55118451 0.6231442 0.376414681     
+66      framing_effectMetOffice  0.26615897 0.5652022 0.637705491     
+67             framing_effectUN  0.83215514 0.6245602 0.182733438     
+68                    co2_value -0.10978010 0.1612255 0.495928352     
+69          climate_importantno -1.18897517 0.5228335 0.022960043   **
+70               know_climateno -0.22171501 0.4774524 0.642382015     
+71           climate_causehuman  0.66094122 0.5122554 0.196961344     
+72         climate_causenatural  0.99315125 0.8893450 0.264113124     
+73 climate_causenoclimatechange  2.61001813 1.7269777 0.130706612     
+74         climate_causenotknow -0.85640920 0.9545852 0.369637154     
+75      Q12_1Unsure_or_disagree -0.43962423 0.4970775 0.376470675     
+76      Q12_2Unsure_or_disagree -0.30247059 0.7510608 0.687150904     
+77      Q12_3Unsure_or_disagree  0.01619731 0.5302473 0.975631048     
+78      Q12_4Unsure_or_disagree  0.30117435 0.5151694 0.558808433     
+79      Q12_5Unsure_or_disagree -0.22059320 0.4985165 0.658127920     
+80      Q12_6Unsure_or_disagree  0.92770195 0.7078195 0.189976845     
 Fitting model using demographics...
                                                                                    statement
 1                   I support restricting the use of electricity at peak times in the summer
@@ -680,7 +696,7 @@ Fitting model using climate attitudes + demographics...
 25                   I support restricting the use of electricity at peak times in the summer
 26                   I support restricting the use of electricity at peak times in the summer
 27                   I support restricting the use of electricity at peak times in the summer
-28                                         Carbon tax on food on food products and beverages.
+28                   I support restricting the use of electricity at peak times in the summer
 29                                         Carbon tax on food on food products and beverages.
 30                                         Carbon tax on food on food products and beverages.
 31                                         Carbon tax on food on food products and beverages.
@@ -707,8 +723,8 @@ Fitting model using climate attitudes + demographics...
 52                                         Carbon tax on food on food products and beverages.
 53                                         Carbon tax on food on food products and beverages.
 54                                         Carbon tax on food on food products and beverages.
-55                               UK should not commit to reaching net zero emissions by 2050.
-56                               UK should not commit to reaching net zero emissions by 2050.
+55                                         Carbon tax on food on food products and beverages.
+56                                         Carbon tax on food on food products and beverages.
 57                               UK should not commit to reaching net zero emissions by 2050.
 58                               UK should not commit to reaching net zero emissions by 2050.
 59                               UK should not commit to reaching net zero emissions by 2050.
@@ -734,9 +750,9 @@ Fitting model using climate attitudes + demographics...
 79                               UK should not commit to reaching net zero emissions by 2050.
 80                               UK should not commit to reaching net zero emissions by 2050.
 81                               UK should not commit to reaching net zero emissions by 2050.
-82  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-83  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-84  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+82                               UK should not commit to reaching net zero emissions by 2050.
+83                               UK should not commit to reaching net zero emissions by 2050.
+84                               UK should not commit to reaching net zero emissions by 2050.
 85  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 86  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 87  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
@@ -761,115 +777,123 @@ Fitting model using climate attitudes + demographics...
 106 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 107 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 108 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-                   variable coefficient        SE          p star
-1               (Intercept)  1.84658581 0.9878011 0.06156853    *
-2       as.factor(list_id)2  0.25900936 0.6771016 0.70207083     
-3       as.factor(list_id)3 -0.73252436 0.6365418 0.24981966     
-4       as.factor(list_id)4  0.67998350 0.6973848 0.32953656     
-5       climate_importantno -0.93511677 0.6361671 0.14158257     
-6            know_climateno  0.48553574 0.6025787 0.42037938     
-7        climate_causehuman -0.62567877 0.5484100 0.25391320     
-8      climate_causenatural -0.18998898 1.0202974 0.85228055     
-9       climate_causeOthers -1.20707550 0.9641263 0.21057386     
-10  Q12_1Unsure_or_disagree -0.65637686 0.5787666 0.25675428     
-11  Q12_2Unsure_or_disagree  0.12598305 0.7145652 0.86005253     
-12  Q12_3Unsure_or_disagree  0.91459324 0.7024918 0.19294123     
-13  Q12_4Unsure_or_disagree  0.05811311 0.5818745 0.92044576     
-14  Q12_5Unsure_or_disagree -0.94259822 0.6057200 0.11966967     
-15  Q12_6Unsure_or_disagree -0.39506218 0.5968245 0.50800952     
-16      where_liveRuralarea  0.47738608 0.7391630 0.51837855     
-17     where_liveCitycentre -0.21224249 0.6659407 0.74994581     
-18          dietPescatarian  0.21090583 0.8060887 0.79359825     
-19           dietvegetarian  2.35647848 1.0153125 0.02029014   **
-20                 age18_34 -0.52132704 0.6388726 0.41449388     
-21                   age55_ -1.20740697 0.6382780 0.05853587    *
-22                is_manyes -0.15677037 0.5029050 0.75524602     
-23      higher_educationyes -0.33832946 0.5474255 0.53655064     
-24              income0_20k -0.41157986 0.7482572 0.58228418     
-25             income30_40k -1.45153922 0.9668501 0.13327608     
-26               income40k_ -0.20996662 0.7219877 0.77119093     
-27      incomenot_specified  0.72710059 0.7711551 0.34574637     
-28              (Intercept)  0.59070697 0.9697638 0.54244186     
-29      as.factor(list_id)2 -0.06118762 0.6151767 0.92077027     
-30      as.factor(list_id)3 -0.11154638 0.6392221 0.86146992     
-31      as.factor(list_id)4 -1.93032553 0.7717404 0.01237513   **
-32      climate_importantno -0.67586297 0.6167505 0.27314660     
-33           know_climateno -0.43922830 0.5890933 0.45590870     
-34       climate_causehuman  0.29741520 0.5638110 0.59784039     
-35     climate_causenatural  0.31804303 0.9724098 0.74361730     
-36      climate_causeOthers  1.44554156 0.8497805 0.08892864    *
-37  Q12_1Unsure_or_disagree -0.17073322 0.5136822 0.73960892     
-38  Q12_2Unsure_or_disagree  0.01079309 0.6491424 0.98673443     
-39  Q12_3Unsure_or_disagree  0.56237961 0.5701953 0.32398936     
-40  Q12_4Unsure_or_disagree -0.30844457 0.5642565 0.58462680     
-41  Q12_5Unsure_or_disagree -1.11315659 0.5407385 0.03953392   **
-42  Q12_6Unsure_or_disagree  0.06962667 0.5650285 0.90192749     
-43      where_liveRuralarea  0.94127043 0.7084697 0.18398109     
-44     where_liveCitycentre  0.39934590 0.5503483 0.46806931     
-45          dietPescatarian  1.16450767 0.6620079 0.07856835    *
-46           dietvegetarian  1.46940499 0.8434281 0.08147664    *
-47                 age18_34  0.25227645 0.5227696 0.62939632     
-48                   age55_ -0.85928152 0.6635590 0.19533447     
-49                is_manyes -0.57389563 0.5980193 0.33722603     
-50      higher_educationyes  0.57298370 0.5423470 0.29074482     
-51              income0_20k -0.88509326 0.7697755 0.25022335     
-52             income30_40k -0.73348440 0.8306741 0.37723680     
-53               income40k_ -0.03014106 0.7228777 0.96674109     
-54      incomenot_specified -0.92918798 0.7544749 0.21811010     
-55              (Intercept)  3.00942632 1.3062037 0.02122552   **
-56      as.factor(list_id)2 -1.56567604 0.8527145 0.06634166    *
-57      as.factor(list_id)3 -1.24894373 0.7500389 0.09587844    *
-58      as.factor(list_id)4 -2.03844014 0.8333646 0.01444364   **
-59      climate_importantno  0.19258917 0.7093020 0.78599168     
-60           know_climateno -0.79508173 0.6664575 0.23287059     
-61       climate_causehuman  0.55284348 0.6702496 0.40946685     
-62     climate_causenatural  0.57616004 0.9571157 0.54719056     
-63      climate_causeOthers -0.96698687 1.0920408 0.37589456     
-64  Q12_1Unsure_or_disagree -0.45902886 0.6499999 0.48006478     
-65  Q12_2Unsure_or_disagree  1.68043295 0.8207348 0.04061158   **
-66  Q12_3Unsure_or_disagree  1.28986052 0.8355697 0.12266347     
-67  Q12_4Unsure_or_disagree -1.33842930 0.7107819 0.05969521    *
-68  Q12_5Unsure_or_disagree -0.64303257 0.6155367 0.29617561     
-69  Q12_6Unsure_or_disagree -0.38112247 0.7424792 0.60773403     
-70      where_liveRuralarea -0.21459661 0.6793081 0.75207485     
-71     where_liveCitycentre -0.46516823 0.6338843 0.46304759     
-72          dietPescatarian  1.48779304 0.8266806 0.07190497    *
-73           dietvegetarian  1.40694225 0.7993188 0.07837787    *
-74                 age18_34 -0.60788420 0.6010122 0.31180870     
-75                   age55_ -1.28923343 0.7656791 0.09222462    *
-76                is_manyes -0.10883561 0.5472668 0.84236350     
-77      higher_educationyes  0.30300303 0.7146043 0.67155479     
-78              income0_20k -0.35150566 0.7727215 0.64918618     
-79             income30_40k -2.59164153 1.0380903 0.01254090   **
-80               income40k_ -1.96056905 0.8139035 0.01600301   **
-81      incomenot_specified -0.51194843 0.7880056 0.51590142     
-82              (Intercept)  0.33632934 1.2101651 0.78107361     
-83      as.factor(list_id)2 -0.27862236 0.6564410 0.67124213     
-84      as.factor(list_id)3 -0.37375595 0.6064160 0.53767286     
-85      as.factor(list_id)4 -0.75548409 0.7032883 0.28272553     
-86      climate_importantno -0.91065138 0.6009308 0.12967075     
-87           know_climateno -0.39099419 0.5081459 0.44162467     
-88       climate_causehuman  0.54798948 0.6025984 0.36315085     
-89     climate_causenatural  1.76092032 1.4138997 0.21297187     
-90      climate_causeOthers -1.00400503 0.9425789 0.28679984     
-91  Q12_1Unsure_or_disagree -0.24073513 0.5604272 0.66751829     
-92  Q12_2Unsure_or_disagree -0.49734651 0.9744021 0.60976287     
-93  Q12_3Unsure_or_disagree  0.62959733 0.6652605 0.34394859     
-94  Q12_4Unsure_or_disagree  0.21843040 0.6190167 0.72418836     
-95  Q12_5Unsure_or_disagree  0.13032052 0.6209952 0.83377885     
-96  Q12_6Unsure_or_disagree  0.90039031 1.0784642 0.40378419     
-97      where_liveRuralarea -0.15573015 0.7546901 0.83651767     
-98     where_liveCitycentre -0.34167404 0.5542932 0.53762133     
-99          dietPescatarian  0.49824672 1.1233403 0.65737496     
-100          dietvegetarian  1.71731101 0.8849824 0.05231859    *
-101                age18_34  0.36372272 0.5314907 0.49375768     
-102                  age55_ -1.16127625 0.6556392 0.07652539    *
-103               is_manyes  0.42154457 0.5290095 0.42553450     
-104     higher_educationyes -0.11748716 0.4975173 0.81331868     
-105             income0_20k  0.66880466 0.9567085 0.48450928     
-106            income30_40k -0.84177337 0.8200588 0.30466570     
-107              income40k_ -0.09027865 0.7199680 0.90021276     
-108     incomenot_specified -0.56311161 0.7227720 0.43592084     
+109 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+110 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+111 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+112 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                        variable coefficient        SE           p star
+1                    (Intercept)  2.16357034 1.0986971 0.048928450   **
+2            as.factor(list_id)2  0.31188756 0.6686659 0.640905890     
+3            as.factor(list_id)3 -0.62902724 0.6264196 0.315300132     
+4            as.factor(list_id)4  0.78439578 0.7095423 0.268944964     
+5            climate_importantno -1.05033996 0.6820541 0.123568710     
+6                 know_climateno  0.61750405 0.6349669 0.330802859     
+7             climate_causehuman -0.66045010 0.5664381 0.243626405     
+8           climate_causenatural -0.06829591 1.0210748 0.946672225     
+9   climate_causenoclimatechange -3.01720339 1.6792318 0.072371189    *
+10          climate_causenotknow -0.68342216 0.9837638 0.487242414     
+11       Q12_1Unsure_or_disagree -0.89378343 0.6409194 0.163156618     
+12       Q12_2Unsure_or_disagree  0.20191260 0.7352637 0.783613960     
+13       Q12_3Unsure_or_disagree  0.86116630 0.6718622 0.199926767     
+14       Q12_4Unsure_or_disagree  0.12734645 0.5935287 0.830111797     
+15       Q12_5Unsure_or_disagree -1.06938618 0.6173963 0.083257484    *
+16       Q12_6Unsure_or_disagree -0.31964048 0.6010287 0.594849043     
+17           where_liveRuralarea  0.34178959 0.7400548 0.644193463     
+18          where_liveCitycentre -0.23542694 0.7039501 0.738049840     
+19               dietPescatarian  0.35267509 0.7756629 0.649342567     
+20                dietvegetarian  2.73697077 1.0173654 0.007139778  ***
+21                      age18_34 -0.64452930 0.6384327 0.312711292     
+22                        age55_ -1.21705403 0.6516758 0.061821212    *
+23                     is_manyes -0.26718251 0.5147059 0.603692777     
+24           higher_educationyes -0.39156165 0.5440486 0.471698528     
+25                   income0_20k -0.58836688 0.7746877 0.447560015     
+26                  income30_40k -1.88255202 1.1692348 0.107382176     
+27                    income40k_ -0.28662787 0.7261207 0.693035807     
+28           incomenot_specified  0.63832516 0.7898476 0.418997077     
+29                   (Intercept)  0.81499814 1.0087340 0.419124194     
+30           as.factor(list_id)2 -0.12137657 0.6432815 0.850340923     
+31           as.factor(list_id)3 -0.09098510 0.6438833 0.887627558     
+32           as.factor(list_id)4 -2.11242415 0.7979042 0.008109755  ***
+33           climate_importantno -0.74942510 0.6351572 0.238038039     
+34                know_climateno -0.45770972 0.6075189 0.451204693     
+35            climate_causehuman  0.22826844 0.5882980 0.698004940     
+36          climate_causenatural  0.44593033 0.9680000 0.645034083     
+37  climate_causenoclimatechange  0.37413230 1.0549981 0.722867980     
+38          climate_causenotknow  2.18654354 1.0411482 0.035717656   **
+39       Q12_1Unsure_or_disagree -0.30128416 0.5259750 0.566772802     
+40       Q12_2Unsure_or_disagree -0.05402599 0.6483418 0.933589556     
+41       Q12_3Unsure_or_disagree  0.63246881 0.5820767 0.277225571     
+42       Q12_4Unsure_or_disagree -0.29931863 0.5746049 0.602428049     
+43       Q12_5Unsure_or_disagree -1.24117537 0.5755564 0.031046276   **
+44       Q12_6Unsure_or_disagree  0.14723539 0.5706691 0.796403172     
+45           where_liveRuralarea  1.07117196 0.7294807 0.141994691     
+46          where_liveCitycentre  0.40779514 0.5581259 0.464992452     
+47               dietPescatarian  1.41013891 0.6703529 0.035415354   **
+48                dietvegetarian  1.71701899 0.9050782 0.057815460    *
+49                      age18_34  0.27649835 0.5367304 0.606446030     
+50                        age55_ -0.85909939 0.6834507 0.208752634     
+51                     is_manyes -0.73539931 0.6501614 0.258011892     
+52           higher_educationyes  0.57264532 0.5597486 0.306288808     
+53                   income0_20k -1.00964585 0.7878325 0.200000930     
+54                  income30_40k -0.94169291 0.8786759 0.283846661     
+55                    income40k_ -0.05404280 0.7410082 0.941860672     
+56           incomenot_specified -0.98342908 0.7663079 0.199375029     
+57                   (Intercept)  2.79753979 1.2647368 0.026969833   **
+58           as.factor(list_id)2 -1.37330855 0.7930468 0.083329355    *
+59           as.factor(list_id)3 -1.25610494 0.7327154 0.086470894    *
+60           as.factor(list_id)4 -2.13920110 0.8562184 0.012474501   **
+61           climate_importantno  0.36051713 0.6245972 0.563804742     
+62                know_climateno -0.60996597 0.6008895 0.310055735     
+63            climate_causehuman  0.59000650 0.6788387 0.384770064     
+64          climate_causenatural  0.71036487 0.9508843 0.455029103     
+65  climate_causenoclimatechange  0.32436905 1.2769259 0.799477487     
+66          climate_causenotknow -2.36096778 1.4423188 0.101646133     
+67       Q12_1Unsure_or_disagree -0.50459949 0.6017340 0.401707502     
+68       Q12_2Unsure_or_disagree  1.76763885 0.8470028 0.036894108   **
+69       Q12_3Unsure_or_disagree  1.07978856 0.7223082 0.134936930     
+70       Q12_4Unsure_or_disagree -1.24223066 0.6687321 0.063227150    *
+71       Q12_5Unsure_or_disagree -0.66893807 0.6036656 0.267807068     
+72       Q12_6Unsure_or_disagree -0.21797290 0.6957869 0.754071470     
+73           where_liveRuralarea -0.26803595 0.6713030 0.689688985     
+74          where_liveCitycentre -0.42380627 0.6110971 0.487985092     
+75               dietPescatarian  1.27685705 0.7552519 0.090906095    *
+76                dietvegetarian  1.38628566 0.7721046 0.072579872    *
+77                      age18_34 -0.66252951 0.5909907 0.262267065     
+78                        age55_ -1.27065150 0.7188040 0.077106009    *
+79                     is_manyes -0.10886145 0.5199309 0.834154133     
+80           higher_educationyes  0.52922610 0.6663339 0.427058298     
+81                   income0_20k -0.20904133 0.7583140 0.782804680     
+82                  income30_40k -2.46167460 0.9679258 0.010982746   **
+83                    income40k_ -2.08630746 0.8684503 0.016290837   **
+84           incomenot_specified -0.53645947 0.8153909 0.510591515     
+85                   (Intercept)  0.26506602 1.1721587 0.821096488     
+86           as.factor(list_id)2 -0.16261241 0.6680054 0.807672478     
+87           as.factor(list_id)3 -0.39146548 0.6351439 0.537669244     
+88           as.factor(list_id)4 -0.73481944 0.7177779 0.305957136     
+89           climate_importantno -1.01479104 0.6008413 0.091228988    *
+90                know_climateno -0.27667745 0.5300546 0.601684851     
+91            climate_causehuman  0.59517001 0.6196571 0.336812284     
+92          climate_causenatural  1.98462174 1.5380031 0.196915756     
+93  climate_causenoclimatechange  0.98694815 1.4367011 0.492111469     
+94          climate_causenotknow -2.10300640 1.2292368 0.087113829    *
+95       Q12_1Unsure_or_disagree -0.20589013 0.5806560 0.722902793     
+96       Q12_2Unsure_or_disagree -0.46208023 0.8661227 0.593684484     
+97       Q12_3Unsure_or_disagree  0.45515532 0.6716159 0.497960742     
+98       Q12_4Unsure_or_disagree  0.32169764 0.6326634 0.611115697     
+99       Q12_5Unsure_or_disagree  0.03994123 0.6931764 0.954050855     
+100      Q12_6Unsure_or_disagree  1.20555846 1.1408228 0.290628092     
+101          where_liveRuralarea -0.16092886 0.7025884 0.818828950     
+102         where_liveCitycentre -0.34167784 0.5855099 0.559519039     
+103              dietPescatarian  0.45779902 0.9122295 0.615775612     
+104               dietvegetarian  1.83907085 0.9083269 0.042900288   **
+105                     age18_34  0.35809528 0.5464171 0.512241412     
+106                       age55_ -1.27013951 0.6837066 0.063207951    *
+107                    is_manyes  0.39337599 0.5183612 0.447921962     
+108          higher_educationyes -0.21576454 0.5232668 0.680089264     
+109                  income0_20k  0.86847619 0.9970748 0.383740990     
+110                 income30_40k -0.76984056 0.8057047 0.339331364     
+111                   income40k_ -0.01061226 0.7399545 0.988557314     
+112          incomenot_specified -0.62395942 0.7386604 0.398268541     
 Fitting model using information treatment + climate attitudes + demographics...
                                                                                     statement
 1                    I support restricting the use of electricity at peak times in the summer
@@ -903,7 +927,7 @@ Fitting model using information treatment + climate attitudes + demographics...
 29                   I support restricting the use of electricity at peak times in the summer
 30                   I support restricting the use of electricity at peak times in the summer
 31                   I support restricting the use of electricity at peak times in the summer
-32                                         Carbon tax on food on food products and beverages.
+32                   I support restricting the use of electricity at peak times in the summer
 33                                         Carbon tax on food on food products and beverages.
 34                                         Carbon tax on food on food products and beverages.
 35                                         Carbon tax on food on food products and beverages.
@@ -934,8 +958,8 @@ Fitting model using information treatment + climate attitudes + demographics...
 60                                         Carbon tax on food on food products and beverages.
 61                                         Carbon tax on food on food products and beverages.
 62                                         Carbon tax on food on food products and beverages.
-63                               UK should not commit to reaching net zero emissions by 2050.
-64                               UK should not commit to reaching net zero emissions by 2050.
+63                                         Carbon tax on food on food products and beverages.
+64                                         Carbon tax on food on food products and beverages.
 65                               UK should not commit to reaching net zero emissions by 2050.
 66                               UK should not commit to reaching net zero emissions by 2050.
 67                               UK should not commit to reaching net zero emissions by 2050.
@@ -965,9 +989,9 @@ Fitting model using information treatment + climate attitudes + demographics...
 91                               UK should not commit to reaching net zero emissions by 2050.
 92                               UK should not commit to reaching net zero emissions by 2050.
 93                               UK should not commit to reaching net zero emissions by 2050.
-94  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-95  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-96  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+94                               UK should not commit to reaching net zero emissions by 2050.
+95                               UK should not commit to reaching net zero emissions by 2050.
+96                               UK should not commit to reaching net zero emissions by 2050.
 97  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 98  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 99  Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
@@ -996,130 +1020,138 @@ Fitting model using information treatment + climate attitudes + demographics...
 122 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 123 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
 124 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
-                     variable  coefficient        SE           p star
-1                 (Intercept)  3.243653860 1.6412117 0.048112037   **
-2         as.factor(list_id)2  0.813465031 0.8607614 0.344631862     
-3         as.factor(list_id)3 -0.657037694 0.7737821 0.395811753     
-4         as.factor(list_id)4  1.269997328 0.9052355 0.160632687     
-5   framing_effectconsequence -1.767716341 1.0928721 0.105771243     
-6     framing_effectMetOffice -0.369038359 0.8886476 0.677936296     
-7            framing_effectUN -1.929505735 1.3475953 0.152197075     
-8                   co2_value  0.046076400 0.3245090 0.887089455     
-9         climate_importantno -1.415910110 0.7954520 0.075074831    *
-10             know_climateno  0.446020544 0.7477818 0.550869199     
-11         climate_causehuman -0.937242567 0.7054530 0.183990372     
-12       climate_causenatural -0.144793694 1.2064519 0.904470367     
-13        climate_causeOthers -1.179493724 1.1915122 0.322216526     
-14    Q12_1Unsure_or_disagree -1.054362146 0.8945910 0.238558746     
-15    Q12_2Unsure_or_disagree  0.284365035 0.9035333 0.752970022     
-16    Q12_3Unsure_or_disagree  0.728606617 0.7865467 0.354271303     
-17    Q12_4Unsure_or_disagree -0.163586444 0.7324141 0.823261261     
-18    Q12_5Unsure_or_disagree -0.632263997 0.7684095 0.410609433     
-19    Q12_6Unsure_or_disagree -0.209701740 0.8345740 0.801606920     
-20        where_liveRuralarea -0.062701138 0.8296853 0.939759458     
-21       where_liveCitycentre -0.640201783 0.9063976 0.479992549     
-22            dietPescatarian  0.690105256 0.9997135 0.490003625     
-23             dietvegetarian  3.449282736 1.5604701 0.027076538   **
-24                   age18_34 -0.574528358 0.8847212 0.516086888     
-25                     age55_ -1.602827711 0.8256341 0.052218335    *
-26                  is_manyes -0.106677748 0.5848577 0.855269220     
-27        higher_educationyes -0.237619512 0.6537635 0.716258267     
-28                income0_20k -0.720885044 0.8729475 0.408914299     
-29               income30_40k -2.386830402 1.8342641 0.193173976     
-30                 income40k_ -0.547824335 0.8432218 0.515898951     
-31        incomenot_specified  0.613517923 0.9557290 0.520913989     
-32                (Intercept)  1.085599964 1.1598353 0.349275809     
-33        as.factor(list_id)2 -0.014443243 0.6265543 0.981608905     
-34        as.factor(list_id)3 -0.087399970 0.6534878 0.893605135     
-35        as.factor(list_id)4 -1.958571273 0.7746045 0.011455796   **
-36  framing_effectconsequence -0.805163880 0.7114810 0.257771932     
-37    framing_effectMetOffice -0.021847876 0.6961988 0.974965167     
-38           framing_effectUN  0.024136171 0.7396207 0.973967114     
-39                  co2_value -0.047123904 0.1771736 0.790257790     
-40        climate_importantno -0.929315590 0.6416461 0.147524655     
-41             know_climateno -0.462493459 0.6049104 0.444530507     
-42         climate_causehuman  0.281176168 0.5617847 0.616719385     
-43       climate_causenatural  0.351108587 1.0022664 0.726102577     
-44        climate_causeOthers  1.516356509 0.8743265 0.082862412    *
-45    Q12_1Unsure_or_disagree -0.269703366 0.5566399 0.628016627     
-46    Q12_2Unsure_or_disagree -0.002360341 0.6489862 0.997098127     
-47    Q12_3Unsure_or_disagree  0.558379565 0.5859545 0.340620369     
-48    Q12_4Unsure_or_disagree -0.346311657 0.5997702 0.563664380     
-49    Q12_5Unsure_or_disagree -1.092381283 0.5524139 0.047988673   **
-50    Q12_6Unsure_or_disagree  0.135906039 0.6074555 0.822967370     
-51        where_liveRuralarea  0.678183093 0.6677263 0.309791160     
-52       where_liveCitycentre  0.310691725 0.5551467 0.575713433     
-53            dietPescatarian  1.289343855 0.7220616 0.074157167    *
-54             dietvegetarian  1.651810359 0.9217269 0.073119793    *
-55                   age18_34  0.158128543 0.5634808 0.778995679     
-56                     age55_ -0.827645660 0.6710444 0.217437979     
-57                  is_manyes -0.545252462 0.5604656 0.330624790     
-58        higher_educationyes  0.552933535 0.5562209 0.320179162     
-59                income0_20k -0.833618990 0.8061429 0.301097180     
-60               income30_40k -0.812149184 0.8264025 0.325729206     
-61                 income40k_ -0.130702610 0.7231370 0.856568596     
-62        incomenot_specified -1.031551727 0.7728072 0.181938160     
-63                (Intercept)  3.907103024 1.6185654 0.015781511   **
-64        as.factor(list_id)2 -1.784472811 0.8922682 0.045507957   **
-65        as.factor(list_id)3 -1.332336696 0.8878622 0.133455923     
-66        as.factor(list_id)4 -2.087923203 0.9399868 0.026335659   **
-67  framing_effectconsequence -1.250403892 0.7834517 0.110484528     
-68    framing_effectMetOffice -0.613518087 0.7863621 0.435274391     
-69           framing_effectUN  0.058936574 0.7988443 0.941187590     
-70                  co2_value  0.009817604 0.1931222 0.959456027     
-71        climate_importantno  0.062398665 0.8923715 0.944253721     
-72             know_climateno -1.247136227 0.8326845 0.134203519     
-73         climate_causehuman  0.651290275 0.6875496 0.343504812     
-74       climate_causenatural  0.721631158 0.9905245 0.466286516     
-75        climate_causeOthers -0.957813065 1.1138441 0.389834983     
-76    Q12_1Unsure_or_disagree -0.422595621 0.8199748 0.606290075     
-77    Q12_2Unsure_or_disagree  1.995620988 0.9845654 0.042672075   **
-78    Q12_3Unsure_or_disagree  1.520885772 0.9251941 0.100205990     
-79    Q12_4Unsure_or_disagree -1.562308743 0.8104068 0.053879013    *
-80    Q12_5Unsure_or_disagree -0.522496004 0.7273818 0.472557355     
-81    Q12_6Unsure_or_disagree -0.473334061 0.7778336 0.542836882     
-82        where_liveRuralarea -0.435003398 0.6940384 0.530809113     
-83       where_liveCitycentre -0.537580071 0.7189094 0.454597875     
-84            dietPescatarian  2.074490139 1.0765046 0.053972018    *
-85             dietvegetarian  1.727588195 0.8953888 0.053677745    *
-86                   age18_34 -0.465057046 0.6426038 0.469245447     
-87                     age55_ -1.529669004 0.8306744 0.065551489    *
-88                  is_manyes -0.267421349 0.6128254 0.662565062     
-89        higher_educationyes  0.108357979 0.7820885 0.889806136     
-90                income0_20k -0.437640832 0.9399242 0.641492608     
-91               income30_40k -3.348851571 1.2222557 0.006145894  ***
-92                 income40k_ -2.133859103 0.8765256 0.014914378   **
-93        incomenot_specified -0.826214300 0.8668584 0.340532630     
-94                (Intercept)  0.678018314 1.4273603 0.634775906     
-95        as.factor(list_id)2 -0.391579296 0.6991203 0.575409241     
-96        as.factor(list_id)3 -0.816428620 0.7245600 0.259830339     
-97        as.factor(list_id)4 -0.870556931 0.7495776 0.245480593     
-98  framing_effectconsequence -0.455228812 0.8315717 0.584082100     
-99    framing_effectMetOffice -0.056134575 0.6479698 0.930964448     
-100          framing_effectUN  1.200480590 0.7777161 0.122685861     
-101                 co2_value -0.099838002 0.2146537 0.641851222     
-102       climate_importantno -1.300949438 0.5824366 0.025507251   **
-103            know_climateno -0.606767999 0.5470686 0.267375820     
-104        climate_causehuman  0.373453307 0.5990699 0.533029198     
-105      climate_causenatural  2.269165439 1.2260289 0.064194683    *
-106       climate_causeOthers -1.135600340 1.0235126 0.267209018     
-107   Q12_1Unsure_or_disagree -0.319607953 0.6046307 0.597082762     
-108   Q12_2Unsure_or_disagree -0.056677450 0.9994275 0.954776272     
-109   Q12_3Unsure_or_disagree  0.696594574 0.8353702 0.404351271     
-110   Q12_4Unsure_or_disagree  0.187005325 0.6466376 0.772431031     
-111   Q12_5Unsure_or_disagree  0.270001194 0.6969181 0.698444038     
-112   Q12_6Unsure_or_disagree  0.910694291 0.7817188 0.244023183     
-113       where_liveRuralarea -0.853579435 0.8163179 0.295724587     
-114      where_liveCitycentre -0.621609236 0.5879071 0.290363013     
-115           dietPescatarian  0.184573804 0.9763366 0.850055746     
-116            dietvegetarian  1.908271399 0.9880422 0.053437766    *
-117                  age18_34  0.719808910 0.6312952 0.254198956     
-118                    age55_ -1.134584261 0.7048239 0.107454307     
-119                 is_manyes  0.666859388 0.5168215 0.196943442     
-120       higher_educationyes -0.089420059 0.5298291 0.865976356     
-121               income0_20k  0.711285727 0.9027596 0.430754252     
-122              income30_40k -1.317541236 0.9273885 0.155403871     
-123                income40k_ -0.237694906 0.7546947 0.752795783     
-124       incomenot_specified -0.724794174 0.7620650 0.341557483     
+125 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+126 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+127 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+128 Homeowners and landlords should meet a mandatory energy efficiency standard or be\nfined.
+                        variable  coefficient        SE           p star
+1                    (Intercept)  3.993266502 2.0479218 0.051186658    *
+2            as.factor(list_id)2  0.983189870 0.9260027 0.288346012     
+3            as.factor(list_id)3 -0.394488251 0.7814030 0.613666947     
+4            as.factor(list_id)4  1.649559778 1.0822691 0.127466790     
+5      framing_effectconsequence -1.978618464 1.1854834 0.095109579    *
+6        framing_effectMetOffice -0.357554957 0.8067972 0.657636821     
+7               framing_effectUN -2.100861267 1.3565369 0.121455181     
+8                      co2_value  0.086768610 0.2854022 0.761110969     
+9            climate_importantno -1.794738660 0.9824223 0.067722245    *
+10                know_climateno  0.888243182 0.7456527 0.233563656     
+11            climate_causehuman -1.084085390 0.7726735 0.160607394     
+12          climate_causenatural -0.013169430 1.3437543 0.992180478     
+13  climate_causenoclimatechange -4.402052912 2.2756908 0.053066305    *
+14          climate_causenotknow -0.950210810 1.1501642 0.408717683     
+15       Q12_1Unsure_or_disagree -1.543931809 1.0137149 0.127747861     
+16       Q12_2Unsure_or_disagree  0.456030186 0.9926836 0.645953220     
+17       Q12_3Unsure_or_disagree  0.715369813 0.7347176 0.330222218     
+18       Q12_4Unsure_or_disagree -0.194454673 0.7664431 0.799719202     
+19       Q12_5Unsure_or_disagree -0.878129391 0.7604426 0.248188360     
+20       Q12_6Unsure_or_disagree -0.188471553 0.7299182 0.796245493     
+21           where_liveRuralarea -0.141220373 0.8579281 0.869253877     
+22          where_liveCitycentre -0.794716974 0.9870319 0.420728319     
+23               dietPescatarian  1.146868975 1.0615382 0.279971167     
+24                dietvegetarian  4.156544890 1.9798132 0.035776090   **
+25                      age18_34 -0.632827131 0.7982823 0.427931663     
+26                        age55_ -1.703418995 0.9322639 0.067671886    *
+27                     is_manyes -0.264449092 0.6162309 0.667821618     
+28           higher_educationyes -0.341953451 0.6816638 0.615917028     
+29                   income0_20k -1.184397969 1.1170227 0.289000495     
+30                  income30_40k -3.533645670 2.4739104 0.153186994     
+31                    income40k_ -1.027874921 0.9988072 0.303431521     
+32           incomenot_specified  0.359636265 0.9380115 0.701421117     
+33                   (Intercept)  1.100376440 1.1706884 0.347248511     
+34           as.factor(list_id)2 -0.077136207 0.6850728 0.910351150     
+35           as.factor(list_id)3 -0.047053063 0.6661823 0.943691508     
+36           as.factor(list_id)4 -2.224901195 0.7959001 0.005182705  ***
+37     framing_effectconsequence -0.768957220 0.7261758 0.289639271     
+38       framing_effectMetOffice  0.077850342 0.6791921 0.908744755     
+39              framing_effectUN  0.276056152 0.7541671 0.714334412     
+40                     co2_value -0.005580123 0.1806793 0.975361949     
+41           climate_importantno -1.026167868 0.6557691 0.117622536     
+42                know_climateno -0.412908713 0.6039156 0.494152447     
+43            climate_causehuman  0.225049888 0.5906490 0.703187389     
+44          climate_causenatural  0.511130036 0.9763801 0.600629877     
+45  climate_causenoclimatechange  0.256580344 1.0857879 0.813193689     
+46          climate_causenotknow  2.383113611 1.0610304 0.024701631   **
+47       Q12_1Unsure_or_disagree -0.450871755 0.5744186 0.432501419     
+48       Q12_2Unsure_or_disagree -0.140427233 0.6408602 0.826554200     
+49       Q12_3Unsure_or_disagree  0.676779703 0.5917183 0.252725972     
+50       Q12_4Unsure_or_disagree -0.374343758 0.6210179 0.546648016     
+51       Q12_5Unsure_or_disagree -1.205896468 0.5863384 0.039719311   **
+52       Q12_6Unsure_or_disagree  0.247291049 0.6131714 0.686728719     
+53           where_liveRuralarea  0.833150156 0.6968708 0.231868723     
+54          where_liveCitycentre  0.351720714 0.5638498 0.532769165     
+55               dietPescatarian  1.662286854 0.7276980 0.022353389   **
+56                dietvegetarian  1.970466227 1.0450422 0.059357299    *
+57                      age18_34  0.210382416 0.5689658 0.711559212     
+58                        age55_ -0.806496576 0.6973814 0.247491372     
+59                     is_manyes -0.679012958 0.6027503 0.259943622     
+60           higher_educationyes  0.583355429 0.5825214 0.316618113     
+61                   income0_20k -0.971463045 0.8233658 0.238052652     
+62                  income30_40k -1.045724430 0.8671125 0.227823406     
+63                    income40k_ -0.198075092 0.7497873 0.791645044     
+64           incomenot_specified -1.059871120 0.7914737 0.180534534     
+65                   (Intercept)  3.661480459 1.5323765 0.016875317   **
+66           as.factor(list_id)2 -1.711349203 0.9136783 0.061063881    *
+67           as.factor(list_id)3 -1.554683380 0.8480821 0.066776463    *
+68           as.factor(list_id)4 -2.292128235 0.9918322 0.020832634   **
+69     framing_effectconsequence -1.168229196 0.7751047 0.131762224     
+70       framing_effectMetOffice -0.558701520 0.6959782 0.422115053     
+71              framing_effectUN  0.083651846 0.7722227 0.913737044     
+72                     co2_value  0.002909410 0.1864534 0.987550351     
+73           climate_importantno  0.359809510 0.7177963 0.616181372     
+74                know_climateno -0.949685728 0.6910201 0.169341030     
+75            climate_causehuman  0.728776300 0.7042252 0.300733080     
+76          climate_causenatural  0.739047766 0.9723572 0.447219979     
+77  climate_causenoclimatechange  0.359348795 1.4178098 0.799917817     
+78          climate_causenotknow -2.061353255 1.3546867 0.128097872     
+79       Q12_1Unsure_or_disagree -0.542428195 0.6638615 0.413882504     
+80       Q12_2Unsure_or_disagree  1.915126178 0.8915853 0.031713679   **
+81       Q12_3Unsure_or_disagree  1.215184094 0.7785358 0.118557193     
+82       Q12_4Unsure_or_disagree -1.467277137 0.8223123 0.074369929    *
+83       Q12_5Unsure_or_disagree -0.446217618 0.6986257 0.523013105     
+84       Q12_6Unsure_or_disagree -0.349945130 0.7376128 0.635193775     
+85           where_liveRuralarea -0.471317085 0.6943178 0.497251666     
+86          where_liveCitycentre -0.360450542 0.7002093 0.606709967     
+87               dietPescatarian  1.856400327 0.9720720 0.056167293    *
+88                dietvegetarian  1.593840667 0.8395649 0.057641732    *
+89                      age18_34 -0.601952559 0.6278478 0.337681936     
+90                        age55_ -1.470986922 0.7728421 0.056995254    *
+91                     is_manyes -0.192191639 0.5685519 0.735335238     
+92           higher_educationyes  0.398626430 0.7177857 0.578651347     
+93                   income0_20k -0.169460183 0.8556410 0.843005510     
+94                  income30_40k -3.294585523 1.2264035 0.007223093  ***
+95                    income40k_ -2.277089886 0.8679295 0.008700881  ***
+96           incomenot_specified -0.734433428 0.8481399 0.386526184     
+97                   (Intercept)  0.569554971 1.4396749 0.692390105     
+98           as.factor(list_id)2 -0.359419500 0.7109435 0.613170581     
+99           as.factor(list_id)3 -0.900388371 0.7560237 0.233672204     
+100          as.factor(list_id)4 -0.902722384 0.7259344 0.213672006     
+101    framing_effectconsequence -0.365506546 0.8211011 0.656217163     
+102      framing_effectMetOffice -0.155341354 0.6468563 0.810215385     
+103             framing_effectUN  1.307770771 0.7927565 0.099014559    *
+104                    co2_value -0.077136104 0.2024596 0.703206964     
+105          climate_importantno -1.401762372 0.5910437 0.017707761   **
+106               know_climateno -0.365651142 0.5373209 0.496182864     
+107           climate_causehuman  0.401931219 0.6347467 0.526593169     
+108         climate_causenatural  2.424432078 1.2607790 0.054484632    *
+109 climate_causenoclimatechange  1.786641278 1.5499383 0.249026275     
+110         climate_causenotknow -1.842625975 1.1214234 0.100359453     
+111      Q12_1Unsure_or_disagree -0.363299354 0.5784654 0.529977798     
+112      Q12_2Unsure_or_disagree -0.203832224 0.9442336 0.829088660     
+113      Q12_3Unsure_or_disagree  0.531780910 0.7407719 0.472834957     
+114      Q12_4Unsure_or_disagree  0.231837095 0.6491913 0.721004398     
+115      Q12_5Unsure_or_disagree  0.202711513 0.6845580 0.767138204     
+116      Q12_6Unsure_or_disagree  1.154220309 0.8681530 0.183678934     
+117          where_liveRuralarea -0.903418224 0.7665363 0.238568641     
+118         where_liveCitycentre -0.542763006 0.5900170 0.357619393     
+119              dietPescatarian  0.503806179 0.9859587 0.609364340     
+120               dietvegetarian  1.980980967 1.0161603 0.051238508    *
+121                     age18_34  0.672757708 0.6014292 0.263311549     
+122                       age55_ -1.133798309 0.6739498 0.092507078    *
+123                    is_manyes  0.677819342 0.5267083 0.198130152     
+124          higher_educationyes -0.072086272 0.5422382 0.894239181     
+125                  income0_20k  0.818565751 0.9674753 0.397505658     
+126                 income30_40k -1.309856453 0.8931980 0.142517740     
+127                   income40k_ -0.278106087 0.7647395 0.716111019     
+128          incomenot_specified -0.678720474 0.7688275 0.377344666     
 Save output...
 [1] "Done!"
