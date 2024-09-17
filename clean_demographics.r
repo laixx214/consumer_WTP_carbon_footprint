@@ -15,6 +15,8 @@ dt_demo <-
     select(
         ResponseId,
         Q1:Q8,
+        starts_with("Q9_"),
+        starts_with("Q10_"),
         Q11_1:Q11_2,
         Q12_1:Q12_6,
         Q15:Q20,
@@ -126,6 +128,14 @@ dt_demo <-
             Framing_assigned == 3 ~ "MetOffice",
             Framing_assigned == 4 ~ "MetOffice",
             Framing_assigned == 5 ~ "UN"
+        ),
+        across(
+            starts_with("Q9_"),
+            ~ str_replace_all(.x, " ", "")
+        ),
+        across(
+            starts_with("Q10_"),
+            ~ str_replace_all(.x, " ", "")
         ),
         across(
             starts_with("Q12_"),
