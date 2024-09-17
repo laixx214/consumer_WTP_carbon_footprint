@@ -1,0 +1,39 @@
+---
+title: "Consumer WTP for Carbon Offsets"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(data.table)
+library(dplyr)
+library(stringr)
+library(gtools)
+library(gmnl)
+library(mlogit)
+library(ordPens)
+rm(list = ls())
+load("../output/ce_est.RData")
+```
+
+# Basic Logit Model
+```{r basic_logit, echo=FALSE}
+summary(logit_bsc)
+```
+
+# Mixed Logit Model
+```{r mixed_logit, echo=FALSE}
+summary(mlogit_bsc)
+```
+
+# mixed logit + co2 consumption + framing effect
+```{r mixed_logit_co2, echo=FALSE}
+options(width = 300)
+summary(mlogit_ctrl_1)
+```
+
+# mixed logit + co2 consumption + framing effect + PCA
+```{r mixed_logit_co2_pca, echo=FALSE}
+summary(mlogit_ctrl_2)
+```
+
