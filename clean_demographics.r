@@ -116,7 +116,7 @@ dt_demo <-
             grepl("£20,001 - £30,000", income) ~ "20_30k",
             grepl("£30,001 - £40,000", income) ~ "30_40k",
             grepl("£40,001 - £50,000", income) ~ "40_50k",
-            grepl("£50,001 - £60,000", income) ~ "50_60k",
+            grepl("£50,001 - £60, 000", income) ~ "50_60k",
             grepl("> £60,001", income) ~ "60k_",
             .default = "not_specified"
         ),

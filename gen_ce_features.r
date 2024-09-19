@@ -130,14 +130,95 @@ dt_ctrl <-
         dt_ctrl,
         pc_q9_mat,
         pc_q10_mat
+    ) %>%
+    mutate(
+        age_group = case_when(
+            age %in% c(
+                "18_24",
+                "25_34"
+            ) ~ "18_34",
+            age %in% c(
+                "35_44",
+                "45_54"
+            ) ~ "35_54",
+            age %in% c(
+                "55_64",
+                "65_"
+            ) ~ "55_"
+        ),
+        is_women = as.numeric(gender == "Woman"),
+        diet_type = relevel(
+            as.factor(
+                case_when(
+                    diet %in% c(
+                        "Vegan",
+                        "Vegetarian"
+                    ) ~ "Vegan_Vegetarian",
+                    diet %in% c(
+                        "Flexitarian",
+                        "others",
+                        "Pescatarian"
+                    ) ~ "Flexitarian",
+                    .default = "Omnivorous"
+                )
+            ),
+            ref = "Omnivorous"
+        ),
+        education_level = relevel(
+            as.factor(
+                case_when(
+                    education %in% c(
+                        "GCSE",
+                        "None",
+                        "Other",
+                        "A_Level",
+                        "Vocational"
+                    ) ~ "Others",
+                    .default = education
+                )
+            ),
+            ref = "Others"
+        ),
+        income_level = case_when(
+            income %in% c(
+                "0_10k",
+                "10_20k",
+                "20_30k",
+                "not_specified"
+            ) ~ "0_30k",
+            income %in% c(
+                "30_40k",
+                "40_50k"
+            ) ~ "30_50k",
+            income %in% c(
+                "50_60k",
+                "60k_"
+            ) ~ "50_"
+        ),
+        is_shopper = as.numeric(shopper == "Yes")
     )
 
 ### create dummy variables
 dt_ctrl <-
     cbind(
-        dt_ctrl,
+        dt_ctrl %>%
+            select(
+                -is_women,
+                -hh_size,
+                -n_children,
+                -is_shopper
+            ),
         model.matrix(
-            ~ -1 + framing_effect,
+            ~ framing_effect +
+            age_group +
+            is_women +
+            diet_type +
+            education_level +
+            hh_size +
+            income_level +
+            n_children +
+            is_shopper +
+            where_live,
             data = dt_ctrl
         )
     )
