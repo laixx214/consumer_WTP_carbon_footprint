@@ -1,10 +1,12 @@
 ---
 title: "Consumer WTP for Carbon Offsets"
-output: github_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(broom)
 library(data.table)
 library(dplyr)
 library(stringr)
@@ -12,28 +14,219 @@ library(gtools)
 library(gmnl)
 library(mlogit)
 library(ordPens)
+library(nnet)
 rm(list = ls())
-load("../output/ce_est.RData")
+load("/home/yufenlai/Documents/others/carbon_footprint/output/ce_est.RData")
+
+### define a summary function for nnet
+summary_multinom <- 
+    function(model) {
+        s <- summary(model)
+        coef_mat <- t(s$coefficients)
+        se_mat <- t(s$standard.errors)
+        rownames(coef_mat) <- gsub("X", "", rownames(coef_mat))
+        rownames(se_mat) <- gsub("X", "", rownames(se_mat))
+        
+        tbl <-
+            lapply(
+                1:ncol(coef_mat),
+                function(j) {
+                    coef <- coef_mat[, j]
+                    se <- se_mat[, j]
+                    z <- coef / se
+                    pval <- 2 * (1 - pnorm(abs(coef / se)))
+                    tbl <-
+                        data.frame(
+                            coef = coef,
+                            se = se,
+                            z = z,
+                            p_val = pval
+                        )
+                    return(tbl)
+                }
+            )
+        
+        names(tbl) <- paste0("Class_", 2:(length(tbl) + 1))
+        return(tbl)
+    }
 ```
 
 # Basic Logit Model
+## Basic Logit Model Coefficients
 ```{r basic_logit, echo=FALSE}
 summary(logit_bsc)
 ```
 
+## Basic Logit Model Willingness to Pay
+```{r basic_logit_wtp, echo=FALSE}
+logit_bsc$coefficients["price"] <- logit_bsc$coefficients["price"] * -1
+wtp.gmnl(logit_bsc, wrt = "price")
+```
+
 # Mixed Logit Model
+## Mixed Logit Model Coefficients
 ```{r mixed_logit, echo=FALSE}
 summary(mlogit_bsc)
 ```
 
+## Mixed Logit Model Willingness to Pay
+```{r mixed_logit_wtp, echo=FALSE}
+mlogit_bsc$coefficients["price"] <- mlogit_bsc$coefficients["price"] * -1
+wtp.gmnl(mlogit_bsc, wrt = "price")
+```
+
 # mixed logit + co2 consumption + framing effect
+## mixed logit + co2 consumption + framing effect Coefficients
 ```{r mixed_logit_co2, echo=FALSE}
 options(width = 300)
 summary(mlogit_ctrl_1)
 ```
 
+## mixed logit + co2 consumption + framing effect Willingness to Pay
+```{r mixed_logit_co2_wtp, echo=FALSE}
+mlogit_ctrl_1$coefficients["price"] <- mlogit_ctrl_1$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_1, wrt = "price")
+```
+
 # mixed logit + co2 consumption + framing effect + PCA
+We included the first two coponents for Q9 and Q10.
+Q9 was about respondents' attitude towards carbon offsetting,
+and Q10 was about respondents' attitude towards climate change.
+
+## mixed logit + co2 consumption + framing effect + PCA Coefficients
 ```{r mixed_logit_co2_pca, echo=FALSE}
 summary(mlogit_ctrl_2)
 ```
 
+## mixed logit + co2 consumption + framing effect + PCA Willingness to Pay
+```{r mixed_logit_co2_pca_wtp, echo=FALSE}
+mlogit_ctrl_2$coefficients["price"] <- mlogit_ctrl_2$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_2, wrt = "price")
+```
+
+\begin{itemize}
+    \item Higher meeting consumption, i.e., higher co2 value consistently reduce the WTP.
+    \item The framing effects is either non-significant or seems to mitigate the preference premium relative to the base line for both endosement and carbon offset approaches.
+\end{itemize}
+
+# Latent Class Models, Marginal Utiltiy Without Interaction Terms
+This specification allows marginal utility paramters varies by class and 
+treating the co2 consumption, framing effect, and PCAs of as demographics.
+
+## Latent Class Treating co2 consumption + framing effect + PCA as demographics, 2 classes
+The marginal utility coefficients are:
+```{r latent_class_2, echo=FALSE}
+summary(lc_1[[1]]$lc_est)
+```
+
+The class membership probabilities are:
+```{r latent_class_2_class_prob, echo=FALSE}
+prob <- apply(lc_1[[1]]$lc_est$Wnq, 2, mean)
+names(prob) <- paste0("Class_", 1:ncol(lc_1[[1]]$lc_est$Wnq))
+prob
+```
+
+The effects of demographics are:
+```{r latent_class_2_demographics, echo=FALSE}
+summary_multinom(lc_1[[1]]$lc_demo)
+```
+
+## Latent Class Treating co2 consumption + framing effect + PCA as demographics, 3 classes
+The marginal utility coefficients are:
+```{r latent_class_3, echo=FALSE}
+summary(lc_2[[2]]$lc_est)
+```
+
+The class membership probabilities are:
+```{r latent_class_3_class_prob, echo=FALSE}
+prob <- apply(lc_2[[2]]$lc_est$Wnq, 2, mean)
+names(prob) <- paste0("Class_", 1:ncol(lc_2[[2]]$lc_est$Wnq))
+prob
+```
+
+The effects of demographics are:
+```{r latent_class_3_demographics, echo=FALSE}
+summary_multinom(lc_2[[2]]$lc_demo)
+```
+
+\textbf{We can't do an LC esimtation with more than 3 classes due to lack of variation and the hessian matrix would be singular.}
+
+# Latent Class Models, Marginal Utiltiy With Interaction Terms
+This specification interacts the marginal utility parameters with the co2 consumption, framing effect, and PCAs.
+This specification would be similar to the mixed logit model with the exception that the marginal utility parameters are allowed to vary by class,
+but without being random parameters.
+
+## Latent Class interact with co2 consumption + framing effect + PCA, 2 classes
+The marginal utility coefficients are:
+```{r latent_class_2_int, echo=FALSE}
+summary(lc_int_1[[1]]$lc_est)
+ic <- c(
+    AIC(lc_int_1[[1]]$lc_est),
+    BIC(lc_int_1[[1]]$lc_est)
+)
+names(ic) <- c("AIC", "BIC")
+ic
+```
+
+The class membership probabilities are:
+```{r latent_class_2_int_class_prob, echo=FALSE}
+prob <- apply(lc_int_1[[1]]$lc_est$Wnq, 2, mean)
+names(prob) <- paste0("Class_", 1:ncol(lc_int_1[[1]]$lc_est$Wnq))
+prob
+```
+
+The effects of demographics are:
+```{r latent_class_2_int_demographics, echo=FALSE}
+summary_multinom(lc_int_1[[1]]$lc_demo)
+```
+
+### Latent Class interact with co2 consumption + framing effect + PCA, 3 classes
+The marginal utility coefficients are:
+```{r latent_class_3_int, echo=FALSE}
+summary(lc_int_1[[2]]$lc_est)
+ic <- c(
+    AIC(lc_int_1[[2]]$lc_est),
+    BIC(lc_int_1[[2]]$lc_est)
+)
+names(ic) <- c("AIC", "BIC")
+ic
+```
+
+The class membership probabilities are:
+```{r latent_class_3_int_class_prob, echo=FALSE}
+prob <- apply(lc_int_1[[2]]$lc_est$Wnq, 2, mean)
+names(prob) <- paste0("Class_", 1:ncol(lc_int_1[[2]]$lc_est$Wnq))
+prob
+```
+
+The effects of demographics are:
+```{r latent_class_3_int_demographics, echo=FALSE}
+summary_multinom(lc_int_1[[2]]$lc_demo)
+```
+
+### Latent Class interact with co2 consumption + framing effect + PCA, 4 classes
+The marginal utility coefficients are:
+```{r latent_class_4_int, echo=FALSE}
+summary(lc_int_1[[3]]$lc_est)
+ic <- c(
+    AIC(lc_int_1[[3]]$lc_est),
+    BIC(lc_int_1[[3]]$lc_est)
+)
+names(ic) <- c("AIC", "BIC")
+ic
+```
+
+The class membership probabilities are:
+```{r latent_class_4_int_class_prob, echo=FALSE}
+prob <- apply(lc_int_1[[3]]$lc_est$Wnq, 2, mean)
+names(prob) <- paste0("Class_", 1:ncol(lc_int_1[[3]]$lc_est$Wnq))
+prob
+```
+
+The effects of demographics are:
+```{r latent_class_4_int_demographics, echo=FALSE}
+summary_multinom(lc_int_1[[3]]$lc_demo)
+```
+
+\textbf{Based on BIC, the optimal number of classes is 3.
+        Also, we could not estiamte a model with more than 4 classes due to lack of variation, i.e., singular hessian matrix.}

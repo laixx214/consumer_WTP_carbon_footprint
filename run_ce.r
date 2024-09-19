@@ -21,7 +21,7 @@ date <- gsub("-", "", as.character(Sys.Date()))
 my_log <-
     file(
         paste(
-            "./consumer_WTP_carbon_footprint/run_ce_",
+            "./run_ce_",
             date,
             ".log",
             sep = ""
@@ -91,7 +91,7 @@ f <- formula(
             )
         ),
         " | 0 | 0 |
-        co2_value + 
+        co2_value +
         framing_effectconsequence +
         framing_effectMetOffice +
         framing_effectUN +
@@ -141,7 +141,7 @@ f <- formula(
             )
         ),
         " | 0 | 0 |
-        co2_value + 
+        co2_value +
         framing_effectconsequence +
         framing_effectMetOffice +
         framing_effectUN +
@@ -182,43 +182,43 @@ summary(mlogit_ctrl_2)
 save.image("./output/ce_est.RData")
 
 ################################################################################
-### latent class model + mixed logit
+### latent class model without interaction terms
 ################################################################################
-
+message("Running latent class model without interaction terms...")
 ### without PCA as control
 f1 <- formula(
-    y ~ 
-    -1 +
-    I +
-    price + price:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    location_EU + location_EU:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    location_UK + location_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    certificate_NGO + certificate_NGO:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    certificate_UK + certificate_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    project_renewable + project_renewable:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    project_landfill + project_landfill:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
-    project_manure + project_manure:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN)
-    | 0 | 0 | 0 | 1
+    y ~
+        -1 +
+            I +
+            price +
+            location_EU +
+            location_UK +
+            certificate_NGO +
+            certificate_UK +
+            project_renewable +
+            project_landfill +
+            project_manure |
+            0 | 0 | 0 | 1
 )
 
 ### with PCA as control
 f2 <- formula(
-    y ~ 
-    -1 +
-    I +
-    price + price:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    location_EU + location_EU:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    location_UK + location_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    certificate_NGO + certificate_NGO:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    certificate_UK + certificate_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    project_renewable + project_renewable:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    project_landfill + project_landfill:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
-    project_manure + project_manure:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2)
-    | 0 | 0 | 0 | 1
+    y ~
+        -1 +
+            I +
+            price +
+            location_EU +
+            location_UK +
+            certificate_NGO +
+            certificate_UK +
+            project_renewable +
+            project_landfill +
+            project_manure |
+            0 | 0 | 0 | 1
 )
 
 ### Latent class model from 2 to 5 classes, without PCA
-lc_est_1 <-
+lc_1 <-
     lapply(
         2:5,
         function(q) {
@@ -240,15 +240,22 @@ lc_est_1 <-
                         "Failed"
                     }
                 )
-            summary(lc_ctrl)
-            
+
             ### if successful, estimate effect of demographics
-            if (class(lc_ctrl) == "character") {
+            if (!class(lc_ctrl) == "character") {
                 Y <- lc_ctrl$Qir
                 X <- as.matrix(
                     data %>%
                         select(
                             ResponseId,
+                            co2_value,
+                            framing_effectconsequence,
+                            framing_effectMetOffice,
+                            framing_effectUN,
+                            Q9_PC1,
+                            Q9_PC2,
+                            Q10_PC1,
+                            Q10_PC2,
                             age_group35_54,
                             age_group55_,
                             is_women,
@@ -269,16 +276,22 @@ lc_est_1 <-
                             -ResponseId
                         )
                 )
-
+                
                 lc_ctrl_demo <-
-                    multinom(
-                        Y ~ X
+                    tryCatch(
+                        {
+                            multinom(
+                                Y ~ X
+                            )
+                        },
+                        error = function(e) {
+                            "Failed"
+                        }
                     )
-                summary(lc_ctrl_demo)
             } else {
                 lc_ctrl_demo <- "Failed"
             }
-            
+
             return(
                 list(
                     lc_est = lc_ctrl,
@@ -289,7 +302,7 @@ lc_est_1 <-
     )
 
 ### 2 classes, without PCA
-lc_est_2 <-
+lc_2 <-
     lapply(
         2:5,
         function(q) {
@@ -311,10 +324,130 @@ lc_est_2 <-
                         "Failed"
                     }
                 )
-            summary(lc_ctrl)
 
             ### if successful, estimate effect of demographics
-            if (class(lc_ctrl) == "character") {
+            if (!class(lc_ctrl) == "character") {
+                Y <- lc_ctrl$Qir
+                X <- as.matrix(
+                    data %>%
+                        select(
+                            ResponseId,
+                            co2_value,
+                            framing_effectconsequence,
+                            framing_effectMetOffice,
+                            framing_effectUN,
+                            Q9_PC1,
+                            Q9_PC2,
+                            Q10_PC1,
+                            Q10_PC2,
+                            age_group35_54,
+                            age_group55_,
+                            is_women,
+                            diet_typeFlexitarian,
+                            diet_typeVegan_Vegetarian,
+                            education_levelDegree,
+                            education_levelPostgraduate,
+                            hh_size,
+                            income_level30_50k,
+                            income_level50_,
+                            n_children,
+                            is_shopper,
+                            where_liveRuralarea,
+                            where_liveTownorsuburb
+                        ) %>%
+                        distinct() %>%
+                        select(
+                            -ResponseId
+                        )
+                )
+
+                lc_ctrl_demo <-
+                    tryCatch(
+                        {
+                            multinom(
+                                Y ~ X
+                            )
+                        },
+                        error = function(e) {
+                            "Failed"
+                        }
+                    )
+            } else {
+                lc_ctrl_demo <- "Failed"
+            }
+
+            return(
+                list(
+                    lc_est = lc_ctrl,
+                    lc_demo = lc_ctrl_demo
+                )
+            )
+        }
+    )
+save.image("./output/ce_est.RData")
+
+################################################################################
+### latent class model with interaction terms
+################################################################################
+message("Running latent class model with interaction terms...")
+### without PCA as control
+f1 <- formula(
+    y ~
+        -1 +
+            I +
+            price + price:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            location_EU + location_EU:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            location_UK + location_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            certificate_NGO + certificate_NGO:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            certificate_UK + certificate_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            project_renewable + project_renewable:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            project_landfill + project_landfill:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) +
+            project_manure + project_manure:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN) |
+            0 | 0 | 0 | 1
+)
+
+### with PCA as control
+f2 <- formula(
+    y ~
+        -1 +
+            I +
+            price + price:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            location_EU + location_EU:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            location_UK + location_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            certificate_NGO + certificate_NGO:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            certificate_UK + certificate_UK:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            project_renewable + project_renewable:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            project_landfill + project_landfill:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) +
+            project_manure + project_manure:(co2_value + framing_effectconsequence + framing_effectMetOffice + framing_effectUN + Q9_PC1 + Q9_PC2 + Q10_PC1 + Q10_PC2) |
+            0 | 0 | 0 | 1
+)
+
+### Latent class model from 2 to 5 classes, without PCA
+lc_int_1 <-
+    lapply(
+        2:5,
+        function(q) {
+            ### run latent class model
+            lc_ctrl <-
+                tryCatch(
+                    {
+                        gmnl(
+                            f1,
+                            data = dt,
+                            model = "lc",
+                            Q = q,
+                            panel = TRUE,
+                            method = "bhhh",
+                            iterlim = 5000
+                        )
+                    },
+                    error = function(e) {
+                        "Failed"
+                    }
+                )
+
+            ### if successful, estimate effect of demographics
+            if (!class(lc_ctrl) == "character") {
                 Y <- lc_ctrl$Qir
                 X <- as.matrix(
                     data %>%
@@ -339,15 +472,97 @@ lc_est_2 <-
                         select(
                             -ResponseId
                         )
-                ) else {
-                    lc_ctrl_demo <- "Failed"
-                }
+                )
 
                 lc_ctrl_demo <-
-                    multinom(
-                        Y ~ X
+                    tryCatch(
+                        {
+                            multinom(
+                                Y ~ X
+                            )
+                        },
+                        error = function(e) {
+                            "Failed"
+                        }
                     )
-                summary(lc_ctrl_demo)
+            } else {
+                lc_ctrl_demo <- "Failed"
+            }
+
+            return(
+                list(
+                    lc_est = lc_ctrl,
+                    lc_demo = lc_ctrl_demo
+                )
+            )
+        }
+    )
+
+### 2 classes, without PCA
+lc_int_2 <-
+    lapply(
+        2:5,
+        function(q) {
+            ### run latent class model
+            lc_ctrl <-
+                tryCatch(
+                    {
+                        gmnl(
+                            f2,
+                            data = dt,
+                            model = "lc",
+                            Q = q,
+                            panel = TRUE,
+                            method = "bhhh",
+                            iterlim = 5000
+                        )
+                    },
+                    error = function(e) {
+                        "Failed"
+                    }
+                )
+
+            ### if successful, estimate effect of demographics
+            if (!class(lc_ctrl) == "character") {
+                Y <- lc_ctrl$Qir
+                X <- as.matrix(
+                    data %>%
+                        select(
+                            ResponseId,
+                            age_group35_54,
+                            age_group55_,
+                            is_women,
+                            diet_typeFlexitarian,
+                            diet_typeVegan_Vegetarian,
+                            education_levelDegree,
+                            education_levelPostgraduate,
+                            hh_size,
+                            income_level30_50k,
+                            income_level50_,
+                            n_children,
+                            is_shopper,
+                            where_liveRuralarea,
+                            where_liveTownorsuburb
+                        ) %>%
+                        distinct() %>%
+                        select(
+                            -ResponseId
+                        )
+                )
+
+                lc_ctrl_demo <-
+                    tryCatch(
+                        {
+                            multinom(
+                                Y ~ X
+                            )
+                        },
+                        error = function(e) {
+                            "Failed"
+                        }
+                    )
+            } else {
+                lc_ctrl_demo <- "Failed"
             }
 
             return(
