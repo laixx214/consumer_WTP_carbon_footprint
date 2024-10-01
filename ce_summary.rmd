@@ -51,6 +51,53 @@ summary_multinom <-
     }
 ```
 
+# Choice Probaility by Information Treatment
+```{r choice_prob, echo=FALSE}
+data %>%
+    mutate(
+        opt_out_as_best = as.numeric(alt %in% c(5, 6))
+    ) %>%
+    group_by(
+        framing_effect,
+        scenario,
+        opt_out_as_best
+    ) %>%
+    summarise(
+        choice_prob = mean(y)
+    ) %>%
+    pivot_wider(
+        names_from = framing_effect,
+        values_from = choice_prob
+    ) %>%
+    filter(opt_out_as_best == 1) %>%
+    select(-opt_out_as_best)
+```
+
+The above table presents the choice probability of the opt-out option being the best option by information treatment.
+The probability differences between different information treatments does not appear to be large.
+Evan when the probaiblity of selecting opt out is larger with consequence framing, the difference at about 0.01 percentage points. 
+
+# Summary of PCA
+## for Q9
+Factor loadings for Q9:
+```{r pca_q9, echo=FALSE}
+pc_fit_q9_star$pca
+```
+Importance of components:
+```{r pca_q9_importance, echo=FALSE}
+summary(pc_fit_q9_star$pca)
+```
+
+## for Q10
+Factor loadings for Q10:
+```{r pca_q10, echo=FALSE}
+pc_fit_q10_star$pca
+```
+Importance of components:
+```{r pca_q10_importance, echo=FALSE}
+summary(pc_fit_q10_star$pca)
+```
+
 # Basic Logit Model
 ## Basic Logit Model Coefficients
 ```{r basic_logit, echo=FALSE}
