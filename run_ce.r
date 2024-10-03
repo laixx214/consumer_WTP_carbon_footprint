@@ -76,6 +76,104 @@ mlogit_bsc <- gmnl(
 )
 summary(mlogit_bsc)
 save.image("./output/ce_est.RData")
+
+################################################################################
+### mixed logit + co2 consumption
+################################################################################
+message("Running mixed logit with co2 consumption...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 | co2_value - 1"
+    )
+)
+
+### define interactions
+mvarlist_ctr_e <- list(
+    location_EU = c("co2_value"),
+    location_UK = c("co2_value"),
+    certificate_NGO = c("co2_value"),
+    certificate_UK = c("co2_value"),
+    project_renewable = c("co2_value"),
+    project_landfill = c("co2_value"),
+    project_manure = c("co2_value")
+)
+
+### run mixed logit
+mlogit_ctrl_e <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_ctr_e,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+)
+summary(mlogit_ctrl_e)
+save.image("./output/ce_est.RData")
+
+################################################################################
+### mixed logit + framing effect
+################################################################################
+message("Running mixed logit with framing effect...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 | framing_effectconsequence + framing_effectMetOffice + framing_effectUN - 1"
+    )
+)
+
+interactions <- c(
+    "framing_effectconsequence",
+    "framing_effectMetOffice",
+    "framing_effectUN"
+)
+### define interactions
+mvarlist_ctrl_f <- list(
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_f <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_ctrl_f,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+summary(mlogit_ctrl_f)
+save.image("./output/ce_est.RData")
+
 ################################################################################
 ### mixed logit + co2 consumption + framing effect
 ################################################################################
@@ -99,35 +197,117 @@ f <- formula(
     )
 )
 
+interactions <- c(
+    "co2_value",
+    "framing_effectconsequence",
+    "framing_effectMetOffice",
+    "framing_effectUN"
+)
 ### define interactions
-mvarlist_1 <- list(
-    location_EU = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN"),
-    location_UK = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN"),
-    certificate_NGO = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN"),
-    certificate_UK = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN"),
-    project_renewable = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN"),
-    project_landfill = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN"),
-    project_manure = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN")
+mvarlist_ctrl_ef <- list(
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
 )
 
 ### run mixed logit
-mlogit_ctrl_1 <-
+mlogit_ctrl_ef <-
     gmnl(
         f,
         data = dt,
         model = "mixl",
         ranp = randpar,
-        mvar = mvarlist_1,
+        mvar = mvarlist_ctrl_ef,
         R = 2000,
         panel = T,
         haltons = NA,
         method = "bhhh",
         iterlim = 5000
     )
-summary(mlogit_ctrl_1)
+summary(mlogit_ctrl_ef)
 save.image("./output/ce_est.RData")
+
 ################################################################################
-### mixed logit + co2 consumption + framing effect + principle components
+### mixed logit + 1 principle component + demographic controls
+################################################################################
+message("Running mixed logit with 1 principle component and demographic controls...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        Q9_PC1 +
+        P10_PC1 +
+        age_group35_54 +
+        age_group55_ +
+        is_women +
+        diet_typeFlexitarian +
+        diet_typeVegan_Vegetarian +
+        education_levelDegree +
+        education_levelPostgraduate +
+        income_level30_50k +
+        income_level50_ +
+        where_liveRuralarea +
+        where_liveTownorsuburb +
+        - 1"
+    )
+)
+
+interactions <- c(
+    "Q9_PC1",
+    "P10_PC1",
+    "age_group35_54",
+    "age_group55_",
+    "is_women",
+    "diet_typeFlexitarian",
+    "diet_typeVegan_Vegetarian",
+    "education_levelDegree",
+    "education_levelPostgraduate",
+    "income_level30_50k",
+    "income_level50_",
+    "where_liveRuralarea",
+    "where_liveTownorsuburb"
+)
+### define interactions
+mvarlist_p1d <- list(
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+                    
+### run mixed logit
+mlogit_ctrl_p1d <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_p1d,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+summary(mlogit_ctrl_p1d)
+save.image("./output/ce_est.RData")
+
+################################################################################
+### mixed logit + co2 consumption + framing effect + 2 principle components
 ################################################################################
 message("Running mixed logit with co2 consumption, framing effect, and principle components...")
 ### mixed logit with controls
@@ -153,32 +333,42 @@ f <- formula(
     )
 )
 
+interactions <- c(
+    "co2_value",
+    "framing_effectconsequence",
+    "framing_effectMetOffice",
+    "framing_effectUN",
+    "Q9_PC1",
+    "Q9_PC2",
+    "Q10_PC1",
+    "Q10_PC2"
+)
 ### define interactions
-mvarlist_2 <- list(
-    location_EU = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2"),
-    location_UK = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2"),
-    certificate_NGO = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2"),
-    certificate_UK = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2"),
-    project_renewable = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2"),
-    project_landfill = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2"),
-    project_manure = c("co2_value", "framing_effectconsequence", "framing_effectMetOffice", "framing_effectUN", "Q9_PC1", "Q9_PC2", "Q10_PC1", "Q10_PC2")
+mvarlist_efp2 <- list(
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
 )
 
 ### run mixed logit
-mlogit_ctrl_2 <-
+mlogit_ctrl_efp2 <-
     gmnl(
         f,
         data = dt,
         model = "mixl",
         ranp = randpar,
-        mvar = mvarlist_2,
+        mvar = mvarlist_efp2,
         R = 2000,
         panel = T,
         haltons = NA,
         method = "bhhh",
         iterlim = 5000
     )
-summary(mlogit_ctrl_2)
+summary(mlogit_ctrl_efp2)
 save.image("./output/ce_est.RData")
 
 ################################################################################
