@@ -232,7 +232,70 @@ summary(mlogit_ctrl_ef)
 save.image("./output/ce_est.RData")
 
 ################################################################################
-### mixed logit + 1 principle component + demographic controls
+### mixed logit + 1 principle component + reduced demographic controls
+################################################################################
+message("Running mixed logit with 1 principle component and reduced demographic controls...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        Q9_PC1 +
+        Q10_PC1 +
+        age_group35_54 +
+        age_group55_ +
+        is_women +
+        income_level30_50k +
+        income_level50_ +
+        -1"
+    )
+)
+
+interactions <- c(
+    "Q9_PC1",
+    "Q10_PC1",
+    "age_group35_54",
+    "age_group55_",
+    "is_women",
+    "income_level30_50k",
+    "income_level50_"
+)
+### define interactions
+mvarlist_p1rd <- list(
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_p1rd <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_p1rd,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+summary(mlogit_ctrl_p1rd)
+save.image("./output/ce_est.RData")
+
+################################################################################
+### mixed logit + 1 principle component + full demographic controls
 ################################################################################
 message("Running mixed logit with 1 principle component and demographic controls...")
 ### mixed logit with controls
@@ -247,7 +310,7 @@ f <- formula(
         ),
         " | 0 | 0 |
         Q9_PC1 +
-        P10_PC1 +
+        Q10_PC1 +
         age_group35_54 +
         age_group55_ +
         is_women +
@@ -265,7 +328,7 @@ f <- formula(
 
 interactions <- c(
     "Q9_PC1",
-    "P10_PC1",
+    "Q10_PC1",
     "age_group35_54",
     "age_group55_",
     "is_women",
