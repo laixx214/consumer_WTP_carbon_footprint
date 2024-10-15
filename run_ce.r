@@ -54,6 +54,7 @@ summary(logit_bsc)
 
 ### mixed logit
 randpar <- c(
+    I = "n",
     location_EU = "n",
     location_UK = "n",
     certificate_NGO = "n",
@@ -97,6 +98,7 @@ f <- formula(
 
 ### define interactions
 mvarlist_ctr_e <- list(
+    I = c("co2_value"),
     location_EU = c("co2_value"),
     location_UK = c("co2_value"),
     certificate_NGO = c("co2_value"),
@@ -148,6 +150,7 @@ interactions <- c(
 )
 ### define interactions
 mvarlist_ctrl_f <- list(
+    I = interactions,
     location_EU = interactions,
     location_UK = interactions,
     certificate_NGO = interactions,
@@ -205,6 +208,7 @@ interactions <- c(
 )
 ### define interactions
 mvarlist_ctrl_ef <- list(
+    I = interactions,
     location_EU = interactions,
     location_UK = interactions,
     certificate_NGO = interactions,
@@ -268,6 +272,7 @@ interactions <- c(
 )
 ### define interactions
 mvarlist_p1rd <- list(
+    I = interactions,
     location_EU = interactions,
     location_UK = interactions,
     certificate_NGO = interactions,
@@ -343,6 +348,7 @@ interactions <- c(
 )
 ### define interactions
 mvarlist_p1d <- list(
+    I = interactions,
     location_EU = interactions,
     location_UK = interactions,
     certificate_NGO = interactions,
@@ -408,6 +414,7 @@ interactions <- c(
 )
 ### define interactions
 mvarlist_efp2 <- list(
+    I = interactions,
     location_EU = interactions,
     location_UK = interactions,
     certificate_NGO = interactions,

@@ -15,6 +15,7 @@ library(gmnl)
 library(mlogit)
 library(ordPens)
 library(nnet)
+library(colorBlindness)
 rm(list = ls())
 load("/home/yufenlai/Documents/others/carbon_footprint/output/ce_est.RData")
 
@@ -51,31 +52,56 @@ summary_multinom <-
     }
 ```
 
-# Choice Probaility by Information Treatment
+# Opt-out Rank by Information Treatment
 ```{r choice_prob, echo=FALSE}
-data %>%
+tbl_opt_out_rank <-
+    data %>%
     mutate(
-        opt_out_as_best = as.numeric(alt %in% c(5, 6))
+        opt_out_rank = case_when(
+            alt %in% c(5, 6) ~ 1,
+            alt %in% c(1, 3) ~ 2,
+            alt %in% c(2, 4) ~ 3
+        )
+    ) %>%
+    filter(
+        y == 1
     ) %>%
     group_by(
         framing_effect,
-        scenario,
-        opt_out_as_best
+        scenario
     ) %>%
     summarise(
-        choice_prob = mean(y)
-    ) %>%
-    pivot_wider(
-        names_from = framing_effect,
-        values_from = choice_prob
-    ) %>%
-    filter(opt_out_as_best == 1) %>%
-    select(-opt_out_as_best)
+        opt_out_rank = mean(opt_out_rank)
+    )
+
+# plot opt_out_rank for each scenario by framing_effect
+tbl_opt_out_rank %>%
+    ggplot(
+        aes(
+            x = as.factor(scenario),
+            y = opt_out_rank,
+            fill = as.factor(framing_effect)
+        )
+    ) +
+    geom_bar(
+        stat = "identity",
+        position = "dodge"
+    ) +
+    labs(
+        x = "Choice Scenario",
+        y = "Choice Rank of Opt-Out",
+        fill = "Framing Type"
+    ) +
+    theme_classic() +
+    # colorblind friendly colors
+    scale_fill_manual(values = Blue2Gray8Steps) +
+    # minimum y = 1.9, maximum y = 2.1
+    coord_cartesian(ylim = c(2.2, 2.5))
 ```
 
-The above table presents the choice probability of the opt-out option being the best option by information treatment.
-The probability differences between different information treatments does not appear to be large.
-Evan when the probaiblity of selecting opt out is larger with consequence framing, the difference at about 0.01 percentage points. 
+The above table presents the rank of opt-out for each chocie scenario by information treatment.
+Lower the rank, higher the preference for opt-out.
+The summary shows that Met Office has a poitive effect on the preference for opt-out, and equivalently, the endorsement has a negative effect on the preference for carbon offset.
 
 # Summary of PCA
 ## for Q9
@@ -129,6 +155,9 @@ wtp.gmnl(mlogit_bsc, wrt = "price")
 summary(mlogit_ctrl_e)
 ```
 
+Note that the coefficient for "I.co2_value" measures the utility for opt-out conditional on co2 consumption.
+This coefficient is positive means lower baseline utility for carbon offsetting.
+
 ## mixed logit + co2 consumption Willingness to Pay
 ```{r mixed_logit_co2_wtp, echo=FALSE}
 mlogit_ctrl_e$coefficients["price"] <- mlogit_ctrl_e$coefficients["price"] * -1
@@ -152,6 +181,10 @@ wtp.gmnl(mlogit_ctrl_f, wrt = "price")
 ```{r mixed_logit_co2_f, echo=FALSE}
 summary(mlogit_ctrl_ef)
 ```
+
+The effect of co2 consumption is statistically significant and negative.
+However, the effect of framing effect is largely not statistically significant,
+and Met Office has a adverse effect on the preference for carbon offsetting and only shift the overall preference, not the preference for carbon offsetting features.
 
 ## mixed logit + co2 consumption + framing effect Willingness to Pay
 ```{r mixed_logit_co2_f_wtp, echo=FALSE}

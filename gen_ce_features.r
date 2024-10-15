@@ -36,7 +36,8 @@ dt_ctrl <-
         income,
         where_live,
         co2_value,
-        framing_effect
+        framing_effect,
+        Framing_assigned
     )
 
 ### principle component analysis for Q9, 10, 12
