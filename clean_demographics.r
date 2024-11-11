@@ -10,8 +10,18 @@ set.seed(1201202)
 ################################################################################
 ### demographic data
 ################################################################################
+data <- fread("csv/qual5353-23-01-grocery_March 27, 2024_15.04 2.csv")
+### drop row 2 and 3, save data and re-read
+data <- data[-c(1, 2)]
+
+### read in CE data
+data_bw <- fread("./csv/data_bw.csv")
+
 dt_demo <-
-    fread("csv/list_data.csv") %>%
+    data %>%
+    filter(
+        ResponseId %in% unique(data_bw$ResponseId)
+    ) %>%
     select(
         ResponseId,
         Q1:Q8,
@@ -78,7 +88,7 @@ dt_demo <-
         climate_cause = case_when(
             climate_cause == "Climate change is caused by both natural processes and human activity" ~ "both",
             climate_cause == "Climate change is caused only by human activity" ~ "human",
-            climate_cause == "Climate change is caused only by natural processes" ~ "natural",
+            grepl("Climate change is caused only by natural processes", climate_cause) ~ "natural",
             grepl("know what is causing climate change", climate_cause) ~ "notknow",
             grepl("no such thing as climate change", climate_cause) ~ "noclimatechange"
         ),
@@ -107,8 +117,8 @@ dt_demo <-
         n_children = as.integer(n_children),
         shopper = case_when(
             shopper == "I have joint responsibility" ~ "joint",
-            shopper == "No" ~ "No",
-            shopper == "Yes" ~ "Yes"
+            grepl("No", shopper) ~ "No",
+            grepl("Yes", shopper) ~ "Yes"
         ),
         income = case_when(
             grepl("< £10,000", income) ~ "0_10k",
@@ -162,9 +172,7 @@ fwrite(dt_demo, "./csv/dt_demo.csv")
 ################################################################################
 ### summary of demographic data
 ################################################################################
-dt_demo_raw <-
-    fread("csv/list_data.csv")
-
+dt_demo <- fread("./csv/dt_demo.csv")
 # variables to summarize
 vars <- 
     c(
@@ -186,33 +194,52 @@ vars <-
         "where_live",
         "framing_effect"
     )
-# the corresponding variable ids
-var_id <- 
-    c(
-        "Q1",
-        "Q2",
-        "Q3",
-        "Q4",
-        "Q8",
-        "Q5",
-        "Q6",
-        "Q7",
-        "Q11_1",
-        "Q11_2",
-        "Q15",
-        "Q16",
-        "Q17",
-        "Q18",
-        "Q19",
-        "Q20",
-        "Framing"
+
+tbl_demo <-
+    lapply(
+        vars,
+        function(x) {
+            tbl_temp <-
+                dt_demo %>%
+                group_by(
+                    across(
+                        all_of(
+                            x
+                        )
+                    )
+                ) %>%
+                summarise(
+                    Frequency = n_distinct(ResponseId)
+                ) %>%
+                ungroup() %>%
+                mutate(
+                    Percentage = Frequency / sum(Frequency) * 100
+                ) %>%
+                rename(
+                    group = x
+                ) %>%
+                mutate(
+                    variable = x
+                ) %>%
+                arrange(
+                    variable
+                ) %>%
+                select(
+                    variable,
+                    group,
+                    Frequency,
+                    Percentage
+                )
+
+            return(tbl_temp)
+        }
     )
 
 ### for location
 tbl_location <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q1
+        Group = location
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -229,9 +256,9 @@ tbl_location <-
 
 ### for age
 tbl_age <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q2
+        Group = age
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -243,14 +270,24 @@ tbl_age <-
         Variable = "Age"
     ) %>%
     arrange(Group) %>%
+    mutate(
+        Group = case_when(
+            Group == "18_24" ~ "18-24",
+            Group == "25_34" ~ "25-34",
+            Group == "35_44" ~ "35-44",
+            Group == "45_54" ~ "45-54",
+            Group == "55_64" ~ "55-64",
+            Group == "65_" ~ "65+"
+        )
+    ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
 ### for gender
-tbl_gender <- 
-    dt_demo_raw %>%
+tbl_gender <-
+    dt_demo %>%
     rename(
-        Group = Q3
+        Group = gender
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -262,14 +299,20 @@ tbl_gender <-
         Variable = "Gender"
     ) %>%
     arrange(Group) %>%
+    mutate(
+        Group = case_when(
+            Group == "others" ~ "Non-binary",
+            .default = Group
+        )
+    ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
-    
+
 ### for diet
 tbl_diet <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q4
+        Group = diet
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -281,23 +324,29 @@ tbl_diet <-
         Variable = "Diet"
     ) %>%
     arrange(Group) %>%
+    mutate(
+        Group = case_when(
+            Group == "others" ~ "Others",
+            .default = Group
+        )
+    ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
 ### for meat_frequency
 tbl_meat_frequency <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     mutate(
-        Q8 = case_when(
-            Q8 == "2 times weekly" ~ "2 times weekly",
-            Q8 == "3- 5 times weekly" ~ "3-5 times weekly",
-            grepl("Never", Q8) ~ "Never",
-            Q8 == "Once a day" ~ "Once a day",
-            Q8 == "Twice a day or more" ~ "Twice a day or more"
+        meat_frequency = case_when(
+            meat_frequency == "2weekly" ~ "2 times weekly",
+            meat_frequency == "3_5weekly" ~ "3-5 times weekly",
+            grepl("Never", meat_frequency) ~ "Never",
+            meat_frequency == "1daily" ~ "Once a day",
+            meat_frequency == "2daily" ~ "Twice a day or more"
         )
     ) %>%
     rename(
-        Group = Q8
+        Group = meat_frequency
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -306,14 +355,14 @@ tbl_meat_frequency <-
     ungroup() %>%
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "Meat Consumption Frequency"
+        Variable = "Meat Consumption"
     ) %>%
     arrange(
         match(Group, c(
             "Twice a day or more",
             "Once a day",
-            "2 times weekly",
             "3-5 times weekly",
+            "2 times weekly",
             "Never"
         ))
     ) %>%
@@ -322,9 +371,9 @@ tbl_meat_frequency <-
 
 ### for climate_important
 tbl_climate_important <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q5
+        Group = climate_important
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -333,17 +382,25 @@ tbl_climate_important <-
     ungroup() %>%
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "Agreed Climate is Important"
+        Variable = "Climate is Important",
+        Group = as.character(Group)
     ) %>%
     arrange(Group) %>%
+    mutate(
+        Group = case_when(
+            Group == "1" ~ "1-Not Important",
+            Group == "5" ~ "5-Very Important",
+            .default = Group
+        )
+    ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
 ### for know_climate
 tbl_know_climate <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q6
+        Group = know_climate
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -352,17 +409,25 @@ tbl_know_climate <-
     ungroup() %>%
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "Familiar with Climate Change"
+        Variable = "Familiar with Climate Change",
+        Group = as.character(Group)
     ) %>%
     arrange(Group) %>%
+    mutate(
+        Group = case_when(
+            Group == "1" ~ "1-Not Familiar",
+            Group == "5" ~ "5-Very Familiar",
+            .default = Group
+        )
+    ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
 ### for climate_cause
 tbl_climate_cause <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q7
+        Group = climate_cause
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -374,14 +439,23 @@ tbl_climate_cause <-
         Variable = "Climate Change Cause"
     ) %>%
     arrange(Group) %>%
+    mutate(
+        Group = case_when(
+            Group == "both" ~ "Both human and natural",
+            Group == "human" ~ "Human",
+            Group == "natural" ~ "Natural",
+            Group == "notknow" ~ "Not Know",
+            Group == "noclimatechange" ~ "No Climate Change"
+        )
+    ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
-    
+
 ### for env_friendly_consumer
 tbl_env_friendly_consumer <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q11_1
+        Group = env_friendly_consumer
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -390,7 +464,16 @@ tbl_env_friendly_consumer <-
     ungroup() %>%
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "Think of myself as an environmentally friendly consumer"
+        Variable = "I am environmentally friendly"
+    ) %>%
+    mutate(
+        Group = case_when(
+            Group == "Stronglyagree" ~ "Strongly agree",
+            Group == "Agree" ~ "Agree",
+            Group == "Neutral" ~ "Neutral",
+            Group == "Disagree" ~ "Disagree",
+            Group == "Stronglydisagree" ~ "Strongly disagree"
+        )
     ) %>%
     ### order from Strongly Agree to Strongly Disagree
     arrange(
@@ -407,9 +490,9 @@ tbl_env_friendly_consumer <-
     
 ### for concerned_environment
 tbl_concerned_environment <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q11_2
+        Group = concerned_environment
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -418,7 +501,16 @@ tbl_concerned_environment <-
     ungroup() %>%
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "I am very concerned with environmental issues"
+        Variable = "Concerned with environment"
+    ) %>%
+    mutate(
+        Group = case_when(
+            Group == "Stronglyagree" ~ "Strongly agree",
+            Group == "Agree" ~ "Agree",
+            Group == "Neutral" ~ "Neutral",
+            Group == "Disagree" ~ "Disagree",
+            Group == "Stronglydisagree" ~ "Strongly disagree"
+        )
     ) %>%
     ### order from Strongly Agree to Strongly Disagree
     arrange(
@@ -433,48 +525,11 @@ tbl_concerned_environment <-
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
-### for Q12_*
-tbl_q12 <- 
-    dt_demo_raw %>%
-    select(
-        ResponseId,
-        Q12_1:Q12_6
-    ) %>%
-    pivot_longer(
-        cols = Q12_1:Q12_6,
-        names_to = "Variable",
-        values_to = "Group"
-    ) %>%
-    group_by(Group, Variable) %>%
-    summarise(
-        Frequency = n_distinct(ResponseId)
-    ) %>%
-    ungroup() %>%
-    mutate(
-        Percentage = Frequency / sum(Frequency) * 100
-    ) %>%
-    ### order from Strongly Agree to Strongly Disagree
-    arrange(
-        Variable,
-        match(
-            Group,
-            c(
-                "Strongly agree",
-                "Mildly agree",
-                "Unsure",
-                "Mildly disagree",
-                "Strongly disagree"
-            )
-        )
-    ) %>%
-    ### rearrange columns
-    select(Variable, Group, Frequency, Percentage)
-
 ### for education
 tbl_education <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q15
+        Group = education
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -485,18 +540,40 @@ tbl_education <-
         Percentage = Frequency / sum(Frequency) * 100,
         Variable = "Education"
     ) %>%
+    mutate(
+        Group = case_when(
+            Group == "A_Level" ~ "A-Level/Higher/BTEC",
+            Group == "Degree" ~ "Degree or equivalent",
+            Group == "GCSE" ~ "GCSE/O-Level",
+            Group == "None" ~ "No qualifications",
+            Group == "Postgraduate" ~ "Postgraduate",
+            Group == "Vocational" ~ "Vocational",
+            Group == "Other" ~ "Other"
+        )
+    ) %>%
     ### order from Strongly Agree to Strongly Disagree
     arrange(
-        Group
+        match(
+            Group,
+            c(
+                "No qualifications",
+                "GCSE/O-Level",
+                "A-Level/Higher/BTEC",
+                "Degree or equivalent",
+                "Vocational",
+                "Postgraduate",
+                "Other"
+            )
+        )
     ) %>%
     ### rearrange columns
     select(Variable, Group, Frequency, Percentage)
 
 ### for hh_size
 tbl_hh_size <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q16
+        Group = hh_size
     ) %>%
     group_by(Group) %>%
     mutate(
@@ -519,9 +596,9 @@ tbl_hh_size <-
     
 ### for n_children
 tbl_n_children <- 
-    dt_demo_raw %>%
+    dt_demo %>%
     rename(
-        Group = Q17
+        Group = n_children
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -530,7 +607,7 @@ tbl_n_children <-
     ungroup() %>%
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "Household Size with Children"
+        Variable = "Number of Children"
     ) %>%
     ### order from Strongly Agree to Strongly Disagree
     arrange(
@@ -540,10 +617,17 @@ tbl_n_children <-
     select(Variable, Group, Frequency, Percentage)
 
 ### for shopper
-tbl_shopper <- 
-    dt_demo_raw %>%
+tbl_shopper <-
+    dt_demo %>%
     rename(
-        Group = Q18
+        Group = shopper
+    ) %>%
+    mutate(
+        Group = case_when(
+            Group == "joint" ~ "No",
+            Group == "No" ~ "No",
+            Group == "Yes" ~ "Yes"
+        )
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -562,16 +646,22 @@ tbl_shopper <-
     select(Variable, Group, Frequency, Percentage)
 
 ### for income
-tbl_income <- 
-    dt_demo_raw %>%
+tbl_income <-
+    dt_demo %>%
     rename(
-        Group = Q19
+        Group = income
     ) %>%
     mutate(
-        Group = trimws(Group),
-    ) %>%
-    mutate(
-        Group = gsub("60, 000", "60,000", Group)
+        Group = case_when(
+            Group == "0_10k" ~ "< £10,000",
+            Group == "10_20k" ~ "£10,001 - £20,000",
+            Group == "20_30k" ~ "£20,001 - £30,000",
+            Group == "30_40k" ~ "£30,001 - £40,000",
+            Group == "40_50k" ~ "£40,001 - £50,000",
+            Group == "50_60k" ~ "£50,001 - £60,000",
+            Group == "60k_" ~ "> £60,001",
+            Group == "not_specified" ~ "Not Specified"
+        )
     ) %>%
     group_by(Group) %>%
     summarise(
@@ -594,7 +684,7 @@ tbl_income <-
                 "£40,001 - £50,000",
                 "£50,001 - £60,000",
                 "> £60,001",
-                "I do not wish to specify"
+                "Not Specified"
             )
         )
     ) %>%
@@ -603,11 +693,11 @@ tbl_income <-
 
 ### for where_live
 tbl_where_live <- 
-    dt_demo_raw %>%
-    group_by(Q20) %>%
+    dt_demo %>%
     rename(
-        Group = Q20
+        Group = where_live
     ) %>%
+    group_by(Group) %>%
     summarise(
         Frequency = n_distinct(ResponseId)
     ) %>%
@@ -615,28 +705,6 @@ tbl_where_live <-
     mutate(
         Percentage = Frequency / sum(Frequency) * 100,
         Variable = "Where do you live"
-    ) %>%
-    ### order from Strongly Agree to Strongly Disagree
-    arrange(
-        Group
-    ) %>%
-    ### rearrange columns
-    select(Variable, Group, Frequency, Percentage)
-
-### for framing_effect
-tbl_framing_effect <- 
-    dt_demo_raw %>%
-    group_by(Framing) %>%
-    rename(
-        Group = Framing
-    ) %>%
-    summarise(
-        Frequency = n_distinct(ResponseId)
-    ) %>%
-    ungroup() %>%
-    mutate(
-        Percentage = Frequency / sum(Frequency) * 100,
-        Variable = "Framing Effect"
     ) %>%
     ### order from Strongly Agree to Strongly Disagree
     arrange(
@@ -665,9 +733,7 @@ tbl_demo <-
             tbl_n_children,
             tbl_shopper,
             tbl_income,
-            tbl_where_live,
-            tbl_framing_effect,
-            tbl_q12
+            tbl_where_live
         )
     )
 

@@ -16,8 +16,10 @@ library(mlogit)
 library(ordPens)
 library(nnet)
 library(colorBlindness)
+library(openxlsx)
 rm(list = ls())
 load("/home/yufenlai/Documents/others/carbon_footprint/output/ce_est.RData")
+dt_demo <- read.xlsx("/home/yufenlai/Documents/others/carbon_footprint/tables/tbl_demo.xlsx")
 
 ### define a summary function for nnet
 summary_multinom <- 
@@ -50,6 +52,14 @@ summary_multinom <-
         names(tbl) <- paste0("Class_", 2:(length(tbl) + 1))
         return(tbl)
     }
+```
+
+# Summary Statistics for respondents
+```{r summary_stats, echo=FALSE}
+dt_demo %>%
+    mutate(
+        Percentage = round(Percentage, 2)
+    )
 ```
 
 # Opt-out Rank by Information Treatment
