@@ -134,6 +134,16 @@ Importance of components:
 summary(pc_fit_q10_star$pca)
 ```
 
+## for Q12
+Factor loadings for Q12:
+```{r pca_q12, echo=FALSE}
+pc_fit_q12_star$pca
+```
+Importance of components:
+```{r pca_q12_importance, echo=FALSE}
+summary(pc_fit_q12_star$pca)
+```
+
 # Basic Logit Model
 ## Basic Logit Model Coefficients
 ```{r basic_logit, echo=FALSE}
@@ -202,48 +212,84 @@ mlogit_ctrl_ef$coefficients["price"] <- mlogit_ctrl_ef$coefficients["price"] * -
 wtp.gmnl(mlogit_ctrl_ef, wrt = "price")
 ```
 
-# mixed logit + 1 PCA + reduced demographic controls
+# mixed logit + 1 PCA for Q9 and Q10 + reduced demographic controls
 Here we included the first component for Q9 and Q10.
 Q9 was about respondents' attitude towards carbon offsetting,
 and Q10 was about respondents' attitude towards climate change.
 
-## mixed logit + 1 PCA + reduced demographic controls Coefficients
-```{r mixed_logit_pca, echo=FALSE}
-summary(mlogit_ctrl_p1rd)
+## mixed logit + 1 PCA for Q9 and Q10 + reduced demographic controls Coefficients
+```{r mixed_logit_pca_q9_q10, echo=FALSE}
+summary(mlogit_ctrl_p1_910_rd)
 ```
 
-## mixed logit + 1 PCA + reduced demographic controls Willingness to Pay
-```{r mixed_logit_pca_wtp, echo=FALSE}
-mlogit_ctrl_p1rd$coefficients["price"] <- mlogit_ctrl_p1rd$coefficients["price"] * -1
-wtp.gmnl(mlogit_ctrl_p1rd, wrt = "price")
+## mixed logit + 1 PCA for Q9 and Q10 + reduced demographic controls Willingness to Pay
+```{r mixed_logit_pca_wtp_q9_q10, echo=FALSE}
+mlogit_ctrl_p1_910_rd$coefficients["price"] <- mlogit_ctrl_p1_910_rd$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_p1_910_rd, wrt = "price")
 ```
 
-# mixed logit + 1 PCA + full demographic controls
-## mixed logit + 1 PCA + full demographic controls Coefficients
-```{r mixed_logit_pca_full, echo=FALSE}
-summary(mlogit_ctrl_p1d)
+# mixed logit + 1 PCA for Q9 and Q10 + full demographic controls
+## mixed logit + 1 PCA for Q9 and Q10 + full demographic controls Coefficients
+```{r mixed_logit_pca_full_q9_q10, echo=FALSE}
+summary(mlogit_ctrl_p1_910_d)
 ```
 
-## mixed logit + 1 PCA + full demographic controls Willingness to Pay
-```{r mixed_logit_pca_full_wtp, echo=FALSE}
-mlogit_ctrl_p1d$coefficients["price"] <- mlogit_ctrl_p1d$coefficients["price"] * -1
-wtp.gmnl(mlogit_ctrl_p1d, wrt = "price")
+## mixed logit + 1 PCA for Q9 and Q10 + full demographic controls Willingness to Pay
+```{r mixed_logit_pca_full_wtp_q9_q10, echo=FALSE}
+mlogit_ctrl_p1_910_d$coefficients["price"] <- mlogit_ctrl_p1_910_d$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_p1_910_d, wrt = "price")
 ```
 
-# mixed logit + co2 consumption + framing effect + 2 PCA
+# mixed logit + 1 PCA for Q9 and Q12 + reduced demographic controls
+## mixed logit + 1 PCA for Q9 and Q12 + reduced demographic controls coefficients
+```{r mixed_logit_pca_q9_q12, echo=FALSE}
+summary(mlogit_ctrl_p1_912_rd)
+```
+
+## mixed logit + 1 PCA for Q9 and Q12 + reduced demographic controls Willingness to Pay
+```{r mixed_logit_pca_wtp_q9_q12, echo=FALSE}
+mlogit_ctrl_p1_912_rd$coefficients["price"] <- mlogit_ctrl_p1_912_rd$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_p1_912_rd, wrt = "price")
+```
+
+# mixed logit + 1 PCA for Q9 and Q12 + full demographic controls
+## mixed logit + 1 PCA for Q9 and Q12 + full demographic controls coefficients
+```{r mixed_logit_pca_full_q9_q12, echo=FALSE}
+summary(mlogit_ctrl_p1_912_d)
+```
+
+## mixed logit + 1 PCA for Q9 and Q12 + full demographic controls Willingness to Pay
+```{r mixed_logit_pca_full_wtp_q9_q12, echo=FALSE}
+mlogit_ctrl_p1_912_d$coefficients["price"] <- mlogit_ctrl_p1_912_d$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_p1_912_d, wrt = "price")
+```
+
+# mixed logit + co2 consumption + framing effect + 2 PCA for Q9 and Q10
 We included the first two coponents for Q9 and Q10.
 Q9 was about respondents' attitude towards carbon offsetting,
 and Q10 was about respondents' attitude towards climate change.
 
 ## mixed logit + co2 consumption + framing effect + PCA Coefficients
-```{r mixed_logit_co2_f_pca, echo=FALSE}
-summary(mlogit_ctrl_efp2)
+```{r mixed_logit_co2_f_pca_q9_q10, echo=FALSE}
+summary(mlogit_ctrl_efp2_910)
 ```
 
 ## mixed logit + co2 consumption + framing effect + PCA Willingness to Pay
-```{r mixed_logit_co2_f_pca_wtp, echo=FALSE}
-mlogit_ctrl_efp2$coefficients["price"] <- mlogit_ctrl_efp2$coefficients["price"] * -1
-wtp.gmnl(mlogit_ctrl_efp2, wrt = "price")
+```{r mixed_logit_co2_f_pca_wtp_q9_q10, echo=FALSE}
+mlogit_ctrl_efp2_910$coefficients["price"] <- mlogit_ctrl_efp2_910$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_efp2_910, wrt = "price")
+```
+
+# mixed logit + co2 consumption + framing effect + 2 PCA for Q9 and Q12
+## mixed logit + co2 consumption + framing effect + PCA Coefficients
+```{r mixed_logit_co2_f_pca_q9_q12, echo=FALSE}
+summary(mlogit_ctrl_efp2_912)
+```
+
+## mixed logit + co2 consumption + framing effect + PCA Willingness to Pay
+```{r mixed_logit_co2_f_pca_wtp_q9_q12, echo=FALSE}
+mlogit_ctrl_efp2_912$coefficients["price"] <- mlogit_ctrl_efp2_912$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_efp2_912, wrt = "price")
 ```
 
 \begin{itemize}

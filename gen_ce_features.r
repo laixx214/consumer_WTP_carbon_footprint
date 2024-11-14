@@ -125,12 +125,54 @@ pc_fit_q10_star <-
 pc_q10_mat <- pc_fit_q10_star$X
 colnames(pc_q10_mat) <- paste0("Q10_PC", 1:2)
 
+# for Q12
+dt_q12 <- 
+    dt_demo %>%
+    select(starts_with("Q12")) %>%
+    mutate(
+        across(
+            starts_with("Q12_"),
+            ~ case_when(
+                .x == "Stronglyagree" ~ 1,
+                .x == "Mildlyagree" ~ 2,
+                .x == "Unsure" ~ 3,
+                .x == "Mildlydisagree" ~ 4,
+                .x == "Stronglydisagree" ~ 5
+            )
+        )
+    )
+
+pc_fit_q12 <-
+    dt_q12 %>%
+        ordPCA(
+            p = 2,
+            lambda = lambda_seq,
+            CV = TRUE,
+            k = 10,
+            CVfit = FALSE
+        )
+
+l_star <- lambda_seq[which.max(
+    apply(pc_fit_q12$VAFtest, 2, mean)
+)]
+
+pc_fit_q12_star <-
+    dt_q12 %>%
+    ordPCA(
+        p = 2,
+        lambda = l_star
+    )
+
+pc_q12_mat <- pc_fit_q12_star$X
+colnames(pc_q12_mat) <- paste0("Q12_PC", 1:2)
+
 ### merge in the principle components
 dt_ctrl <-
     cbind(
         dt_ctrl,
         pc_q9_mat,
-        pc_q10_mat
+        pc_q10_mat,
+        pc_q12_mat
     ) %>%
     mutate(
         age_group = case_when(
