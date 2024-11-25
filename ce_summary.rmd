@@ -264,6 +264,30 @@ mlogit_ctrl_p1_912_d$coefficients["price"] <- mlogit_ctrl_p1_912_d$coefficients[
 wtp.gmnl(mlogit_ctrl_p1_912_d, wrt = "price")
 ```
 
+# mixed logit + 1 PCA for Q12 only + reduced demographic controls
+## mixed logit + 1 PCA for Q12 only + reduced demographic controls coefficients
+```{r mixed_logit_pca_q12, echo=FALSE}
+summary(mlogit_ctrl_p1_12_rd)
+```
+
+## mixed logit + 1 PCA for Q12 only + reduced demographic controls Willingness to Pay
+```{r mixed_logit_pca_wtp_q12, echo=FALSE}
+mlogit_ctrl_p1_12_rd$coefficients["price"] <- mlogit_ctrl_p1_12_rd$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_p1_12_rd, wrt = "price")
+```
+
+# mixed logit + 1 PCA for Q12 only + full demographic controls
+## mixed logit + 1 PCA for Q12 only + full demographic controls coefficients
+```{r mixed_logit_pca_full_q12, echo=FALSE}
+summary(mlogit_ctrl_p1_12_d)
+```
+
+## mixed logit + 1 PCA for Q12 only + full demographic controls Willingness to Pay
+```{r mixed_logit_pca_full_wtp_q12, echo=FALSE}
+mlogit_ctrl_p1_12_d$coefficients["price"] <- mlogit_ctrl_p1_12_d$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_p1_12_d, wrt = "price")
+```
+
 # mixed logit + co2 consumption + framing effect + 2 PCA for Q9 and Q10
 We included the first two coponents for Q9 and Q10.
 Q9 was about respondents' attitude towards carbon offsetting,
@@ -290,6 +314,18 @@ summary(mlogit_ctrl_efp2_912)
 ```{r mixed_logit_co2_f_pca_wtp_q9_q12, echo=FALSE}
 mlogit_ctrl_efp2_912$coefficients["price"] <- mlogit_ctrl_efp2_912$coefficients["price"] * -1
 wtp.gmnl(mlogit_ctrl_efp2_912, wrt = "price")
+```
+
+# mixed logit + co2 consumption + framing effect + 2 PCA for Q12 only
+## mixed logit + co2 consumption + framing effect + PCA Coefficients
+```{r mixed_logit_co2_f_pca_q12, echo=FALSE}
+summary(mlogit_ctrl_efp2_12)
+```
+
+## mixed logit + co2 consumption + framing effect + PCA Willingness to Pay
+```{r mixed_logit_co2_f_pca_wtp_q12, echo=FALSE}
+mlogit_ctrl_efp2_12$coefficients["price"] <- mlogit_ctrl_efp2_12$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_efp2_12, wrt = "price")
 ```
 
 \begin{itemize}
