@@ -364,6 +364,69 @@ summary(mlogit_ctrl_p1_912_rd)
 save.image("./output/ce_est.RData")
 
 ################################################################################
+### mixed logit + 1 principle component for Q12 only + reduced demographic controls
+################################################################################
+message("Running mixed logit with 1 principle component for Q12 only and reduced demographic controls...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        Q12_PC1 +
+        age_group35_54 +
+        age_group55_ +
+        is_women +
+        income_level30_50k +
+        income_level50_ +
+        -1"
+    )
+)
+
+interactions <- c(
+    "Q12_PC1",
+    "age_group35_54",
+    "age_group55_",
+    "is_women",
+    "income_level30_50k",
+    "income_level50_"
+)
+
+### define interactions
+mvarlist_p1rd <- list(
+    I = interactions,
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_p1_12_rd <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_p1rd,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+summary(mlogit_ctrl_p1_12_rd)
+save.image("./output/ce_est.RData")
+
+################################################################################
 ### mixed logit + 1 principle component for Q9 and Q10 + full demographic controls
 ################################################################################
 message("Running mixed logit with 1 principle component for Q9 and Q10 and demographic controls...")
@@ -518,6 +581,82 @@ summary(mlogit_ctrl_p1_912_d)
 save.image("./output/ce_est.RData")
 
 ################################################################################
+### mixed logit + 1 principle component for Q12 only + full demographic controls
+################################################################################
+message("Running mixed logit with 1 principle component for Q12 only and demographic controls...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        Q12_PC1 +
+        age_group35_54 +
+        age_group55_ +
+        is_women +
+        diet_typeFlexitarian +
+        diet_typeVegan_Vegetarian +
+        education_levelDegree +
+        education_levelPostgraduate +
+        income_level30_50k +
+        income_level50_ +
+        where_liveRuralarea +
+        where_liveTownorsuburb +
+        - 1"
+    )
+)
+
+interactions <- c(
+    "Q12_PC1",
+    "age_group35_54",
+    "age_group55_",
+    "is_women",
+    "diet_typeFlexitarian",
+    "diet_typeVegan_Vegetarian",
+    "education_levelDegree",
+    "education_levelPostgraduate",
+    "income_level30_50k",
+    "income_level50_",
+    "where_liveRuralarea",
+    "where_liveTownorsuburb"
+)
+
+### define interactions
+mvarlist_p1d <- list(
+    I = interactions,
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_p1_12_d <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_p1d,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+    
+summary(mlogit_ctrl_p1_12_d)
+save.image("./output/ce_est.RData")
+
+################################################################################
 ### mixed logit + co2 consumption + framing effect + 2 principle components for Q9 and Q10
 ################################################################################
 message("Running mixed logit with co2 consumption, framing effect, and principle components for Q9 and Q10...")
@@ -649,6 +788,70 @@ mlogit_ctrl_efp2_912 <-
     )
 
 summary(mlogit_ctrl_efp2_912)
+save.image("./output/ce_est.RData")
+
+################################################################################
+### mixed logit + co2 consumption + framing effect + 2 principle components for Q12
+################################################################################
+message("Running mixed logit with co2 consumption, framing effect, and principle components for Q12...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        co2_value +
+        framing_effectconsequence +
+        framing_effectMetOffice +
+        framing_effectUN +
+        Q12_PC1 +
+        Q12_PC2 +
+        - 1"
+    )
+)
+
+interactions <- c(
+    "co2_value",
+    "framing_effectconsequence",
+    "framing_effectMetOffice",
+    "framing_effectUN",
+    "Q12_PC1",
+    "Q12_PC2"
+)
+
+### define interactions
+mvarlist_efp2 <- list(
+    I = interactions,
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_efp2_12 <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_efp2,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+
+summary(mlogit_ctrl_efp2_12)
 save.image("./output/ce_est.RData")
 
 ################################################################################
