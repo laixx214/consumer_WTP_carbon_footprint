@@ -328,6 +328,18 @@ mlogit_ctrl_efp2_12$coefficients["price"] <- mlogit_ctrl_efp2_12$coefficients["p
 wtp.gmnl(mlogit_ctrl_efp2_12, wrt = "price")
 ```
 
+# mixed logit + co2 consumption + framing effect + 1 PCA for Q12 only
+## mixed logit + co2 consumption + framing effect + PCA Coefficients
+```{r mixed_logit_co2_f_pca_q12_1, echo=FALSE}
+summary(mlogit_ctrl_efp1_12)
+```
+
+## mixed logit + co2 consumption + framing effect + PCA Willingness to Pay
+```{r mixed_logit_co2_f_pca_wtp_q12_1, echo=FALSE}
+mlogit_ctrl_efp1_12$coefficients["price"] <- mlogit_ctrl_efp1_12$coefficients["price"] * -1
+wtp.gmnl(mlogit_ctrl_efp1_12, wrt = "price")
+```
+
 \begin{itemize}
     \item Higher meeting consumption, i.e., higher co2 value consistently reduce the WTP.
     \item The framing effects is either non-significant or seems to mitigate the preference premium relative to the base line for both endosement and carbon offset approaches.

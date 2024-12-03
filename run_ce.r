@@ -855,6 +855,68 @@ summary(mlogit_ctrl_efp2_12)
 save.image("./output/ce_est.RData")
 
 ################################################################################
+### mixed logit + co2 consumption + framing effect + 1 principle components for Q12
+################################################################################
+message("Running mixed logit with co2 consumption, framing effect, and principle components for Q12...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        co2_value +
+        framing_effectconsequence +
+        framing_effectMetOffice +
+        framing_effectUN +
+        Q12_PC1 +
+        - 1"
+    )
+)
+
+interactions <- c(
+    "co2_value",
+    "framing_effectconsequence",
+    "framing_effectMetOffice",
+    "framing_effectUN",
+    "Q12_PC1"
+)
+
+### define interactions
+mvarlist_efp2 <- list(
+    I = interactions,
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_efp1_12 <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_efp2,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+    
+summary(mlogit_ctrl_efp1_12)
+save.image("./output/ce_est.RData")
+
+################################################################################
 ### latent class model without interaction terms
 ################################################################################
 message("Running latent class model without interaction terms...")
