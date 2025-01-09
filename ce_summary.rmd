@@ -17,6 +17,7 @@ library(ordPens)
 library(nnet)
 library(colorBlindness)
 library(openxlsx)
+library(ggplot2)
 rm(list = ls())
 load("/home/yufenlai/Documents/others/carbon_footprint/output/ce_est.RData")
 dt_demo <- read.xlsx("/home/yufenlai/Documents/others/carbon_footprint/tables/tbl_demo.xlsx")
@@ -276,12 +277,6 @@ mlogit_ctrl_p1_12_rd$coefficients["price"] <- mlogit_ctrl_p1_12_rd$coefficients[
 wtp.gmnl(mlogit_ctrl_p1_12_rd, wrt = "price")
 ```
 
-# mixed logit + 1 PCA for Q12 only + full demographic controls
-## mixed logit + 1 PCA for Q12 only + full demographic controls coefficients
-```{r mixed_logit_pca_full_q12, echo=FALSE}
-summary(mlogit_ctrl_p1_12_d)
-```
-
 ## mixed logit + 1 PCA for Q12 only + full demographic controls Willingness to Pay
 ```{r mixed_logit_pca_full_wtp_q12, echo=FALSE}
 mlogit_ctrl_p1_12_d$coefficients["price"] <- mlogit_ctrl_p1_12_d$coefficients["price"] * -1
@@ -337,7 +332,56 @@ summary(mlogit_ctrl_efp1_12)
 ## mixed logit + co2 consumption + framing effect + PCA Willingness to Pay
 ```{r mixed_logit_co2_f_pca_wtp_q12_1, echo=FALSE}
 mlogit_ctrl_efp1_12$coefficients["price"] <- mlogit_ctrl_efp1_12$coefficients["price"] * -1
-wtp.gmnl(mlogit_ctrl_efp1_12, wrt = "price")
+wtp <- wtp.gmnl(mlogit_ctrl_efp1_12, wrt = "price")
+wtp
+
+# plot WTP for framing effect and co2 consumption
+wtp_tbl <- wtp[, c(1, 2)] %>%
+    as.data.frame() %>%
+    mutate(
+        lb = Estimate - 1.96 * `Std. Error`,
+        ub = Estimate + 1.96 * `Std. Error`
+    )
+wtp_tbl$var <- rownames(wtp_tbl)
+wtp_tbl <- 
+    wtp_tbl %>%
+    filter(
+        grepl("co2_value|framing_effect", var) &
+            !grepl("I.", var)
+    ) %>%
+    mutate(
+        var = 
+        str_replace_all(
+            var,
+            "framing_effect|project_|_value",
+            ""
+        )
+    )
+
+wtp_tbl%>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate
+        )
+    ) +
+    geom_point() +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        color = "red",
+        width = .2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    # rotate x-axis labels 90 degrees
+    theme(axis.text.x = element_text(angle = 90)) +
+    ylab("WTP")
+
 ```
 
 \begin{itemize}
