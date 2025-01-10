@@ -334,7 +334,10 @@ summary(mlogit_ctrl_efp1_12)
 mlogit_ctrl_efp1_12$coefficients["price"] <- mlogit_ctrl_efp1_12$coefficients["price"] * -1
 wtp <- wtp.gmnl(mlogit_ctrl_efp1_12, wrt = "price")
 wtp
+```
 
+### WTP Plot, Co2 Consumption and Framing Effect
+```{r wtp_plot, echo=FALSE}
 # plot WTP for framing effect and co2 consumption
 wtp_tbl <- wtp[, c(1, 2)] %>%
     as.data.frame() %>%
@@ -356,9 +359,23 @@ wtp_tbl <-
             "framing_effect|project_|_value",
             ""
         )
+    ) %>%
+    mutate(
+        var = str_replace_all(var, "_", " ")
+    ) %>%
+    mutate(
+        var = str_replace_all(var, "\\.", " * ")
+    ) %>%
+    mutate(
+        var = str_replace_all(var, "co2", "CO2")
     )
 
+wtp_tbl$var <- factor(wtp_tbl$var, levels = wtp_tbl$var)
+
 wtp_tbl%>%
+    filter(
+        grepl(" consequence| MetOffice| UN", var)
+    ) %>%
     ggplot(
         aes(
             x = var,
@@ -380,8 +397,36 @@ wtp_tbl%>%
     theme_classic() +
     # rotate x-axis labels 90 degrees
     theme(axis.text.x = element_text(angle = 90)) +
-    ylab("WTP")
+    ylab("WTP") +
+    xlab("Framing Effect: Consequence, Met Office, and UN Message Compared to Base Line")
 
+wtp_tbl %>%
+    filter(
+        grepl(" CO2", var)
+    ) %>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate
+        )
+    ) +
+    geom_point() +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        color = "red",
+        width = .2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    # rotate x-axis labels 90 degrees
+    theme(axis.text.x = element_text(angle = 90)) +
+    ylab("WTP") +
+    xlab("CO2 Consumption")
 ```
 
 \begin{itemize}
