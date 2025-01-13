@@ -336,7 +336,7 @@ wtp <- wtp.gmnl(mlogit_ctrl_efp1_12, wrt = "price")
 wtp
 ```
 
-### WTP Plot, Co2 Consumption and Framing Effect
+### WTP Plot, Main Effects and Interavtive Effects with Co2 Consumption and Framing Effect
 ```{r wtp_plot, echo=FALSE}
 # plot WTP for framing effect and co2 consumption
 wtp_tbl <- wtp[, c(1, 2)] %>%
@@ -372,9 +372,32 @@ wtp_tbl <-
 
 wtp_tbl$var <- factor(wtp_tbl$var, levels = wtp_tbl$var)
 
-wtp_tbl%>%
+# main effects
+wtp %>%
+    as.data.frame() %>%
+    mutate(
+        lb = Estimate - 1.96 * `Std. Error`,
+        ub = Estimate + 1.96 * `Std. Error`
+    ) %>%
+    mutate(
+        var = rownames(wtp)
+    ) %>%
     filter(
-        grepl(" consequence| MetOffice| UN", var)
+        var %in% c(
+            "location_EU",
+            "location_UK",
+            "certificate_NGO",
+            "certificate_UK",
+            "project_renewable",
+            "project_landfill",
+            "project_manure"
+        )
+    ) %>%
+    mutate(
+        var = str_replace_all(var, "_", " ")
+    ) %>%
+    mutate(
+        var = factor(var, levels = unique(var))
     ) %>%
     ggplot(
         aes(
@@ -398,8 +421,67 @@ wtp_tbl%>%
     # rotate x-axis labels 90 degrees
     theme(axis.text.x = element_text(angle = 90)) +
     ylab("WTP") +
-    xlab("Framing Effect: Consequence, Met Office, and UN Message Compared to Base Line")
+    xlab("Main Effects of Carbon Offsetting Attributes")
 
+# consequence message
+wtp_tbl%>%
+    filter(
+        grepl(" consequence", var)
+    ) %>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate
+        )
+    ) +
+    geom_point() +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        color = "red",
+        width = .2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    # rotate x-axis labels 90 degrees
+    theme(axis.text.x = element_text(angle = 90)) +
+    ylab("WTP") +
+    xlab("Interavtive Effects with Consequence Message")
+
+# endorsement
+wtp_tbl %>%
+    filter(
+        grepl(" MetOffice| UN", var)
+    ) %>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate
+        )
+    ) +
+    geom_point() +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        color = "red",
+        width = .2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    # rotate x-axis labels 90 degrees
+    theme(axis.text.x = element_text(angle = 90)) +
+    ylab("WTP") +
+    xlab("Interavtive Effects with Endorsement")
+
+# CO2 consumption
 wtp_tbl %>%
     filter(
         grepl(" CO2", var)
@@ -426,7 +508,7 @@ wtp_tbl %>%
     # rotate x-axis labels 90 degrees
     theme(axis.text.x = element_text(angle = 90)) +
     ylab("WTP") +
-    xlab("CO2 Consumption")
+    xlab("Interavtive Effects with CO2 Consumption")
 ```
 
 \begin{itemize}
