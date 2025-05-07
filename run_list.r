@@ -5,6 +5,7 @@ library(list)
 library(car)
 library(boot)
 library(openxlsx)
+library(ggplot2)
 
 rm(list = ls())
 set.seed(1201202)
@@ -93,6 +94,26 @@ n_ss <- dt_count %>%
     distinct() %>%
     filter(statement != "") %>%
     nrow()
+    
+### validate percentage of floor and ceiling
+dt_count %>%
+    filter(treatment == 0) %>%
+    group_by(list_id, count) %>%
+    summarise(n = n_distinct(ResponseId)) %>%
+    ungroup() %>%
+    group_by(list_id) %>%
+    mutate(pct = n / sum(n)) %>%
+    arrange(list_id, count) %>%
+    ggplot(aes(x = list_id, y = pct)) +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(pct, 2)), vjust = -0.5) +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    labs(
+        title = "Percentage of floor and ceiling",
+        x = "Control List",
+        y = "Percentage"
+    ) +
+    theme_classic()
 
 ################################################################################
 ### run list experiment, intercept only
