@@ -237,7 +237,7 @@ dt_count %>%
     # set x-axis label
     labs(
         x = "Count",
-        y = "Percentage of Responses",
+        y = "Percentage of Yes Responses",
         title = "Distribution of Floor and Ceiling Counts by Treatment Group"
     ) +
     # change legend title
@@ -306,7 +306,9 @@ pct_boot$boot %>%
     ) +
     # change legend title
     guides(fill = guide_legend(title = "List ID")) +
-    theme_classic()
+    theme_classic() +
+    # rotate x-axis labels
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 A plot of the average mean and 95% confidence level error bar for sensitive statement:
@@ -332,7 +334,9 @@ pct_boot$boot_summary %>%
     ) +
     # add percentage labels
     geom_text(aes(label = paste0(round(mean * 100, 1), "%")), vjust = -0.5) +
-    theme_classic()
+    theme_classic() +
+    # rotate x-axis labels
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 ## A intercept only model
