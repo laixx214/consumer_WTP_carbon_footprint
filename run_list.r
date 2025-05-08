@@ -77,7 +77,16 @@ statement_reference <-
         statement
     ) %>%
     distinct() %>%
-    arrange(treatment)
+    arrange(treatment) %>%
+    mutate(
+        statement = case_when(
+            treatment == 0 ~ "Control List",
+            treatment == 1 ~ "Restricting electricity",
+            treatment == 2 ~ "Carbon tax",
+            treatment == 3 ~ "Not commit zero emissions",
+            treatment == 4 ~ "Mandatory energy efficiency"
+        )
+    )
 
 ### number of control lists
 n_cl <- dt_count %>%
