@@ -15,10 +15,14 @@ library(boot)
 library(openxlsx)
 library(ggplot2)
 library(colorBlindness)
+library(ordPens)
+
 
 rm(list = ls())
 set.seed(1201202)
-setwd("/local/home/yufenlai/working_paper/carbon")
+date <- gsub("-", "", as.character(Sys.Date()))
+dir <- "/local/home/yufenlai/working_paper/carbon"
+setwd(dir)
 
 ################################################################################
 ### Define functions
@@ -150,6 +154,13 @@ boot_mean <-
 message("Reading in data...")
 load("./image/sensitive_statements.RData")
 dt_count <- fread("csv/dt_counts.csv")
+data_bw <- fread("./csv/data_bw.csv")
+
+### subset dt_count to valid responses
+dt_count <- dt_count %>%
+    filter(
+        ResponseId %in% unique(data_bw$ResponseId)
+    )
 
 ### treatment reference
 statement_reference <-
@@ -587,7 +598,9 @@ design_effect <-
         }
     )
 design_effect <- do.call(rbind, design_effect)
+```
 
+```{r design_effect_p_value, echo=FALSE, message = FALSE}
 design_effect %>%
     as.data.frame() %>%
     select(
@@ -623,4 +636,110 @@ design_effect %>%
             ~ ifelse(. == 1, "-", .)
         )
     )
+```
+
+## Demographic Effects
+```{r add_demographic, echo=FALSE, message = FALSE}
+setwd(dir)
+dt_est <- fread("./csv/dt_list_with_demo.csv")
+```
+
+### Model using information treatment
+```{r info, echo=FALSE, message = FALSE}
+message("Fitting model using information treatment...")
+ict_fit_info <-
+    ictreg(
+        count ~ as.factor(list_id) +
+            framing_effect +
+            co2_value,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+make_summary(ict_fit_info)
+```
+
+### Climate Awareness, Q5
+For this part, we planed to include both Q5 and Q7, but Q7 will result in singular matrix. For climate_important, Q5 >= 4, i.e., important or very important.
+```{r q5_q7, echo=FALSE, message = FALSE}
+message("Fitting model using climate awareness, Q5 and Q7...")
+ict_fit_att <-
+    ictreg(
+        count ~ as.factor(list_id) +
+            climate_important,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+make_summary(ict_fit_att)
+```
+
+### Climate Attitudes, PCA Q10
+```{r pca_q10, echo=FALSE, message = FALSE}
+message("Fitting model using PCA Q10...")
+ict_fit_pca_q10 <-
+    ictreg(
+        count ~ as.factor(list_id) +
+            Q10_PC1 +
+            Q10_PC2,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+make_summary(ict_fit_pca_q10)
+```
+
+### Climate Attitudes, PCA Q11
+```{r pca_q11, echo=FALSE, message = FALSE}
+message("Fitting model using PCA Q11...")
+ict_fit_pca_q11 <-
+    ictreg(
+        count ~ as.factor(list_id) +
+            Q11_PC1 +
+            Q11_PC2,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+make_summary(ict_fit_pca_q11)
+```
+
+### Climate Attitudes, PCA Q12
+```{r pca_q12, echo=FALSE, message = FALSE}
+message("Fitting model using PCA Q12...")
+ict_fit_pca_q12 <-
+    ictreg(
+        count ~ as.factor(list_id) +
+            Q12_PC1 +
+            Q12_PC2,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+make_summary(ict_fit_pca_q12)
+```
+
+### Demographic Effects
+```{r demographic_effects, echo=FALSE, message = FALSE}
+message("Fitting model using demographics...")
+ict_fit_demo <-
+    ictreg(
+        count ~ as.factor(list_id) +
+            where_live +
+            diet +
+            age +
+            is_man +
+            higher_education +
+            income,
+        data = dt_est,
+        treat = "treatment",
+        J = n_cs,
+        constrained = TRUE
+    )
+make_summary(ict_fit_demo)
 ```

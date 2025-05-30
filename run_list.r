@@ -6,6 +6,7 @@ library(car)
 library(boot)
 library(openxlsx)
 library(ggplot2)
+library(ordPens)
 
 rm(list = ls())
 set.seed(1201202)
@@ -68,6 +69,13 @@ make_summary <-
 message("Reading in data...")
 load("./image/sensitive_statements.RData")
 dt_count <- fread("csv/dt_counts.csv")
+data_bw <- fread("./csv/data_bw.csv")
+
+### subset dt_count to valid responses
+dt_count <- dt_count %>%
+    filter(
+        ResponseId %in% unique(data_bw$ResponseId)
+    )
 
 ### treatment reference
 statement_reference <-
@@ -105,24 +113,24 @@ n_ss <- dt_count %>%
     nrow()
     
 ### validate percentage of floor and ceiling
-dt_count %>%
-    filter(treatment == 0) %>%
-    group_by(list_id, count) %>%
-    summarise(n = n_distinct(ResponseId)) %>%
-    ungroup() %>%
-    group_by(list_id) %>%
-    mutate(pct = n / sum(n)) %>%
-    arrange(list_id, count) %>%
-    ggplot(aes(x = list_id, y = pct)) +
-    geom_bar(stat = "identity") +
-    geom_text(aes(label = round(pct, 2)), vjust = -0.5) +
-    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-    labs(
-        title = "Percentage of floor and ceiling",
-        x = "Control List",
-        y = "Percentage"
-    ) +
-    theme_classic()
+# dt_count %>%
+#     filter(treatment == 0) %>%
+#     group_by(list_id, count) %>%
+#     summarise(n = n_distinct(ResponseId)) %>%
+#     ungroup() %>%
+#     group_by(list_id) %>%
+#     mutate(pct = n / sum(n)) %>%
+#     arrange(list_id, count) %>%
+#     ggplot(aes(x = list_id, y = pct)) +
+#     geom_bar(stat = "identity") +
+#     geom_text(aes(label = round(pct, 2)), vjust = -0.5) +
+#     scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+#     labs(
+#         title = "Percentage of floor and ceiling",
+#         x = "Control List",
+#         y = "Percentage"
+#     ) +
+#     theme_classic()
 
 ################################################################################
 ### run list experiment, intercept only
@@ -357,11 +365,143 @@ design_effect <-
 design_effect <- do.call(rbind, design_effect)
 
 ################################################################################
-### run list experiment, with demographics
+### clean demographics data
 ################################################################################
 dt_demo <- fread("csv/dt_demo.csv")
 message("Sensitive statements:")
 print(sensitive_statements)
+
+### principle component analysis for Q9, 10, 12
+message("Principle component analysis...")
+# define the sequence of lambda
+lambda_seq <- exp(seq(5, -10, by = -0.1))
+# for Q10
+dt_q10 <-
+    dt_demo %>%
+    select(starts_with("Q10")) %>%
+    mutate(
+        across(
+            starts_with("Q10_"),
+            ~ case_when(
+                .x == "AlmostAlways" ~ 1,
+                .x == "Often" ~ 2,
+                .x == "Sometimes" ~ 3,
+                .x == "Rarely" ~ 4,
+                .x == "Never" ~ 5
+            )
+        )
+    )
+
+pc_fit_q10 <-
+    dt_q10 %>%
+    ordPCA(
+        p = 2,
+        lambda = lambda_seq,
+        CV = TRUE,
+        k = 10,
+        CVfit = FALSE
+    )
+
+l_star <- lambda_seq[which.max(
+    apply(pc_fit_q10$VAFtest, 2, mean)
+)]
+
+pc_fit_q10_star <-
+    dt_q10 %>%
+    ordPCA(
+        p = 2,
+        lambda = l_star
+    )
+
+pc_q10_mat <- pc_fit_q10_star$X
+colnames(pc_q10_mat) <- paste0("Q10_PC", 1:2)
+
+# for Q11
+dt_q11 <-
+    dt_demo %>%
+    select(starts_with("Q11")) %>%
+    mutate(
+        across(
+            starts_with("Q11_"),
+            ~ case_when(
+                .x == "Strongly agree" ~ 1,
+                .x == "Agree" ~ 2,
+                .x == "Neutral" ~ 3,
+                .x == "Disagree" ~ 4,
+                .x == "Strongly disagree" ~ 5
+            )
+        )
+    )
+pc_fit_q11 <-
+    dt_q11 %>%
+    ordPCA(
+        p = 2,
+        lambda = lambda_seq,
+        CV = TRUE,
+        k = 10,
+        CVfit = FALSE
+    )
+l_star <- lambda_seq[which.max(
+    apply(pc_fit_q11$VAFtest, 2, mean)
+)]
+pc_fit_q11_star <-
+    dt_q11 %>%
+    ordPCA(
+        p = 2,
+        lambda = l_star
+    )
+pc_q11_mat <- pc_fit_q11_star$X
+colnames(pc_q11_mat) <- paste0("Q11_PC", 1:2)
+
+# for Q12
+dt_q12 <-
+    dt_demo %>%
+    select(starts_with("Q12")) %>%
+    mutate(
+        across(
+            starts_with("Q12_"),
+            ~ case_when(
+                .x == "Stronglyagree" ~ 1,
+                .x == "Mildlyagree" ~ 2,
+                .x == "Unsure" ~ 3,
+                .x == "Mildlydisagree" ~ 4,
+                .x == "Stronglydisagree" ~ 5
+            )
+        )
+    )
+
+pc_fit_q12 <-
+    dt_q12 %>%
+    ordPCA(
+        p = 2,
+        lambda = lambda_seq,
+        CV = TRUE,
+        k = 10,
+        CVfit = FALSE
+    )
+
+l_star <- lambda_seq[which.max(
+    apply(pc_fit_q12$VAFtest, 2, mean)
+)]
+
+pc_fit_q12_star <-
+    dt_q12 %>%
+    ordPCA(
+        p = 2,
+        lambda = l_star
+    )
+
+pc_q12_mat <- pc_fit_q12_star$X
+colnames(pc_q12_mat) <- paste0("Q12_PC", 1:2)
+
+### merge principle components with demographics
+dt_demo <-
+    cbind(
+        dt_demo,
+        pc_q10_mat,
+        pc_q11_mat,
+        pc_q12_mat
+    )
 
 message("Running list experiment, with demographics...")
 ### merge demographics with counts
@@ -443,7 +583,7 @@ dt_est <-
             .default = income
         ),
         across(
-            starts_with("Q12_"),
+            starts_with("Q12_") & !contains("PC"),
             ~ case_when(
                 .x %in% c(
                     "Stronglyagree",
@@ -463,7 +603,16 @@ dt_est <-
         income = relevel(as.factor(income), ref = "20_30k")
     )
 
+### save a copy of the data
+fwrite(
+    dt_est,
+    file = paste0("./csv/dt_list_with_demo.csv"),
+    row.names = FALSE
+)
+
+################################################################################
 ### fit model using information treatment
+################################################################################
 message("Fitting model using information treatment...")
 ict_fit_info <-
     ictreg(

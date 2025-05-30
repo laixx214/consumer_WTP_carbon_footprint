@@ -27,7 +27,7 @@ dt_demo <-
         Q1:Q8,
         starts_with("Q9_"),
         starts_with("Q10_"),
-        Q11_1:Q11_2,
+        Q11_1:Q11_4,
         Q12_1:Q12_6,
         Q15:Q20,
         Framing,
@@ -45,8 +45,8 @@ dt_demo <-
         know_climate = Q6,
         climate_cause = Q7,
         meat_frequency = Q8,
-        env_friendly_consumer = Q11_1,
-        concerned_environment = Q11_2,
+        # env_friendly_consumer = Q11_1,
+        # concerned_environment = Q11_2,
         education = Q15,
         hh_size = Q16,
         n_children = Q17,
@@ -57,6 +57,8 @@ dt_demo <-
     ) %>%
     # recode values
     mutate(
+        env_friendly_consumer = Q11_1,
+        concerned_environment = Q11_2,
         location = gsub(" ", "", location),
         age = case_when(
             grepl("18-24", age) ~ "18_24",
