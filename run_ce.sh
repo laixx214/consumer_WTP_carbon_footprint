@@ -1,0 +1,6 @@
+#!/bin/bash
+
+Rscript consumer_WTP_carbon_footprint/clean_CE_data.r
+Rscript consumer_WTP_carbon_footprint/clean_demographics.r
+Rscript consumer_WTP_carbon_footprint/gen_ce_features.r
+Rscript consumer_WTP_carbon_footprint/run_ce_report.r
