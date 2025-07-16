@@ -11,6 +11,7 @@ library(gmnl)
 library(mlogit)
 library(ordPens)
 library(nnet)
+library(broom)
 
 rm(list = ls())
 set.seed(1201202)
@@ -352,6 +353,68 @@ mlogit_ctrl_p1_12_rd <-
         iterlim = 5000
     )
 summary(mlogit_ctrl_p1_12_rd)
+
+################################################################################
+### effect of attitude on WTP
+################################################################################
+
+### try for each of the 6 attitudes if predicts CO2 consumption
+var_list <-
+    paste0(
+        "Q12_",
+        1:6
+    )
+
+summary_tbl <-
+    lapply(
+        var_list,
+        function(x) {
+            
+            dt_demo[[x]] <- factor(
+                dt_demo[[x]],
+                levels = c(
+                    "Unsure",
+                    "Stronglydisagree",
+                    "Mildlydisagree",
+                    "Mildlyagree",
+                    "Stronglyagree"
+                )
+            )
+            
+            lm_fit <-
+                lm(
+                    formula(paste0("co2_value ~ ", x)),
+                    data = dt_demo
+                )
+
+            summary_tbl <-
+                tidy(lm_fit) %>%
+                mutate(
+                    variable = gsub(
+                        "Q12_",
+                        "Q",
+                        x
+                    ),
+                    term = gsub(
+                        x,
+                        "",
+                        term
+                    )
+                ) %>%
+                select(
+                    variable,
+                    term,
+                    estimate,
+                    std.error
+                )
+        }
+    )
+summary_tbl <- do.call(rbind, summary_tbl)
+
+################################################################################
+### save image
+################################################################################
+
 save.image("./output/ce_est_report.RData")
 
 ################################################################################
