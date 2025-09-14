@@ -226,6 +226,65 @@ summary(mlogit_ctrl_ef)
 save.image("./output/ce_est_report.RData")
 
 ################################################################################
+### mixed logit + climate_important
+################################################################################
+message("Running mixed logit with climate_important...")
+### mixed logit with controls
+f <- formula(
+    paste0(
+        paste0(
+            "y ~ -1 +",
+            paste0(
+                names(dt)[5:13],
+                collapse = " + "
+            )
+        ),
+        " | 0 | 0 |
+        co2_value +
+        framing_effectconsequence +
+        framing_effectMetOffice +
+        framing_effectUN +
+        climate_important +
+        -1"
+    )
+)
+
+interactions <- c(
+    "co2_value",
+    "framing_effectconsequence",
+    "framing_effectMetOffice",
+    "framing_effectUN",
+    "climate_important"
+)
+
+### define interactions
+mvarlist_ctrl_ci <- list(
+    location_EU = interactions,
+    location_UK = interactions,
+    certificate_NGO = interactions,
+    certificate_UK = interactions,
+    project_renewable = interactions,
+    project_landfill = interactions,
+    project_manure = interactions
+)
+
+### run mixed logit
+mlogit_ctrl_ci <-
+    gmnl(
+        f,
+        data = dt,
+        model = "mixl",
+        ranp = randpar,
+        mvar = mvarlist_ctrl_ci,
+        R = 2000,
+        panel = T,
+        haltons = NA,
+        method = "bhhh",
+        iterlim = 5000
+    )
+summary(mlogit_ctrl_ci)
+save.image("./output/ce_est_report.RData")
+################################################################################
 ### mixed logit + 1 principle component for Q12 only
 ################################################################################
 message("Running mixed logit with 1 principle component for Q12 only...")

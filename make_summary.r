@@ -199,6 +199,10 @@ names(res_f) <- c("term", paste("F", to_report[-1], sep = "."))
 res_ef <- get_res(mlogit_ctrl_ef, select = to_report)
 names(res_ef) <- c("term", paste("EF", to_report[-1], sep = "."))
 
+### co2 + framing + climate_important
+res_ef_ci <- get_res(mlogit_ctrl_ci, select = to_report)
+names(res_ef_ci) <- c("term", paste("EFCI", to_report[-1], sep = "."))
+
 ### co2 + framing + Q12
 res_ef_q12 <- get_res(mlogit_ctrl_p1_12, select = to_report)
 names(res_ef_q12) <- c("term", paste("EFQ12", to_report[-1], sep = "."))
@@ -213,6 +217,7 @@ res_all <-
     full_join(res_e, by = "term") %>%
     full_join(res_f, by = "term") %>%
     full_join(res_ef, by = "term") %>%
+    full_join(res_ef_ci, by = "term") %>%
     full_join(res_ef_q12, by = "term") %>%
     full_join(res_ef_q12_dem, by = "term")
 
@@ -247,6 +252,10 @@ names(wtp_f) <- c("term", paste("F", to_report_wtp[-1], sep = "."))
 wtp_ef <- get_wtp(mlogit_ctrl_ef, select = to_report_wtp)
 names(wtp_ef) <- c("term", paste("EF", to_report_wtp[-1], sep = "."))
 
+### co2 + framing + climate_important
+wtp_ef_ci <- get_wtp(mlogit_ctrl_ci, select = to_report_wtp)
+names(wtp_ef_ci) <- c("term", paste("EFCI", to_report_wtp[-1], sep = "."))
+
 ### co2 + framing + Q12
 wtp_ef_q12 <- get_wtp(mlogit_ctrl_p1_12, select = to_report_wtp)
 names(wtp_ef_q12) <- c("term", paste("EFQ12", to_report_wtp[-1], sep = "."))
@@ -262,6 +271,7 @@ wtp_all <-
     full_join(wtp_e, by = "term") %>%
     full_join(wtp_f, by = "term") %>%
     full_join(wtp_ef, by = "term") %>%
+    full_join(wtp_ef_ci, by = "term") %>%
     full_join(wtp_ef_q12, by = "term") %>%
     full_join(wtp_ef_q12_dem, by = "term")
 
@@ -508,7 +518,189 @@ ggsave(
 )
 
 ################################################################################
-### Figure 4
+### Figure 4 with climate importance
+################################################################################
+mlogit_ctrl_ci$coefficients["price"] <- mlogit_ctrl_ci$coefficients["price"] * -1
+wtp_with_ci <- wtp.gmnl(mlogit_ctrl_ci, wrt = "price")
+
+### plot WTP for framing effect and co2 consumption
+wtp_tbl <- wtp_no_att[, c(1, 2)] %>%
+    as.data.frame() %>%
+    mutate(
+        lb = Estimate - 1.96 * `Std. Error`,
+        ub = Estimate + 1.96 * `Std. Error`,
+        climate_is_important = FALSE,
+        var = rownames(.)
+    ) %>%
+    rbind(
+        wtp_with_ci[, c(1, 2)] %>%
+            as.data.frame() %>%
+            mutate(
+                lb = Estimate - 1.96 * `Std. Error`,
+                ub = Estimate + 1.96 * `Std. Error`,
+                climate_is_important = TRUE,
+                var = rownames(.)
+            )
+    )
+
+### clean up variable names
+wtp_tbl <-
+    wtp_tbl %>%
+    mutate(
+        var = str_replace_all(var, "framing_effect", ""),
+        var = str_replace_all(var, "co2", "CO2"),
+        var = str_replace_all(var, "I", "Intercept"),
+        var = str_replace_all(var, "project_", ""),
+        var = str_replace_all(var, "_value", ""),
+        var = str_replace_all(var, "_", " "),
+        var = str_replace_all(var, "\\.", " * ")
+    )
+
+wtp_tbl$var <- factor(wtp_tbl$var, levels = unique(wtp_tbl$var))
+
+### plot effect of CO2 on WTP by if control for climate importance
+plot_wtp_co2 <-
+    wtp_tbl %>%
+    filter(
+        grepl(" CO2", var)
+    ) %>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate,
+            color = climate_is_important,
+            group = climate_is_important
+        )
+    ) +
+    geom_point(
+        position = position_dodge(width = 0.5), # Dodge points to avoid overlap
+        size = 3
+    ) +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        position = position_dodge(width = 0.5), # Dodge error bars to match points
+        width = 0.2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    theme(
+        axis.text.x = element_text(angle = 60, hjust = 1), # Rotate x-axis labels
+        axis.title.x = element_text(size = 14) # Increase x-axis label size
+    ) +
+    ylab("WTP") +
+    xlab(expression("A: " * CO[2] * "")) +
+    scale_color_manual(
+        values = c("red", "blue"),
+        labels = c("No", "Yes"),
+        name = "Control Climate Importance"
+    )
+
+### plot effect of consequence on WTP by if control for climate importance
+plot_wtp_consequence <-
+    wtp_tbl %>%
+    filter(
+        grepl("consequence", var)
+    ) %>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate,
+            color = climate_is_important,
+            group = climate_is_important
+        )
+    ) +
+    geom_point(
+        position = position_dodge(width = 0.5), # Dodge points to avoid overlap
+        size = 3
+    ) +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        position = position_dodge(width = 0.5), # Dodge error bars to match points
+        width = 0.2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    theme(
+        axis.text.x = element_text(angle = 60, hjust = 1), # Rotate x-axis labels
+        axis.title.x = element_text(size = 14) # Increase x-axis label size
+    ) +
+    ylab("WTP") +
+    xlab("B: Consequence") +
+    scale_color_manual(
+        values = c("red", "blue"),
+        labels = c("No", "Yes"),
+        name = "Control Climate Importance"
+    )
+
+### plot effect of endorsement on WTP by if control for attitudes
+plot_wtp_endorsement <-
+    wtp_tbl %>%
+    filter(
+        grepl(" MetOffice| UN", var)
+    ) %>%
+    ggplot(
+        aes(
+            x = var,
+            y = Estimate,
+            color = climate_is_important,
+            group = climate_is_important
+        )
+    ) +
+    geom_point(
+        position = position_dodge(width = 0.5), # Dodge points to avoid overlap
+        size = 3
+    ) +
+    geom_errorbar(
+        aes(
+            ymin = lb,
+            ymax = ub
+        ),
+        position = position_dodge(width = 0.5), # Dodge error bars to match points
+        width = 0.2,
+        linetype = "solid",
+        linewidth = 0.5
+    ) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_classic() +
+    theme(
+        axis.text.x = element_text(angle = 60, hjust = 1), # Rotate x-axis labels
+        axis.title.x = element_text(size = 14) # Increase x-axis label size
+    ) +
+    ylab("WTP") +
+    xlab("C: Endorsement") +
+    scale_color_manual(
+        values = c("red", "blue"),
+        labels = c("No", "Yes"),
+        name = "Control Climate Importance"
+    )
+
+### combine WTP plots
+ggarrange(
+    plot_wtp_co2,
+    plot_wtp_consequence,
+    plot_wtp_endorsement,
+    ncol = 1,
+    nrow = 3
+)
+
+ggsave(
+    "./plots/ce_wtp_with_ci.png",
+    width = 8,
+    height = 16
+)
+
+################################################################################
+### Figure 5 with attitude
 ################################################################################
 
 mlogit_ctrl_p1_12$coefficients["price"] <- mlogit_ctrl_p1_12$coefficients["price"] * -1
@@ -691,7 +883,7 @@ ggsave(
 )
 
 ################################################################################
-### Figure 5
+### Figure 6 attitude on co2 consumption
 ################################################################################
 tbl <-
     summary_tbl %>%

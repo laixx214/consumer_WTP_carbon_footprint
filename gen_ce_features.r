@@ -37,7 +37,8 @@ dt_ctrl <-
         where_live,
         co2_value,
         framing_effect,
-        Framing_assigned
+        Framing_assigned,
+        climate_important
     )
 
 ### principle component analysis for Q9, 10, 12
@@ -238,7 +239,11 @@ dt_ctrl <-
                 "60k_"
             ) ~ "50_"
         ),
-        is_shopper = as.numeric(shopper == "Yes")
+        is_shopper = as.numeric(shopper == "Yes"),
+        climate_important = case_when(
+            climate_important %in% c(4, 5) ~ 1,
+            .default = 0
+        )
     )
 
 ### create dummy variables
