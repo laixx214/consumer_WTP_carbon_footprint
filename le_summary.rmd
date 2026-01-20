@@ -21,7 +21,7 @@ library(ordPens)
 rm(list = ls())
 set.seed(1201202)
 date <- gsub("-", "", as.character(Sys.Date()))
-dir <- "/local/home/yufenlai/working_paper/carbon"
+dir <- "/Users/yufeng.lai/Documents/carbon_footprint/consumer_WTP_carbon_footprint"
 setwd(dir)
 
 ################################################################################
@@ -676,60 +676,60 @@ ict_fit_att <-
 make_summary(ict_fit_att)
 ```
 
-### Climate Attitudes, PCA Q10
-```{r pca_q10, echo=FALSE, message = FALSE}
-message("Fitting model using PCA Q10...")
-ict_fit_pca_q10 <-
+### Climate Attitudes, First Principal Component of Q12
+```{r pca_q12_pc1, echo=FALSE, message = FALSE}
+message("Fitting model using first principal component of Q12...")
+ict_fit_pca_q12_pc1 <-
     ictreg(
         count ~ as.factor(list_id) +
-            Q10_PC1 +
-            Q10_PC2,
+            Q12_PC1,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
         constrained = TRUE
     )
-make_summary(ict_fit_pca_q10)
+make_summary(ict_fit_pca_q12_pc1)
 ```
 
-### Climate Attitudes, PCA Q11
-```{r pca_q11, echo=FALSE, message = FALSE}
-message("Fitting model using PCA Q11...")
-ict_fit_pca_q11 <-
+### Climate Attitudes, First Principal Component of Q10
+```{r pca_q10_pc1, echo=FALSE, message = FALSE}
+message("Fitting model using first principal component of Q10...")
+ict_fit_pca_q10_pc1 <-
     ictreg(
         count ~ as.factor(list_id) +
-            Q11_PC1 +
-            Q11_PC2,
+            Q10_PC1,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
         constrained = TRUE
     )
-make_summary(ict_fit_pca_q11)
+make_summary(ict_fit_pca_q10_pc1)
 ```
 
-### Climate Attitudes, PCA Q12
-```{r pca_q12, echo=FALSE, message = FALSE}
-message("Fitting model using PCA Q12...")
-ict_fit_pca_q12 <-
+### Climate Attitudes, First Principal Components of Q12 and Q10
+```{r pca_q12_q10_pc1, echo=FALSE, message = FALSE}
+message("Fitting model using first principal components of Q12 and Q10...")
+ict_fit_pca_q12_q10_pc1 <-
     ictreg(
         count ~ as.factor(list_id) +
             Q12_PC1 +
-            Q12_PC2,
+            Q10_PC1,
         data = dt_est,
         treat = "treatment",
         J = n_cs,
         constrained = TRUE
     )
-make_summary(ict_fit_pca_q12)
+make_summary(ict_fit_pca_q12_q10_pc1)
 ```
 
-### Demographic Effects
-```{r demographic_effects, echo=FALSE, message = FALSE}
-message("Fitting model using demographics...")
-ict_fit_demo <-
+### Combined Model: First Principal Components of Q12, Q10 and Demographics
+```{r pca_q12_q10_demo, echo=FALSE, message = FALSE}
+message("Fitting model using first principal components of Q12, Q10 and demographics...")
+ict_fit_pca_q12_q10_demo <-
     ictreg(
         count ~ as.factor(list_id) +
+            Q12_PC1 +
+            Q10_PC1 +
             where_live +
             diet +
             age +
@@ -741,5 +741,5 @@ ict_fit_demo <-
         J = n_cs,
         constrained = TRUE
     )
-make_summary(ict_fit_demo)
+make_summary(ict_fit_pca_q12_q10_demo)
 ```
