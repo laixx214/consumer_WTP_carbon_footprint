@@ -638,6 +638,149 @@ design_effect %>%
     )
 ```
 
+## Principal Component Analysis Results
+
+The following section presents the principal component analysis (PCA) results for the climate attitude questions (Q10 and Q12). 
+We use ordinal PCA (ordPCA) from the ordPens package, which handles ordinal variables by optimally scaling them before computing principal components.
+
+### PCA for Q10 (Sustainable Behaviors)
+Q10 measures the frequency of sustainable behaviors with 5-point scale (1 = Almost Always, 5 = Never).
+
+```{r pca_q10, echo=FALSE, message = FALSE}
+### Read demographics data for PCA
+dt_demo <- fread("csv/dt_demo.csv")
+
+### Principle component analysis for Q10
+message("Running PCA for Q10...")
+lambda_seq <- exp(seq(5, -10, by = -0.1))
+
+dt_q10 <-
+    dt_demo %>%
+    select(starts_with("Q10")) %>%
+    mutate(
+        across(
+            starts_with("Q10_"),
+            ~ case_when(
+                .x == "AlmostAlways" ~ 1,
+                .x == "Often" ~ 2,
+                .x == "Sometimes" ~ 3,
+                .x == "Rarely" ~ 4,
+                .x == "Never" ~ 5
+            )
+        )
+    )
+
+pc_fit_q10 <-
+    dt_q10 %>%
+    ordPCA(
+        p = 2,
+        lambda = lambda_seq,
+        CV = TRUE,
+        k = 10,
+        CVfit = FALSE
+    )
+
+l_star_q10 <- lambda_seq[which.max(
+    apply(pc_fit_q10$VAFtest, 2, mean)
+)]
+
+pc_fit_q10_star <-
+    dt_q10 %>%
+    ordPCA(
+        p = 2,
+        lambda = l_star_q10
+    )
+
+### Calculate factor loadings as correlations between original variables and PCs
+q10_mat <- as.matrix(dt_q10)
+q10_loadings <- cor(q10_mat, pc_fit_q10_star$X, use = "complete.obs")
+colnames(q10_loadings) <- c("PC1", "PC2")
+
+### Display loadings table
+q10_loadings_df <- data.frame(
+    Variable = colnames(dt_q10),
+    PC1 = round(q10_loadings[, 1], 3),
+    PC2 = round(q10_loadings[, 2], 3)
+)
+q10_loadings_df
+```
+
+### PCA for Q12 (Climate Change Beliefs)
+Q12 measures climate change beliefs with 5-point scale (1 = Strongly agree, 5 = Strongly disagree).
+
+```{r pca_q12, echo=FALSE, message = FALSE}
+### Principle component analysis for Q12
+message("Running PCA for Q12...")
+
+dt_q12 <-
+    dt_demo %>%
+    select(starts_with("Q12")) %>%
+    mutate(
+        across(
+            starts_with("Q12_"),
+            ~ case_when(
+                .x == "Stronglyagree" ~ 1,
+                .x == "Mildlyagree" ~ 2,
+                .x == "Unsure" ~ 3,
+                .x == "Mildlydisagree" ~ 4,
+                .x == "Stronglydisagree" ~ 5
+            )
+        )
+    )
+
+pc_fit_q12 <-
+    dt_q12 %>%
+    ordPCA(
+        p = 2,
+        lambda = lambda_seq,
+        CV = TRUE,
+        k = 10,
+        CVfit = FALSE
+    )
+
+l_star_q12 <- lambda_seq[which.max(
+    apply(pc_fit_q12$VAFtest, 2, mean)
+)]
+
+pc_fit_q12_star <-
+    dt_q12 %>%
+    ordPCA(
+        p = 2,
+        lambda = l_star_q12
+    )
+
+### Calculate factor loadings as correlations between original variables and PCs
+q12_mat <- as.matrix(dt_q12)
+q12_loadings <- cor(q12_mat, pc_fit_q12_star$X, use = "complete.obs")
+colnames(q12_loadings) <- c("PC1", "PC2")
+
+### Display loadings table
+q12_loadings_df <- data.frame(
+    Variable = colnames(dt_q12),
+    PC1 = round(q12_loadings[, 1], 3),
+    PC2 = round(q12_loadings[, 2], 3)
+)
+q12_loadings_df
+```
+
+### Variance Explained
+
+```{r pca_variance, echo=FALSE, message = FALSE}
+### Calculate variance explained for Q10
+q10_var_explained <- apply(pc_fit_q10_star$X, 2, var) / sum(apply(q10_mat, 2, var, na.rm = TRUE)) * 100
+
+### Calculate variance explained for Q12
+q12_var_explained <- apply(pc_fit_q12_star$X, 2, var) / sum(apply(q12_mat, 2, var, na.rm = TRUE)) * 100
+
+variance_df <- data.frame(
+    Question = c("Q10", "Q10", "Q12", "Q12"),
+    Component = c("PC1", "PC2", "PC1", "PC2"),
+    `Variance Explained (%)` = round(c(q10_var_explained, q12_var_explained), 2),
+    check.names = FALSE
+)
+variance_df
+```
+
 ## Demographic Effects
 ```{r add_demographic, echo=FALSE, message = FALSE}
 setwd(dir)
@@ -731,7 +874,6 @@ ict_fit_pca_q12_q10_demo <-
             Q12_PC1 +
             Q10_PC1 +
             where_live +
-            diet +
             age +
             is_man +
             higher_education +
